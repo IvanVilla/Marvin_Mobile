@@ -3,7 +3,7 @@
  */
 package model.user;
 
-import model.benefits.Achievement;
+import model.benefit.Achievement;
 import model.utils.MyDate;
 
 /**

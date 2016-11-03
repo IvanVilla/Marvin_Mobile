@@ -3,7 +3,7 @@
  */
 package model.tournament;
 
-import model.users.User;
+import model.user.User;
 
 /**
  * Almacena un jugador individual
