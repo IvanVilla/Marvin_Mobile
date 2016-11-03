@@ -7,7 +7,7 @@ package fakeThings;
 
 public class LoginInfo {
     private final String USER_NAME="Marvin";
-    private final String USER_PASSWORD="MagratheaRocks2016";
+    private final String USER_PASSWORD="42";
 
     /**
      * Si el nombre y el pass coinciden, perfecto
