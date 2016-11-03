@@ -1,71 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.example.klaussius.marvin_mobile.MainMenu"
-    android:id="@+id/cLayout">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.klaussius.marvin_mobile.MainMenu">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mainLayout">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/MainLayout">
 
-        <android.support.v7.widget.Toolbar
+        <Button
+            android:text="@string/profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:theme="?attr/actionBarTheme"
-            android:minHeight="?attr/actionBarSize"
-            android:id="@+id/toolbar"
-            app:title="Marvin Mobile" />
+            android:id="@+id/btProfile" />
 
-        <LinearLayout
-            android:orientation="vertical"
+        <Button
+            android:text="@string/tournaments"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/contentLayout"
-            android:paddingBottom="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="5dp"
-            android:paddingLeft="5dp">
+            android:layout_height="wrap_content"
+            android:id="@+id/btTournaments" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvName"
-                android:layout_marginTop="30dp"
-                android:text="@string/name" />
+        <Button
+            android:text="@string/btRankings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btRankings" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/etName" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btMessages"
+            android:text="@string/messages" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvPassword"
-                android:text="@string/password" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btFindUsers"
+            android:text="@string/findUsers" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/etPassword" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btLogin"
-                android:text="@string/login" />
-        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btConfiguration"
+            android:text="@string/configuration" />
 
     </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
