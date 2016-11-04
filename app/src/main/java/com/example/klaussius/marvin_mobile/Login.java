@@ -13,11 +13,10 @@ import android.widget.Toast;
 
 import fakeThings.LoginInfo;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
 public class Login extends AppCompatActivity {
 
     Button btLogin;
+    Button btSignIn;
     EditText etName;
     EditText etPassword;
 
@@ -45,6 +44,14 @@ public class Login extends AppCompatActivity {
                 login();
             }
         });
+        // Sign in button y listener
+        btSignIn = (Button)findViewById(R.id.btSignIn);
+        btSignIn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
         return true;
     }
 
@@ -59,6 +66,14 @@ public class Login extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Limpia el formulario
+     */
+    public void cleanForm(){
+        etName.setText("");
+        etPassword.setText("");
     }
 
     /**
@@ -77,9 +92,16 @@ public class Login extends AppCompatActivity {
             startActivity(mainMenu);
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),"Datos incorrectos.", Toast.LENGTH_SHORT);
-            etName.setText("");
-            etPassword.setText("");
             toast.show();
+            etPassword.setText("");
         }
+    }
+
+    /**
+     * Acción de pulsar el botón de SignInForm
+     */
+    public void signIn(){
+        Intent signInForm = new Intent(this, SignInForm.class);
+        startActivity(signInForm);
     }
 }

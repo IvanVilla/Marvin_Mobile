@@ -25,4 +25,12 @@
     <string name="configuration">Configuration</string>
     <string name="btRankings">Rankings</string>
     <string name="findUsers">Find Users</string>
+    <string name="signin">Sign In</string>
+    <string name="typePasswordAgain">Type your password again</string>
+    <string name="eMail">e-Mail</string>
+    <string name="signIn">Sign In!</string>
+    <string name="clear">Clear</string>
+    <string name="nickname">Nickname</string>
+    <string name="marvin">MARVIN</string>
+    <string name="tournamentManager">tournament manager</string>
 </resources>

@@ -34,11 +34,29 @@
             android:paddingLeft="5dp">
 
             <TextView
+                android:text="@string/marvin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvMarvin"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:layout_marginTop="60dp"
+                android:gravity="center_horizontal"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:text="@string/tournamentManager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTournamentManager"
+                android:gravity="center_horizontal"
+                android:textColor="@android:color/black" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvName"
-                android:layout_marginTop="30dp"
-                android:text="@string/name" />
+                android:layout_marginTop="60dp"
+                android:text="@string/nickname" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -60,11 +78,26 @@
                 android:ems="10"
                 android:id="@+id/etPassword" />
 
-            <Button
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btLogin"
-                android:text="@string/login" />
+                android:layout_height="match_parent"
+                android:id="@+id/buttonsLayout">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btLogin"
+                    android:text="@string/login"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btSignIn"
+                    android:text="@string/signin"
+                    android:layout_weight="1" />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
