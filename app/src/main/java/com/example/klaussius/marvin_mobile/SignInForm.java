@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Form to sign in as new user
+ */
 public class SignInForm extends AppCompatActivity {
     Button btClear;
     Button btSignIn;

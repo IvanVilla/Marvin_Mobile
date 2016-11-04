@@ -14,6 +14,7 @@ public class User {
     private int id;
     private String publicName;
     private String name;
+    private String password;
     private String phone;
     private String eMail;
     private String privateDescription;
@@ -47,10 +48,11 @@ public class User {
      * @param sanctions sanciones de los usuarios
      * @param achievements logros de los usuarios
      */
-    public User(int id, String publicName, String name, String phone, String eMail, String privateDescription, String publicDescription, MyDate memberSince, String role, String language, MyDate dataPassword, boolean markedForDeletion, MyDate clearRequestData, boolean ads, ArrayList<Sanction> sanctions, ArrayList<AchievementUser> achievements) {
+    public User(int id, String publicName, String name, String password, String phone, String eMail, String privateDescription, String publicDescription, MyDate memberSince, String role, String language, MyDate dataPassword, boolean markedForDeletion, MyDate clearRequestData, boolean ads, ArrayList<Sanction> sanctions, ArrayList<AchievementUser> achievements) {
         this.id = id;
         this.publicName = publicName;
         this.name = name;
+        this.password = password;
         this.phone = phone;
         this.eMail = eMail;
         this.privateDescription = privateDescription;
@@ -328,6 +330,21 @@ public class User {
      */
     public void setAchievements(ArrayList<AchievementUser> achievements) {
         this.achievements = achievements;
-    }   
-    
+    }
+
+    /**
+     * Returns the password
+     * @return String password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Set the password
+     * @param password String the password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

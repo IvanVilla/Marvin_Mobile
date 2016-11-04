@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import zFakeThings.LoginInfo;
 
+/**
+ * Activity with a login form
+ */
 public class LoginForm extends AppCompatActivity {
 
     Button btLogin;

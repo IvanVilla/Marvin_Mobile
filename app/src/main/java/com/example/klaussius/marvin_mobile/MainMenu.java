@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Main menu activity
+ */
 public class MainMenu extends AppCompatActivity {
 
     Button btHostTest;
@@ -24,7 +27,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void launchHosts(){
-        Intent myIntent = new Intent(this,TestHost.class);
+        Intent myIntent = new Intent(this,TestUsers.class);
         startActivity(myIntent);
     }
 }
