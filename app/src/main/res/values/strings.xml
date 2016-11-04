@@ -22,9 +22,7 @@
     <string name="tournaments">Tournaments</string>
     <string name="achievements">Achievements</string>
     <string name="messages">Messages</string>
-    <string name="configuration">Configuration</string>
     <string name="btRankings">Rankings</string>
-    <string name="findUsers">Find Users</string>
     <string name="signin">Sign In</string>
     <string name="typePasswordAgain">Type your password again</string>
     <string name="eMail">e-Mail</string>
@@ -33,4 +31,7 @@
     <string name="nickname">Nickname</string>
     <string name="marvin">MARVIN</string>
     <string name="tournamentManager">tournament manager</string>
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
+    <string name="newAccount">NEW ACCOUNT</string>
 </resources>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.klaussius.marvin_mobile.Login"
+    tools:context="com.example.klaussius.marvin_mobile.LoginForm"
     android:id="@+id/cLayout">
 
     <LinearLayout
@@ -18,10 +18,21 @@
         android:layout_marginBottom="5dp">
 
         <TextView
+            android:text="@string/newAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvNewAccount"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="30dp" />
+
+        <TextView
             android:text="@string/nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvNickName" />
+            android:id="@+id/tvNickName"
+            android:layout_marginTop="30dp" />
 
         <EditText
             android:layout_width="match_parent"
@@ -89,10 +100,17 @@
             android:id="@+id/lButtons">
 
             <Button
-                android:text="@string/signIn"
+                android:text="@string/accept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btSignIn"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="@string/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btCancel"
                 android:layout_weight="1" />
 
             <Button

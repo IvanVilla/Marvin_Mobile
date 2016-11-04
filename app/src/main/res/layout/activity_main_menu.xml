@@ -41,17 +41,5 @@
             android:id="@+id/btMessages"
             android:text="@string/messages" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btFindUsers"
-            android:text="@string/findUsers" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btConfiguration"
-            android:text="@string/configuration" />
-
     </LinearLayout>
 </RelativeLayout>

@@ -9,6 +9,7 @@ import android.widget.EditText;
 public class SignInForm extends AppCompatActivity {
     Button btClear;
     Button btSignIn;
+    Button btCancel;
     EditText etNickName;
     EditText etName;
     EditText etPassword;
@@ -25,7 +26,7 @@ public class SignInForm extends AppCompatActivity {
         etPassword = (EditText)findViewById(R.id.etPassword);
         etPasswordAgain = (EditText)findViewById(R.id.etPasswordAgain);
         etEmail = (EditText)findViewById(R.id.etEmail);
-        // Inicializo botón de limpieza del formulario y añado listener
+        // Inicializo botón de limpieza y añado listener
         btClear = (Button)findViewById(R.id.btClear);
         btClear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,12 +34,20 @@ public class SignInForm extends AppCompatActivity {
                 clear();
             }
         });
-        // Inicializo botón de aceptar el formulario y añado listener
+        // Inicializo botón de aceptar y añado listener
         btSignIn = (Button)findViewById(R.id.btSignIn);
         btSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
+            }
+        });
+        // Inicializo botón de cancelar y añado listener
+        btCancel = (Button)findViewById(R.id.btCancel);
+        btCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancel();
             }
         });
     }
@@ -55,9 +64,15 @@ public class SignInForm extends AppCompatActivity {
     }
 
     /**
-     * SignIn
+     * Acepta el formulario
      */
     public void signIn(){
         this.finish();
     }
+
+    /**
+     * Cancela el formulario
+     */
+    public void cancel() { this.finish(); }
+
 }

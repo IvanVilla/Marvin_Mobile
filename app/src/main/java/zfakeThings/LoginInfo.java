@@ -1,7 +1,7 @@
-package fakeThings;
+package zFakeThings;
 
 /**
- * Simula un servicio de Login
+ * Simula un servicio de LoginForm
  * Created by Klaussius on 03/11/2016.
  */
 

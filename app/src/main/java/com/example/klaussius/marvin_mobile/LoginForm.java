@@ -11,9 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import fakeThings.LoginInfo;
+import zFakeThings.LoginInfo;
 
-public class Login extends AppCompatActivity {
+public class LoginForm extends AppCompatActivity {
 
     Button btLogin;
     Button btSignIn;
@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity {
         // Campos de texto
         etName = (EditText)findViewById(R.id.etName);
         etPassword = (EditText)findViewById(R.id.etPassword);
-        // Login button y listener
+        // LoginForm button y listener
         btLogin = (Button)findViewById(R.id.btLogin);
         btLogin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -71,13 +71,13 @@ public class Login extends AppCompatActivity {
     /**
      * Limpia el formulario
      */
-    public void cleanForm(){
+    public void clearForm(){
         etName.setText("");
         etPassword.setText("");
     }
 
     /**
-     * Acción de pulsar el botón de Login
+     * Acción de pulsar el botón de LoginForm
      */
     public void login(){
         // Objeto LoginInfo
@@ -102,6 +102,7 @@ public class Login extends AppCompatActivity {
      */
     public void signIn(){
         Intent signInForm = new Intent(this, SignInForm.class);
+        clearForm();
         startActivity(signInForm);
     }
 }
