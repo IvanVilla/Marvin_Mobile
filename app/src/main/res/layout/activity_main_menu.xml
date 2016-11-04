@@ -41,5 +41,12 @@
             android:id="@+id/btMessages"
             android:text="@string/messages" />
 
+        <Button
+            android:text="Host Test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btHostTest"
+            android:background="@android:color/holo_orange_light" />
+
     </LinearLayout>
 </RelativeLayout>
