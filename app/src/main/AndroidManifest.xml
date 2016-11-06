@@ -22,6 +22,6 @@
         </activity>
         <activity android:name=".MainMenu" />
         <activity android:name=".SignInForm" />
-        <activity android:name=".TestUsers"></activity>
+        <activity android:name=".Hosts"></activity>
     </application>
 </manifest>
