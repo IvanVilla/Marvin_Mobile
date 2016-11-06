@@ -1,9 +1,9 @@
-package persistance.UserDAO;
+package persistanceDAO.UserDAO;
 
 import java.util.List;
 
 import model.user.User;
-import persistance.DAO;
+import persistanceDAO.DAO;
 
 /**
  * Created by boscalent on 04/11/2016.

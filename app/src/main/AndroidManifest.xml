@@ -24,5 +24,4 @@
         <activity android:name=".SignInForm" />
         <activity android:name=".TestUsers"></activity>
     </application>
-
 </manifest>

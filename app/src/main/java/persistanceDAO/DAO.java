@@ -1,4 +1,4 @@
-package persistance;
+package persistanceDAO;
 
 /**
  * Created by boscalent on 04/11/2016.

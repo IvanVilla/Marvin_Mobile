@@ -1,4 +1,4 @@
-package persistance.UserDAO;
+package persistanceDAO.UserDAO;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import model.user.User;
-import persistance.HTTPRequest.HTTPRequestDAO;
+import persistanceDAO.HTTPRequest.HTTPRequestDAO;
 
 /**
  * Created by boscalent on 04/11/2016.
@@ -54,7 +54,6 @@ public class HTTPRequestUserDAO extends HTTPRequestDAO implements UserDAO {
         try {
             // URL
             URL url = new URL("http://localhost/api/usersQuery.php");
-
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
             params.put("user", "root");               // User has rights?
