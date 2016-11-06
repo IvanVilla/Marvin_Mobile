@@ -5,30 +5,31 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import model.host.TournamentHost;
-import serverData.QueryHosts;
+import model.tournament.Tournament;
+import serverData.QueryTournaments;
 
 /**
- * Activity to test connections
+ * Activity that get the hosts
+ * @author Klaussius
  */
-public class Hosts extends AppCompatActivity {
+public class ListTournaments extends AppCompatActivity {
 
-    public TextView tvHost;
-    public QueryHosts myData;
+    public TextView tvContent;
+    public QueryTournaments myData;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hots);
-        tvHost = (TextView) findViewById(R.id.tvHost);
+        setContentView(R.layout.activity_list_hots);
+        tvContent = (TextView) findViewById(R.id.tvContent);
         new leerDatos().execute();
     }
 
     private class leerDatos extends AsyncTask<String,Void,String> {
         @Override
         protected String doInBackground(String... strings) {
-            myData = new QueryHosts();
+            myData = new QueryTournaments();
             myData.findAll();
             return "done";
         }
@@ -36,10 +37,10 @@ public class Hosts extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             String texto = "";
-            for (TournamentHost tHost:myData.tournamentHosts){
-                texto = texto + tHost.getId()+": "+tHost.getName()+"\n";
+            for (Tournament tournament:myData.queryResult){
+                texto = texto + tournament.getId()+": "+tournament.getName()+"\n";
             }
-            tvHost.setText(texto);
+            tvContent.setText(texto);
         }
     }
 }

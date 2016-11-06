@@ -15,16 +15,15 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import model.host.TournamentHost;
+import model.tournament.Tournament;
 
 /**
- * Connect and retrieve the hosts
- * @author Klaussius
+ * Created by Klaussius on 06/11/2016.
  */
-public class QueryHosts extends Connection{
 
-    public List<TournamentHost> queryResult = new ArrayList<>();
-    private final static String URL_QUERY = "http://10.0.2.2/api/hostsQuery.php";
+public class QueryTournaments extends Connection{
+    public List<Tournament> queryResult = new ArrayList<>();
+    private final static String URL_QUERY = "http://10.0.2.2/api/tournamentsQuery.php";
 
     /**
      * Post the request, and get the data to our model's objects
@@ -35,7 +34,7 @@ public class QueryHosts extends Connection{
             URL url = new URL(URL_QUERY);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("",""); // Get all the values
+            params.put("user","LOGIN_USER"); // Get all the values
             //params.put("param2", "getAllUser");
             //params.put("param3", "Prototip");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
@@ -98,16 +97,16 @@ public class QueryHosts extends Connection{
     }
 
     /**
-     * Make the objects TournamentHosts from Array
+     * Make the objects Tournament from Array
      * @param jarray
      */
     private void makeFromJson(JsonArray jarray){
         for (int i=0; i<jarray.size(); i++){
-            TournamentHost tHost = new TournamentHost();
+            Tournament tournament = new Tournament();
             JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-            tHost.setId(jsonobject.get("idTournamentHost").getAsInt());
-            tHost.setName(jsonobject.get("name").getAsString());
-            this.queryResult.add(tHost);
+            tournament.setId(jsonobject.get("idTournament").getAsInt());
+            tournament.setName(jsonobject.get("name").getAsString());
+            this.queryResult.add(tournament);
         }
     }
 }

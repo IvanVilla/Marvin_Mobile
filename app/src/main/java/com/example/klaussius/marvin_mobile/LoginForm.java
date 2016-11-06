@@ -16,6 +16,7 @@ import zFakeThings.LoginInfo;
 
 /**
  * Activity with a login form
+ * @author Klaussius
  */
 public class LoginForm extends AppCompatActivity {
 

@@ -2,7 +2,7 @@ package zFakeThings;
 
 /**
  * Simula un servicio de LoginForm
- * Created by Klaussius on 03/11/2016.
+ * @author Klaussius
  */
 
 public class LoginInfo {
