@@ -25,6 +25,12 @@
             android:textColor="@android:color/black"
             android:layout_marginTop="15dp" />
 
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lvContent"
+            android:layout_marginTop="15dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

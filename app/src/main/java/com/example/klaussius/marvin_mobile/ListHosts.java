@@ -4,11 +4,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
 
-import model.host.TournamentHost;
+import java.util.List;
+
 import dataFromServer.QueryHosts;
+import model.host.TournamentHost;
 
 /**
  * Activity that get the hosts
@@ -16,9 +19,9 @@ import dataFromServer.QueryHosts;
  */
 public class ListHosts extends AppCompatActivity {
 
-    public TextView tvContent;
     public QueryHosts myData;
     public Button takeMeBack;
+    public ListView lvContent;
 
     /**
      * OnCreate: assigns our controls
@@ -36,8 +39,9 @@ public class ListHosts extends AppCompatActivity {
                 takeMeBack();
             }
         });
+        // ListView for the content
+        lvContent = (ListView)findViewById(R.id.lvContent);
         // Retrieve data
-        tvContent = (TextView) findViewById(R.id.tvContent);
         new leerDatos().execute();
     }
 
@@ -54,12 +58,18 @@ public class ListHosts extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            String texto = "";
-            for (TournamentHost tHost:myData.getQueryResult()){
-                texto = texto + tHost.getId()+": "+tHost.getName()+"\n\n";
-            }
-            tvContent.setText(texto);
+            mostrarDatos(myData.getQueryResult());
         }
+    }
+
+    private void mostrarDatos(List<TournamentHost> datos){
+        // Paso los datos a un ListView
+        String textos[]=new String[myData.getQueryResult().size()];
+        for (int i = 0; i<textos.length; i++){
+            textos[i] = myData.getQueryResult().get(i).getId()+": "+myData.getQueryResult().get(i).getName();
+        }
+        ArrayAdapter<String> itemsAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,textos);
+        lvContent.setAdapter(itemsAdapter);
     }
 
     /**

@@ -16,11 +16,11 @@ public class Achievement {
     private MyDate achievementDate;
 
     /**
-     * Constructor con parámetros
-     * @param id id del logro
-     * @param name nombre del logro
-     * @param content texto del logro
-     * @param achievementDate
+     * Constructor with parameters
+     * @param id id
+     * @param name name
+     * @param content text
+     * @param achievementDate date
      */
     public Achievement(int id, String name, String content, MyDate achievementDate) {
         this.id = id;
@@ -29,15 +29,15 @@ public class Achievement {
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public Achievement() {
     }
     
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve la id
+     * Get the id
      * @return id
      */
     public int getId() {
@@ -45,7 +45,7 @@ public class Achievement {
     }
 
     /**
-     * Guarda la id
+     * Set the id
      * @param id id
      */
     public void setId(int id) {
@@ -53,15 +53,15 @@ public class Achievement {
     }
 
     /**
-     * Devuelve el nombre
-     * @return nombre
+     * Return the name
+     * @return name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Guarda el nombre
+     * Set the name
      * @param name nombre
      */
     public void setName(String name) {
@@ -69,16 +69,16 @@ public class Achievement {
     }
 
     /**
-     * Devuelve el contenido del logro (descripción)
-     * @return contenido
+     * Return achievement's text
+     * @return achievement's text
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * Guarda el contenido del logro (descripción)
-     * @param content contenido
+     * Set achievement's text
+     * @param content achievement's text
      */
     public void setContent(String content) {
         this.content = content;

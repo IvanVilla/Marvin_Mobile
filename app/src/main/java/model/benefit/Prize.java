@@ -6,7 +6,7 @@ package model.benefit;
 import model.utils.MyDate;
 
 /**
- * Almacena los premios
+ * Store prizes
  * @author Klaussius
  */
 public class Prize {
@@ -18,11 +18,11 @@ public class Prize {
 
     /**
      * Constructor con parámetros
-     * @param id id del premio
-     * @param name nombre del premio
-     * @param description descripción del premio
-     * @param image imagen del premio
-     * @param expirationDate fecha de caducidad del premio
+     * @param id id
+     * @param name name
+     * @param description description
+     * @param image image
+     * @param expirationDate expiration date
      */
     public Prize(int id, int name, String description, String image, MyDate expirationDate) {
         this.id = id;
@@ -33,15 +33,15 @@ public class Prize {
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public Prize() {
     }
     
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve la id
+     * Get id
      * @return id
      */
 
@@ -50,7 +50,7 @@ public class Prize {
     }
 
     /**
-     * Guarda la id
+     * Set la id
      * @param id id
      */
     public void setId(int id) {
@@ -58,64 +58,63 @@ public class Prize {
     }
 
     /**
-     * Devuelve el nombre
-     * @return nombre
+     * Get name
+     * @return name
      */
     public int getName() {
         return name;
     }
 
     /**
-     * Guarda el nombre
-     * @param name nombre
+     * Set name
+     * @param name name
      */
     public void setName(int name) {
         this.name = name;
     }
 
     /**
-     * Devuelve la descripción
-     * @return descripción
-     */
+     * Return description
+     description     */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Guarda la descripción
-     * @param description descripción
+     * Set description
+     * @param description description
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     * Devuelve la imagen
-     * @return imagen
+     * Get image
+     * @return image
      */
     public String getImage() {
         return image;
     }
 
     /**
-     * Guarda la imagen
-     * @param image imagen
+     * Set image
+     * @param image image
      */
     public void setImage(String image) {
         this.image = image;
     }
 
     /**
-     * Devuelve la fecha de caducidad
-     * @return fecha de caducidad
+     * Get expiration date
+     * @return expiration date
      */
     public MyDate getExpirationDate() {
         return expirationDate;
     }
 
     /**
-     * Guarda la fecha de caducidad
-     * @param expirationDate fecha de caducidad
+     * Save expiration date
+     * @param expirationDate expiration date
      */
     public void setExpirationDate(MyDate expirationDate) {
         this.expirationDate = expirationDate;

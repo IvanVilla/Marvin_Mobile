@@ -4,7 +4,7 @@
 package model.utils;
 
 /**
- * Almacena un lugar
+ * Store a place
  * @author Klaussius
  */
 public class GPS {
@@ -12,9 +12,9 @@ public class GPS {
     private float longitude;
 
     /**
-     * Constructor con parámetros
-     * @param latitude
-     * @param longitude 
+     * Constructor with parameters
+     * @param latitude latitude
+     * @param longitude longitude
      */
     public GPS(float latitude, float longitude) {
         this.latitude = latitude;
@@ -22,40 +22,40 @@ public class GPS {
     }
     
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public GPS(){        
     }
 
-    // GETTERS y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve la latitud geográfica
-     * @return latitud geográfica
+     * Get latitude
+     * @return latitude
      */
     public float getLatitude() {
         return latitude;
     }
 
     /**
-     * Guarda la latitud geográfica
-     * @param latitude latitud geográfica
+     * Set latitude
+     * @param latitude latitude
      */
     public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
 
     /**
-     * Devuelve la longitud geográfica
-     * @return longitud geográfica
+     * Devuelve la longitude
+     * @return longitude
      */
     public float getLongitude() {
         return longitude;
     }
 
     /**
-     * Guarda la longitud geográfica
-     * @param longitude longitud geográfica
+     * Get longitude
+     * @param longitude longitude
      */
     public void setLongitude(float longitude) {
         this.longitude = longitude;

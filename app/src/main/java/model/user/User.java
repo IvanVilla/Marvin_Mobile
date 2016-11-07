@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import model.utils.MyDate;
 
 /**
- * Almacena los datos de un usuario
+ * Store data for one user
  * @author Klaussius
  */
 public class User {
@@ -30,23 +30,23 @@ public class User {
     private ArrayList <AchievementUser> achievements;
 
     /**
-     * Constructor con parámetros
-     * @param id id del usuario
-     * @param publicName nombre público (nick)
-     * @param name nombre real
-     * @param phone teléfono
-     * @param eMail correo electrónico
-     * @param privateDescription descripción privada
-     * @param publicDescription descripción pública
-     * @param memberSince miembro desde...
-     * @param role rol del usuario
-     * @param language lenguaje del usuario
-     * @param dataPassword contraseña del usuario
-     * @param markedForDeletion marcado para ser borrado
-     * @param clearRequestData fecha de la solicitud de borrado
-     * @param ads indica si el usuario admite anuncios
-     * @param sanctions sanciones de los usuarios
-     * @param achievements logros de los usuarios
+     * Constructor with parameters
+     * @param id id
+     * @param publicName public name
+     * @param name real name
+     * @param phone phone
+     * @param eMail e-mail
+     * @param privateDescription private description
+     * @param publicDescription public description
+     * @param memberSince member since
+     * @param role user role
+     * @param language language of the user
+     * @param dataPassword user password
+     * @param markedForDeletion marked for delete
+     * @param clearRequestData delete request date
+     * @param ads if the user allow ads
+     * @param sanctions user sanctions
+     * @param achievements user achievements
      */
     public User(int id, String publicName, String name, String password, String phone, String eMail, String privateDescription, String publicDescription, MyDate memberSince, String role, String language, MyDate dataPassword, boolean markedForDeletion, MyDate clearRequestData, boolean ads, ArrayList<Sanction> sanctions, ArrayList<AchievementUser> achievements) {
         this.id = id;
@@ -69,119 +69,119 @@ public class User {
     }
     
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public User() {
     }
 
-    // GETTERS y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve el id del usuario
-     * @return id del usuario
+     * Get id
+     * @return id
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Guarda la id del usuario
-     * @param id id del usuario
+     * Set id
+     * @param id id
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Devuelve el nickname del usuario
-     * @return nickname del usuario
+     * Set nickname
+     * @return nickname
      */
     public String getPublicName() {
         return publicName;
     }
 
     /**
-     * Guarda el nickname del usuario
-     * @param publicName devuelve el nickname del usuario
+     * Get nickname
+     * @param publicName Get nickname
      */
     public void setPublicName(String publicName) {
         this.publicName = publicName;
     }
 
     /**
-     * Devuelve el nombre del usuario
-     * @return nombre del usuario
+     * Set user name
+     * @return user name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Guarda el nombre del usuario
-     * @param name nombre del usuario
+     * Get user name
+     * @param name user name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Devuelve el teléfono del usuario
-     * @return teléfono del usuario
+     * Get phone number
+     * @return phone number
      */
     public String getPhone() {
         return phone;
     }
 
     /**
-     * Guarda el teléfono del usuario
-     * @param phone teléfono del usuario
+     * Set phone number
+     * @param phone phone number
      */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
     /**
-     * Devuelve el correo del usuario
-     * @return correo del usuario
+     * Get e-mail adress
+     * @return e-mail adress
      */
     public String geteMail() {
         return eMail;
     }
 
     /**
-     * Guarda el e-Mail del usuario
-     * @param eMail e-Mail del usuario
+     * Set e-mail adress
+     * @param eMail  e-mail adress
      */
     public void seteMail(String eMail) {
         this.eMail = eMail;
     }
 
     /**
-     * Devuelve la descripción privada del usuario
-     * @return descripción privada del usuario
+     * Get private description
+     * @return  private description
      */
     public String getPrivateDescription() {
         return privateDescription;
     }
 
     /**
-     * Devuelve la descripción privada del usuario
-     * @param privateDescription descripción privada del usuario
+     * Set private description
+     * @param privateDescription private description
      */
     public void setPrivateDescription(String privateDescription) {
         this.privateDescription = privateDescription;
     }
 
     /**
-     * Devuelve la descripción pública del usuario
-     * @return descripción pública del usuario
+     * Get public description
+     * @return public description
      */
     public String getPublicDescription() {
         return publicDescription;
     }
 
     /**
-     * Guarda la descripción pública del usuario
+     * Set public description
      * @param publicDescription descripción pública del usuario
      */
     public void setPublicDescription(String publicDescription) {
@@ -189,151 +189,151 @@ public class User {
     }
 
     /**
-     * Devuelve la fecha de alta del usuario
-     * @return fecha de alta del usuario
+     * Get date of sign
+     * @return date of sign
      */
     public MyDate getMemberSince() {
         return memberSince;
     }
 
     /**
-     * Guarda la fecha de alta del usuario
-     * @param memberSince fecha de alta del usuario
+     * Set date of sign
+     * @param memberSince date of sign
      */
     public void setMemberSince(MyDate memberSince) {
         this.memberSince = memberSince;
     }
 
     /**
-     * Devuelve el rol del usuario
-     * @return rol del usuario
+     * Get user role
+     * @return user role
      */
     public String getRole() {
         return role;
     }
 
     /**
-     * Guarda el rol del usuario
-     * @param role rol del usuario
+     * Set user role
+     * @param role user role
      */
     public void setRole(String role) {
         this.role = role;
     }
 
     /**
-     * Devuelve el idioma del usuario
-     * @return idioma del usuario
+     * Get user language
+     * @return user language
      */
     public String getLanguage() {
         return language;
     }
 
     /**
-     * Guarda el idioma del usuario
-     * @param language idioma del usuario
+     * Set user language
+     * @param language user language
      */
     public void setLanguage(String language) {
         this.language = language;
     }
 
     /**
-     * Devuelve la fecha del password del usuario
-     * @return password del usuario
+     * Get password date
+     * @return password date
      */
     public MyDate getDataPassword() {
         return dataPassword;
     }
 
     /**
-     * Guarda la fecha del password del usuario
-     * @param dataPassword password
+     * Set password date
+     * @param dataPassword password date
      */
     public void setDataPassword(MyDate dataPassword) {
         this.dataPassword = dataPassword;
     }
 
     /**
-     * Devuelve si el usuario está marcado para ser borrado
-     * @return true si está marcado para borrar, false si no
+     * Get if the user is marked for deletion
+     * @return true (yes) or false (no)
      */
     public boolean isMarkedForDeletion() {
         return markedForDeletion;
     }
 
     /**
-     * Guarda si el usuario está marcado para ser borrado
-     * @param markedForDeletion true para marcarlo para borrar, false si no
+     * Set if the user is marked for deletion
+     * @param markedForDeletion true (yes) or false (no)
      */
     public void setMarkedForDeletion(boolean markedForDeletion) {
         this.markedForDeletion = markedForDeletion;
     }
 
     /**
-     * Deuvelve la fecha de petición de baja
-     * @return fecha de petición de baja
+     * Get deletion request data
+     * @return deletion request data
      */
     public MyDate getClearRequestData() {
         return clearRequestData;
     }
 
     /**
-     * Guarda la fecha de petición de baja
-     * @param clearRequestData fecha de petición de baja
+     * Set deletion request data
+     * @param clearRequestData deletion request data
      */
     public void setClearRequestData(MyDate clearRequestData) {
         this.clearRequestData = clearRequestData;
     }
 
     /**
-     * Devuelve si el usuario admite anuncios
-     * @return si el usuario admite anuncios, true, en caso contrario false
+     * Get if the user wants to get ads
+     * @return true (yes), false (no)
      */
     public boolean isAds() {
         return ads;
     }
 
     /**
-     * Guarda si el usuario admite anuncios
-     * @param ads true si los admite, false si no
+     * Set if the user wants to get ads
+     * @param ads true (yes), false (no)
      */
     public void setAds(boolean ads) {
         this.ads = ads;
     }
 
     /**
-     * Devuelve las sanciones del usuario
-     * @return sanciones del usuario
+     * Get sanctions
+     * @return sanctions
      */
     public ArrayList<Sanction> getSanctions() {
         return sanctions;
     }
 
     /**
-     * Guarda las sanciones del usuario
-     * @param sanctions sanciones del usuario
+     * Set sanctions
+     * @param sanctions sanctions
      */
     public void setSanctions(ArrayList<Sanction> sanctions) {
         this.sanctions = sanctions;
     }
 
     /**
-     * Devuelve los logros de un usuario
-     * @return logros de un usuario
+     * Get achievements
+     * @return achievements
      */
     public ArrayList<AchievementUser> getAchievements() {
         return achievements;
     }
 
     /**
-     * Guarda los logros de un usuario
-     * @param achievements logros de un usuario
+     * Set achievements
+     * @param achievements achievements
      */
     public void setAchievements(ArrayList<AchievementUser> achievements) {
         this.achievements = achievements;
     }
 
     /**
-     * Returns the password
+     * Return password
      * @return String password
      */
     public String getPassword() {
@@ -341,8 +341,8 @@ public class User {
     }
 
     /**
-     * Set the password
-     * @param password String the password
+     * Set password
+     * @param password password
      */
     public void setPassword(String password) {
         this.password = password;

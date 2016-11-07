@@ -6,16 +6,16 @@ package model.tournament;
 import model.user.Team;
 
 /**
- * Almacena un jugador - equipo
+ * Store a team as player. Inherits from TournamentPlayer
  * @author Klaussius
  */
 public class PlayerTeam extends TournamentPlayer{
     private Team player;
     
     /**
-     * Constructor con parámetros
-     * @param player equipo de jugadores
-     * @param rank ranking final del equipo
+     * Constructor with parameters
+     * @param player team
+     * @param rank ranking
      */
     public PlayerTeam(Team player, int rank) {
         super(rank);
@@ -23,24 +23,24 @@ public class PlayerTeam extends TournamentPlayer{
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simle
      */
     public PlayerTeam() {
     }
 
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve el equipo jugador
-     * @return equipo jugador
+     * Get team
+     * @return team
      */
     public Team getPlayer() {
         return player;
     }
 
     /**
-     * Guarda el equipo jugador
-     * @param player equipo jugador
+     * Set team
+     * @param player team
      */
     public void setPlayer(Team player) {
         this.player = player;

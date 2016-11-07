@@ -4,11 +4,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import model.tournament.Tournament;
+import java.util.List;
+
 import dataFromServer.QueryTournaments;
+import model.tournament.Tournament;
 
 /**
  * Activity that get the hosts
@@ -19,6 +23,7 @@ public class ListTournaments extends AppCompatActivity {
     public TextView tvContent;
     public QueryTournaments myData;
     public Button TakeMeBack;
+    public ListView lvContent;
 
     /**
      * OnCreate: assigns our controls
@@ -37,7 +42,10 @@ public class ListTournaments extends AppCompatActivity {
                 takeMeBack();
             }
         });
-        tvContent = (TextView) findViewById(R.id.tvContent);
+        //Content
+        tvContent = (TextView)findViewById(R.id.tvContent);
+        lvContent = (ListView)findViewById(R.id.lvContent);
+        //Retrieve data
         new leerDatos().execute();
     }
 
@@ -54,12 +62,18 @@ public class ListTournaments extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            String texto = "";
-            for (Tournament tournament:myData.getQueryResult()){
-                texto = texto + tournament.getId()+": "+tournament.getName()+"\n"+tournament.getPublicDes()+"\n\n";
-            }
-            tvContent.setText(texto);
+            mostrarDatos(myData.getQueryResult());
         }
+    }
+
+    private void mostrarDatos(List<Tournament> datos){
+        // Paso los datos a un ListView
+        String textos[]=new String[myData.getQueryResult().size()];
+        for (int i = 0; i<textos.length; i++){
+            textos[i] = myData.getQueryResult().get(i).getName()+"\n"+myData.getQueryResult().get(i).getPublicDes();
+        }
+        ArrayAdapter<String> itemsAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,textos);
+        lvContent.setAdapter(itemsAdapter);
     }
 
     private void takeMeBack(){

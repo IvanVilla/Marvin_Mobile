@@ -6,39 +6,39 @@ package model.tournament;
 import java.util.ArrayList;
 
 /**
- * Almacena un encuentro y su resultado
+ * Store one match data
  * @author Klaussius
  */
 public class Match {
     private ArrayList <MatchPlayer> matchPlayer;
 
     /**
-     * Constructor con parámetros
-     * @param matchPlayer lista de jugadores de una partida
+     * Constructor with parameters
+     * @param matchPlayer list of players
      */
     public Match(ArrayList<MatchPlayer> matchPlayer) {
         this.matchPlayer = matchPlayer;
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public Match() {
     }
 
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve el jugadro de un encuentro
-     * @return jugador
+     * Return player
+     * @return player
      */
     public ArrayList<MatchPlayer> getMatchPlayer() {
         return matchPlayer;
     }
 
     /**
-     * Fija el jugador de un encuentro
-     * @param matchPlayer jugador
+     * Set player
+     * @param matchPlayer player
      */
     public void setMatchPlayer(ArrayList<MatchPlayer> matchPlayer) {
         this.matchPlayer = matchPlayer;

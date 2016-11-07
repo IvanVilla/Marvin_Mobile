@@ -12,9 +12,9 @@ public class TeamMember {
     private String role;
 
     /**
-     * Constructor con parámetros
-     * @param user miembro
-     * @param role rol del miembro
+     * Constructor with parameters
+     * @param user member
+     * @param role role of the member
      */
     public TeamMember(User user, String role) {
         this.user = user;
@@ -22,44 +22,43 @@ public class TeamMember {
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public TeamMember() {
     }
 
-    // GETTERS y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     *
-     * @return
+     * Get User
+     * @return user
      */
     public User getUser() {
         return user;
     }
 
     /**
-     *
-     * @param user
+     * Set user
+     * @param user user
      */
     public void setUser(User user) {
         this.user = user;
     }
 
     /**
-     *
-     * @return
+     * Get role
+     * @return role
      */
     public String getRole() {
         return role;
     }
 
     /**
-     *
-     * @param role
+     * Set role
+     * @param role role
      */
     public void setRole(String role) {
         this.role = role;
     }
-    
-    
+
 }

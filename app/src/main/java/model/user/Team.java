@@ -6,7 +6,7 @@ package model.user;
 import java.util.ArrayList;
 
 /**
- * Almacena un equipo
+ * Store a team
  * @author Klaussius
  */
 public class Team {
@@ -16,11 +16,11 @@ public class Team {
     private int maxUsers;
 
     /**
-     * Constructor con parámetros
-     * @param id id del equipo
-     * @param memberList lista de miembros del equipo
-     * @param description descripción del equipo
-     * @param maxUsers máximo número de usuarios
+     * Constructor with parameters
+     * @param id id
+     * @param memberList member list
+     * @param description description
+     * @param maxUsers max number of users
      */
     public Team(int id, ArrayList<TeamMember> memberList, String description, int maxUsers) {
         this.id = id;
@@ -30,15 +30,15 @@ public class Team {
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public Team() {
     }       
 
-    //GETTERS y SETTERS
+    //GETTERS AND SETTERS
 
     /**
-     *
+     * Get id
      * @return
      */
     public int getId() {
@@ -46,7 +46,7 @@ public class Team {
     }
 
     /**
-     *
+     * Set id
      * @param id
      */
     public void setId(int id) {
@@ -54,48 +54,48 @@ public class Team {
     }
 
     /**
-     *
-     * @return
+     * Get team members
+     * @return team members
      */
     public ArrayList<TeamMember> getMemberList() {
         return memberList;
     }
 
     /**
-     *
-     * @param memberList
+     * Set team members
+     * @param memberList team members
      */
     public void setMemberList(ArrayList<TeamMember> memberList) {
         this.memberList = memberList;
     }
 
     /**
-     *
-     * @return
+     * Get description
+     * @return description
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     *
-     * @param description
+     * Set description
+     * @param description description
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     *
-     * @return
+     * Get max number of users
+     * @return max number of users
      */
     public int getMaxUsers() {
         return maxUsers;
     }
 
     /**
-     *
-     * @param maxUsers
+     * Set max number of users
+     * @param maxUsers max number of users
      */
     public void setMaxUsers(int maxUsers) {
         this.maxUsers = maxUsers;
