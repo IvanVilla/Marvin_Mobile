@@ -1,10 +1,14 @@
 package com.example.klaussius.marvin_mobile;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Main menu activity
@@ -17,11 +21,16 @@ public class MainMenu extends AppCompatActivity {
     Button btRankings;
     Button btMessages;
     Button btProfile;
+    Button btLogOut;
+    TextView hello;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        //TextView hello!
+        hello = (TextView)findViewById(R.id.tvHello);
+        hello.setText("Hello "+loadUserName()+"!");
         //Button for Tournaments
         btTournaments = (Button)findViewById(R.id.btTournaments);
         btTournaments.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +71,24 @@ public class MainMenu extends AppCompatActivity {
                 launchProfile();
             }
         });
+        //Button for LogOut
+        btLogOut = (Button)findViewById(R.id.btLogOut);
+        btLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
 
+    }
+
+    /**
+     * Load the username from SharedPreferences
+     */
+    public String loadUserName(){
+        Log.i("SharedPreferences","Loading Username");
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        return prefs.getString("marvinName","");
     }
 
     /**
@@ -98,10 +124,22 @@ public class MainMenu extends AppCompatActivity {
     }
 
     /**
-     * Launch profiles activity
+     * Launch profile activity
      */
     public void launchProfile(){
-        Intent myIntent = new Intent(this,Working.class);
+        Intent myIntent = new Intent(this,Profile.class);
         startActivity(myIntent);
+    }
+
+    /**
+     * Finish the activity, clean the SharedPreferences Username
+     */
+    public void logout(){
+        Log.i("SharedPreferences","Cleaning Username");
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("marvinName","");
+        editor.commit();
+        this.finish();
     }
 }

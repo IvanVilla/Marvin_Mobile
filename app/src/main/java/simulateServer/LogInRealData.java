@@ -1,10 +1,9 @@
-package zFakeThings;
+package simulateServer;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import model.user.User;
-import serverData.QueryUsersPassword;
 
 /**
  * Log in with a real account
@@ -31,9 +30,6 @@ public class LogInRealData {
      * @return true if success, false if not
      */
     public boolean login(String name, String password){
-        if (name.equals("Admin")&&password.equals("AdminMarvin")){
-            return true;
-        }
         for (User user:myData.getQueryResult()){
             if (user.getName().equals(name) && user.getPassword().equals(password)){
                 Log.i("Autenthication","Success");

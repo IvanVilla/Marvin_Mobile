@@ -1,10 +1,13 @@
 package com.example.klaussius.marvin_mobile;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import zFakeThings.LogInRealData;
+import simulateServer.LogInRealData;
 
 /**
  * Activity with a login form
@@ -112,6 +115,7 @@ public class LoginForm extends AppCompatActivity {
         // Comprobamos
         String mensaje;
         if (myLogin.login(userName,userPassword)){
+            SaveUserName(userName);
             Intent mainMenu = new Intent(this, MainMenu.class);
             startActivity(mainMenu);
         } else {
@@ -133,7 +137,19 @@ public class LoginForm extends AppCompatActivity {
     /**
      * Exit action
      */
-    public void endApp(){
+    public void endApp()
+    {
         this.finish();
+    }
+
+    /**
+     * Store the username we are using on sharedpreferences
+     */
+    public void SaveUserName(String username){
+        Log.i("SharedPreferences","Saving Username");
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("marvinName",username);
+        editor.commit();
     }
 }

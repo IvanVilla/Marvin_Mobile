@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import model.host.TournamentHost;
-import serverData.QueryHosts;
+import dataFromServer.QueryHosts;
 
 /**
  * Activity that get the hosts

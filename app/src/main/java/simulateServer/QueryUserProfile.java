@@ -1,4 +1,4 @@
-package serverData;
+package simulateServer;
 
 import android.util.Log;
 
@@ -18,14 +18,15 @@ import java.util.List;
 import java.util.Map;
 
 import model.user.User;
+import dataFromServer.Connection;
 
 /**
- * This class is only for the prototype purpouse, on further versions the authentication will be on
- * the server side.
+ * This class is only for the prototype purpouse, on further versions the app will retrieve only the
+ * data of the app user
  * @autor Klaussius
  */
 
-public class QueryUsersPassword extends Connection{
+public class QueryUserProfile extends Connection {
     private List<User> queryResult = new ArrayList<>();
     private final static String URL_QUERY = "http://10.0.2.2/api/usersQueryOld.php";
 
@@ -110,8 +111,9 @@ public class QueryUsersPassword extends Connection{
         for (int i=0; i<jarray.size(); i++){
             User user = new User();
             JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-            user.setName(jsonobject.get("publicName").getAsString());
+            user.setPublicName(jsonobject.get("publicName").getAsString());
             user.setPassword(jsonobject.get("password").getAsString());
+            user.seteMail(jsonobject.get("eMail").getAsString());
             this.queryResult.add(user);
         }
     }
@@ -122,5 +124,20 @@ public class QueryUsersPassword extends Connection{
      */
     public List<User> getQueryResult() {
         return queryResult;
+    }
+
+    /**
+     * Result of the query for one username
+     * @param nombre
+     * @return user
+     */
+    public User getUser(String nombre){
+        findAll();
+        for (User user: queryResult){
+            if (user.getPublicName().equals(nombre)){
+                return user;
+            }
+        }
+        return null;
     }
 }

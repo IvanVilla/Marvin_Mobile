@@ -1,7 +1,8 @@
 package com.example.klaussius.marvin_mobile;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,10 @@ public class SignInForm extends AppCompatActivity {
     EditText etPasswordAgain;
     EditText etEmail;
 
+    /**
+     * Inicialices the parameters and controls
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +62,7 @@ public class SignInForm extends AppCompatActivity {
     }
 
     /**
-     * Limpia el formulario
+     * Clean the form
      */
     public void clear(){
         etNickName.setText("");
@@ -68,14 +73,15 @@ public class SignInForm extends AppCompatActivity {
     }
 
     /**
-     * Acepta el formulario
+     * Acceps the form
      */
     public void signIn(){
-        this.finish();
+        Intent myIntent = new Intent(this,Working.class);
+        startActivity(myIntent);
     }
 
     /**
-     * Cancela el formulario
+     * Cancel the form
      */
     public void cancel() { this.finish(); }
 
