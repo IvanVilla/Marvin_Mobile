@@ -23,7 +23,8 @@
         <activity android:name=".MainMenu" />
         <activity android:name=".SignInForm" />
         <activity android:name=".ListHosts" />
-        <activity android:name=".ListTournaments"></activity>
+        <activity android:name=".ListTournaments" />
+        <activity android:name=".Working"></activity>
     </application>
 
 </manifest>

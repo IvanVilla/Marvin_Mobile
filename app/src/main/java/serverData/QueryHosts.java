@@ -1,5 +1,7 @@
 package serverData;
 
+import android.util.Log;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -23,7 +25,7 @@ import model.host.TournamentHost;
  */
 public class QueryHosts extends Connection{
 
-    public List<TournamentHost> queryResult = new ArrayList<>();
+    private List<TournamentHost> queryResult = new ArrayList<>();
     private final static String URL_QUERY = "http://10.0.2.2/api/hostsQuery.php";
 
     /**
@@ -31,6 +33,7 @@ public class QueryHosts extends Connection{
      */
     public void findAll() {
         try {
+            Log.i("Connect with server","Retrieving data...");
             // URL
             URL url = new URL(URL_QUERY);
             // PARAMS POST
@@ -51,6 +54,7 @@ public class QueryHosts extends Connection{
 
         } catch (Exception ex) {
             ex.printStackTrace();
+            Log.e("Error","Retrieving data");
         } finally {
             close();
         }
@@ -109,5 +113,9 @@ public class QueryHosts extends Connection{
             tHost.setName(jsonobject.get("name").getAsString());
             this.queryResult.add(tHost);
         }
+    }
+
+    public List<TournamentHost> getQueryResult() {
+        return queryResult;
     }
 }

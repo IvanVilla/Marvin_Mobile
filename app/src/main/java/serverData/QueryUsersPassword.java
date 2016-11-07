@@ -17,15 +17,17 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import model.tournament.Tournament;
+import model.user.User;
 
 /**
- * @author Klaussius
+ * This class is only for the prototype purpouse, on further versions the authentication will be on
+ * the server side.
+ * @autor Klaussius
  */
 
-public class QueryTournaments extends Connection{
-    private List<Tournament> queryResult = new ArrayList<>();
-    private final static String URL_QUERY = "http://10.0.2.2/api/tournamentsQueryOld.php";
+public class QueryUsersPassword extends Connection{
+    private List<User> queryResult = new ArrayList<>();
+    private final static String URL_QUERY = "http://10.0.2.2/api/usersQueryOld.php";
 
     /**
      * Post the request, and get the data to our model's objects
@@ -37,7 +39,7 @@ public class QueryTournaments extends Connection{
             URL url = new URL(URL_QUERY);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("user",""); // Get all the values
+            params.put("",""); // Get all the values
             //params.put("fields[0]", "idTournament");
             //params.put("fields[1]", "name");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
@@ -106,20 +108,19 @@ public class QueryTournaments extends Connection{
      */
     private void makeFromJson(JsonArray jarray){
         for (int i=0; i<jarray.size(); i++){
-            Tournament tournament = new Tournament();
+            User user = new User();
             JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-            tournament.setId(jsonobject.get("idTOURNAMENT").getAsInt());
-            tournament.setName(jsonobject.get("name").getAsString());
-            tournament.setPublicDes(jsonobject.get("publicDes").getAsString());
-            this.queryResult.add(tournament);
+            user.setName(jsonobject.get("publicName").getAsString());
+            user.setPassword(jsonobject.get("password").getAsString());
+            this.queryResult.add(user);
         }
     }
 
     /**
-     * The result of the query
+     * Result of the query
      * @return result of the query
      */
-    public List<Tournament> getQueryResult() {
+    public List<User> getQueryResult() {
         return queryResult;
     }
 }

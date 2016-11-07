@@ -17,17 +17,34 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true">
 
+        <TextView
+            android:text="@string/mainMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="15dp" />
+
         <Button
             android:text="@string/profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btProfile" />
+            android:id="@+id/btProfile"
+            android:layout_marginTop="30dp" />
 
         <Button
             android:text="@string/tournaments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btTournaments" />
+
+        <Button
+            android:text="@string/tournamentHosts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btHosts" />
 
         <Button
             android:text="@string/btRankings"
@@ -40,12 +57,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/btMessages"
             android:text="@string/messages" />
-
-        <Button
-            android:text="@string/tournamentHosts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btHosts" />
 
     </LinearLayout>
 </RelativeLayout>

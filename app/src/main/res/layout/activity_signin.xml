@@ -25,7 +25,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:gravity="center_horizontal"
             android:textColor="@android:color/black"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="15dp" />
 
         <TextView
             android:text="@string/nickname"
@@ -97,28 +97,33 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/lButtons">
+            android:id="@+id/lButtons"
+            android:layout_marginTop="15dp">
 
             <Button
                 android:text="@string/accept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btSignIn"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="@string/cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btCancel"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_green_light" />
 
             <Button
                 android:text="@string/clear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btClear"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_orange_light" />
+
+            <Button
+                android:text="@string/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btCancel"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_red_light" />
+
         </LinearLayout>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -33,6 +33,6 @@ public class Connection {
      * Close the connection
      */
     public void close(){
-        con.disconnect();
+        if (con!=null) {con.disconnect();}
     }
 }

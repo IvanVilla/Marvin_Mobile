@@ -82,22 +82,33 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/buttonsLayout">
+                android:layout_marginTop="15dp">
 
                 <Button
-                    android:layout_width="match_parent"
+                    android:text="@string/login"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/btLogin"
-                    android:text="@string/login"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/holo_green_light" />
 
                 <Button
-                    android:layout_width="match_parent"
+                    android:text="@string/action_sign_in_short"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/btSignIn"
-                    android:text="@string/signin"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/holo_orange_light" />
+
+                <Button
+                    android:text="@string/closeApp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btExit"
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/holo_red_light" />
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

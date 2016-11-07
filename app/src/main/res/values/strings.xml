@@ -35,4 +35,11 @@
     <string name="cancel">Cancel</string>
     <string name="newAccount">NEW ACCOUNT</string>
     <string name="tournamentHosts">Tournament Hosts</string>
+    <string name="mainMenu">Main Menu</string>
+    <string name="tournamentList">Tournaments</string>
+    <string name="hosts">Hosts</string>
+    <string name="notImplementedYet">Not implemented yet!</string>
+    <string name="future">This feature will be avaiable on future versions. Thanks!</string>
+    <string name="takeMeBack">Take me back!</string>
+    <string name="closeApp">Exit</string>>
 </resources>
