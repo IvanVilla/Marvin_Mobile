@@ -16,14 +16,13 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:text="@string/tournamentList"
+            android:text="@string/hosts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvHostsList"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:gravity="center"
             android:textColor="@android:color/black"
-            tools:text="@string/hosts"
             android:layout_marginTop="15dp" />
 
         <ListView

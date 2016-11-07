@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -20,7 +19,6 @@ import model.tournament.Tournament;
  */
 public class ListTournaments extends AppCompatActivity {
 
-    public TextView tvContent;
     public QueryTournaments myData;
     public Button TakeMeBack;
     public ListView lvContent;
@@ -43,7 +41,6 @@ public class ListTournaments extends AppCompatActivity {
             }
         });
         //Content
-        tvContent = (TextView)findViewById(R.id.tvContent);
         lvContent = (ListView)findViewById(R.id.lvContent);
         //Retrieve data
         new leerDatos().execute();

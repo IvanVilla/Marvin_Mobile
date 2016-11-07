@@ -20,9 +20,9 @@ import java.util.Map;
 import model.tournament.Tournament;
 
 /**
+ * Connect and retrieve the tournaments
  * @author Klaussius
  */
-
 public class QueryTournaments extends Connection{
     private List<Tournament> queryResult = new ArrayList<>();
     private final static String URL_QUERY = "http://10.0.2.2/api/tournamentsQueryOld.php";

@@ -10,7 +10,7 @@ import java.net.URL;
 
 /**
  * Makes the connection
- * Created by Klaussius on 06/11/2016.
+ * @Author Klaussius
  */
 
 public class Connection {
