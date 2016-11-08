@@ -9,7 +9,7 @@ import model.user.User;
 import model.utils.MyDate;
 
 /**
- * @author Klaussius
+ * @author Iván Villa
  */
 
 public class Tournament {

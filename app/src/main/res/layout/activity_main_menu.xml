@@ -17,35 +17,64 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true">
 
+        <TextView
+            android:text="@string/mainMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvHello"
+            android:gravity="center" />
+
         <Button
             android:text="@string/profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btProfile" />
+            android:id="@+id/btProfile"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@android:color/holo_green_light" />
 
         <Button
             android:text="@string/tournaments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btTournaments" />
-
-        <Button
-            android:text="@string/btRankings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btRankings" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btMessages"
-            android:text="@string/messages" />
+            android:id="@+id/btTournaments"
+            android:backgroundTint="@android:color/holo_green_light" />
 
         <Button
             android:text="@string/tournamentHosts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btHosts" />
+            android:id="@+id/btHosts"
+            android:backgroundTint="@android:color/holo_green_light" />
+
+        <Button
+            android:text="@string/btRankings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btRankings"
+            android:backgroundTint="@android:color/holo_green_light" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btMessages"
+            android:text="@string/messages"
+            android:backgroundTint="@android:color/holo_green_light" />
+
+        <Button
+            android:text="@string/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btLogOut"
+            android:backgroundTint="@android:color/holo_orange_light" />
 
     </LinearLayout>
 </RelativeLayout>

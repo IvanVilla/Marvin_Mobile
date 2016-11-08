@@ -5,7 +5,7 @@ package model.utils;
 
 /**
  * Almacena un día, mes, año
- * @author Klaussius
+ * @author Iván Villa
  */
 public class MyDate {
     private int Day;

@@ -6,8 +6,8 @@ package model.host;
 import model.utils.GPS;
 
 /**
- * Almacena un lugar de celebración de un torneo
- * @author Klaussius
+ * Store the host for the tournaments
+ * @author Iván Villa
  */
 public class TournamentHost {
     private int id;
@@ -20,13 +20,13 @@ public class TournamentHost {
 
     /**
      * Constructor con parámetros
-     * @param id id del lugar
-     * @param name nombre del lugar
-     * @param phone teléfono del lugar
-     * @param adress dirección del lugar
-     * @param eMail correo electrónico del lugar
-     * @param gps coordenadas GPS del lugar
-     * @param defaultHost indica si es el lugar de celebración por defecto
+     * @param id id
+     * @param name name
+     * @param phone phone
+     * @param adress adress
+     * @param eMail e-mail
+     * @param gps GPS (latitude and longitude)
+     * @param defaultHost if its the default place
      */
     public TournamentHost(int id, String name, String phone, String adress, String eMail, GPS gps, boolean defaultHost) {
         this.id = id;
@@ -39,7 +39,7 @@ public class TournamentHost {
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public TournamentHost() {
     }
@@ -47,7 +47,7 @@ public class TournamentHost {
     // GETTERS Y SETTERS
 
     /**
-     * Devuelve la id de la sede
+     * Return id
      * @return id
      */
     public int getId() {
@@ -55,7 +55,7 @@ public class TournamentHost {
     }
 
     /**
-     * Guarda la id de la sede
+     * Set id
      * @param id id
      */
     public void setId(int id) {
@@ -63,15 +63,15 @@ public class TournamentHost {
     }
 
     /**
-     * Devuelve el nombre de la sede
-     * @return nombre
+     * Get name
+     * @return name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Guarda el nombre de la sede
+     * Set name
      * @param name nombre
      */
     public void setName(String name) {
@@ -79,55 +79,55 @@ public class TournamentHost {
     }
 
     /**
-     * Devuelve el teléfono de la sede
-     * @return teléfono
+     * Get phone
+     * @return phone
      */
     public String getPhone() {
         return phone;
     }
 
     /**
-     * Guarda el teléfono de la sede
-     * @param phone teléfono
+     * Set phone
+     * @param phone phone
      */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
     /**
-     * Devuelve la dirección de la sede
-     * @return dirección
+     * Get adress
+     * @return adress
      */
     public String getAdress() {
         return adress;
     }
 
     /**
-     * Guarda la dirección de las ede
-     * @param adress dirección
+     * Set adress
+     * @param adress adress
      */
     public void setAdress(String adress) {
         this.adress = adress;
     }
 
     /**
-     * Devuelve el e-mail de la sede
-     * @return e-mail
+     * Get eMail
+     * @return eMail
      */
     public String geteMail() {
         return eMail;
     }
 
     /**
-     * Guarda el e-mail de la sede
-     * @param eMail e-mail
+     * Set eMail
+     * @param eMail eMail
      */
     public void seteMail(String eMail) {
         this.eMail = eMail;
     }
 
     /**
-     * Devuelve el GPS de la sede
+     * Get GPS
      * @return gps
      */
     public GPS getGps() {
@@ -135,7 +135,7 @@ public class TournamentHost {
     }
 
     /**
-     * Guarda el GPS de las ede
+     * Set gps
      * @param gps gps
      */
     public void setGps(GPS gps) {
@@ -143,16 +143,16 @@ public class TournamentHost {
     }
 
     /**
-     * Indica si es el lugar por defecto de cerebración de torneos
-     * @return true (lugar por defecto) false (no lo es)
+     * Get if its the default place for tournaments
+     * @return true (yes) false (no)
      */
     public boolean isDefaultHost() {
         return defaultHost;
     }
 
     /**
-     * Fija si es lugar por defecto para cerebrar los torenos
-     * @param defaultHost true (es el lugar por defecto) false (no lo es)
+     * Set if its the default place for tournaments
+     * @param defaultHost true (yes) false (no)
      */
     public void setDefaultHost(boolean defaultHost) {
         this.defaultHost = defaultHost;

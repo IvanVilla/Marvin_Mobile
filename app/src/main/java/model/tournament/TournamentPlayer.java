@@ -4,39 +4,39 @@
 package model.tournament;
 
 /**
- * Almacena un jugador de un torneo
- * @author Klaussius
+ * Store the player in a tournament
+ * @author Iván Villa
  */
 public class TournamentPlayer {
     private int rank;
 
     /**
-     * Constructor con parámetros
-     * @param rank lugar en el ranking del jugador en el torneo
+     * Constructor with parameters
+     * @param rank rank of the player
      */
     public TournamentPlayer(int rank) {
         this.rank = rank;
     }
     
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public TournamentPlayer() {
     }
 
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve el rnaking de un jugador en el torneo
-     * @return el ranking del jugador en el torneo
+     * Get the ranking of the player
+     * @return the ranking of the player
      */
     public int getRank() {
         return rank;
     }
 
     /**
-     * Guarda el ranking de un jugador en el torneo
-     * @param rank ranking del jugador en el torneo
+     * Set the ranking of the player
+     * @param rank the ranking of the player
      */
     public void setRank(int rank) {
         this.rank = rank;

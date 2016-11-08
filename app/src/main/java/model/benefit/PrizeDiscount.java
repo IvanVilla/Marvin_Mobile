@@ -6,20 +6,20 @@ package model.benefit;
 import model.utils.MyDate;
 
 /**
- * Almacena los descuentos, hereda de Prize
- * @author Klaussius
+ * Store discount. Inherits from Prize.
+ * @author Iván Villa
  */
 public class PrizeDiscount extends Prize{
     int discount;
 
     /**
-     * Constructor con parámetros
-     * @param discount descuento
-     * @param id id del premio
-     * @param name nombre del premio
-     * @param description descripción del premio
-     * @param image dirección de la imagen
-     * @param expirationDate fecha de caducidad
+     * Constructor with parameters
+     * @param discount discount
+     * @param id id
+     * @param name name
+     * @param description description
+     * @param image image
+     * @param expirationDate expiration date
      */
     public PrizeDiscount(int discount, int id, int name, String description, String image, MyDate expirationDate) {
         super(id, name, description, image, expirationDate);
@@ -27,32 +27,24 @@ public class PrizeDiscount extends Prize{
     }
 
     /**
-     * Constructor sin parámetros
-     * @param discount 
-     */
-    public PrizeDiscount(int discount) {
-        this.discount = discount;
-    }
-
-    /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public PrizeDiscount() {
     }
 
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve el descuento
-     * @return descuento
+     * Get discount
+     * @return discount
      */
     public int getDiscount() {
         return discount;
     }
 
     /**
-     * Guarda el descuento
-     * @param discount descuento
+     * Set discount
+     * @param discount discount
      */
     public void setDiscount(int discount) {
         this.discount = discount;

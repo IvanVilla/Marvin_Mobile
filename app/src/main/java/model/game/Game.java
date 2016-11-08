@@ -4,8 +4,8 @@
 package model.game;
 
 /**
- * Almacena los datos de un juego
- * @author Klaussius
+ * Game data
+ * @author Iván Villa
  */
 public class Game {
     private int id;
@@ -15,10 +15,10 @@ public class Game {
 
     /**
      * Constructor con parámetros
-     * @param id id del juego
-     * @param name nombre del juego
-     * @param description descripción del juego
-     * @param image imagen del juego
+     * @param id id
+     * @param name name
+     * @param description description
+     * @param image image
      */
     public Game(int id, String name, String description, String image) {
         this.id = id;
@@ -28,15 +28,15 @@ public class Game {
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public Game() {
     }
 
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve la id de un juego
+     * Get id
      * @return id
      */
     public int getId() {
@@ -44,7 +44,7 @@ public class Game {
     }
 
     /**
-     * Guarda la id de un juego
+     * Set id
      * @param id id
      */
     public void setId(int id) {
@@ -52,48 +52,48 @@ public class Game {
     }
 
     /**
-     * Devuelve el nombre de un juego
-     * @return nombre
+     * Get name
+     * @return name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Guarda el nombre de un juego
-     * @param name nombre
+     * Set name
+     * @param name name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Devuelve la descripción de un juego
-     * @return descripción
+     * Get description
+     * @return description
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Guarda la descripción de un juego
-     * @param description descripción
+     * Set description
+     * @param description description
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     * Devuelve la imagen de un juego
-     * @return imagen del juego
+     * Get image
+     * @return image
      */
     public String getImage() {
         return image;
     }
 
     /**
-     * Guarda la imagen de un juego
-     * @param image imagen del juego
+     * Set image
+     * @param image image
      */
     public void setImage(String image) {
         this.image = image;

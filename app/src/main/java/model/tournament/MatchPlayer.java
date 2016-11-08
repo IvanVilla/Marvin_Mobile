@@ -4,17 +4,17 @@
 package model.tournament;
 
 /**
- * Almacena el jugador de un encuentro, pueden ser equipos o individuos
- * @author Klaussius
+ * Store the player of one tournament
+ * @author Iván Villa
  */
 public class MatchPlayer {
     private TournamentPlayer player;
     private int points;
 
     /**
-     * Constructor con parámetros
-     * @param player nombre del jugador
-     * @param points puntos del jugador
+     * Constructor with parameters
+     * @param player name
+     * @param points points
      */
     public MatchPlayer(TournamentPlayer player, int points) {
         this.player = player;
@@ -22,40 +22,40 @@ public class MatchPlayer {
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public MatchPlayer() {
     }
     
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve el jugador de un encuentro
-     * @return jugador
+     * Get player
+     * @return player
      */
     public TournamentPlayer getPlayer() {
         return player;
     }
 
     /**
-     * Guarda el jugador de un encuentro
-     * @param player jugador
+     * Set player
+     * @param player player
      */
     public void setPlayer(TournamentPlayer player) {
         this.player = player;
     }
 
     /**
-     * Devuelve los puntos del juegador de un encuentro
-     * @return puntos del encuentro
+     * Get points
+     * @return points
      */
     public int getPoints() {
         return points;
     }
 
     /**
-     * Guarda los puntos del jugador en el encuentro
-     * @param points puntos del encuentro
+     * Set points
+     * @param points points
      */
     public void setPoints(int points) {
         this.points = points;

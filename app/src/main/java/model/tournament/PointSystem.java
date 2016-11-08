@@ -4,8 +4,8 @@
 package model.tournament;
 
 /**
- * Almacena el sistema de puntos
- * @author Klaussius
+ * Store point system
+ * @author Iván Villa
  */
 class PointSystem {
     private int goldPoints;
@@ -15,12 +15,12 @@ class PointSystem {
     private int umpirePoints;
 
     /**
-     * Constructor con parámetros
-     * @param goldPoints puntos para el primer clasificado
-     * @param silverPoints puntos para el segundo clasificado
-     * @param bronzePoints puntos para el tercer clasificado
-     * @param ironPoints puntos para los participantes
-     * @param umpirePoints putnos para los árbitros
+     * Constructor with parameters
+     * @param goldPoints 1st place points
+     * @param silverPoints 2nd place points
+     * @param bronzePoints 3rd place points
+     * @param ironPoints contestant points
+     * @param umpirePoints umpire points
      */
     public PointSystem(int goldPoints, int silverPoints, int bronzePoints, int ironPoints, int umpirePoints) {
         this.goldPoints = goldPoints;
@@ -31,30 +31,30 @@ class PointSystem {
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public PointSystem() {
     }
 
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
     /**
-     * Devuelve los puntos del ganador
-     * @return puntos para el ganador
+     * Get 1st place points
+     * @return 1st place points
      */
     public int getGoldPoints() {
         return goldPoints;
     }
 
     /**
-     * Guarda los puntos del ganador
-     * @param goldPoints puntos del ganador
+     * Set 1st place points
+     * @param goldPoints 1st place points
      */
     public void setGoldPoints(int goldPoints) {
         this.goldPoints = goldPoints;
     }
 
     /**
-     * Devuelve los puntos del segundo puesto
+     * Get 2nd place points
      * @return puntos del segundo puesto
      */
     public int getSilverPoints() {
@@ -62,7 +62,7 @@ class PointSystem {
     }
 
     /**
-     * Guarda los puntos del segundo puesto
+     * Set 2nd place points
      * @param silverPoints puntos del segundo puesto
      */
     public void setSilverPoints(int silverPoints) {
@@ -78,39 +78,39 @@ class PointSystem {
     }
 
     /**
-     * Guarda los puntos del tercer puesto
-     * @param bronzePoints puntos del tercer puesto
+     * Set 3rd place points
+     * @param bronzePoints 3rd place points
      */
     public void setBronzePoints(int bronzePoints) {
         this.bronzePoints = bronzePoints;
     }
 
     /**
-     * Devuelve los puntos de los participantes
-     * @return puntos de los participantes
+     * Get contestant points
+     * @return contestant points
      */
     public int getIronPoints() {
         return ironPoints;
     }
 
     /**
-     * Guarda los puntos de los participantes
-     * @param ironPoints puntos de los participantes
+     * Set contestant points
+     * @param ironPoints contestant points
      */
     public void setIronPoints(int ironPoints) {
         this.ironPoints = ironPoints;
     }
 
     /**
-     * Devuelve los puntos de los árbitros
-     * @return puntos de los árbitros
+     * Get umpire points
+     * @return umpire points
      */
     public int getUmpirePoints() {
         return umpirePoints;
     }
 
     /**
-     * Guarda los puntos de los árbitros
+     * Set umpire points
      * @param umpirePoints 
      */
     public void setUmpirePoints(int umpirePoints) {

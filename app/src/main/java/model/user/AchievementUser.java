@@ -7,17 +7,17 @@ import model.benefit.Achievement;
 import model.utils.MyDate;
 
 /**
- * Almacena los logros de un usuario
- * @author Klaussius
+ * Store user achievements
+ * @author Iván Villa
  */
 public class AchievementUser {
     private MyDate date;
     private Achievement achievement;
 
     /**
-     * Constructor con parámetros
-     * @param date fecha del logro
-     * @param achievement logro
+     * Constructor with parameters
+     * @param date date
+     * @param achievement achievement
      */
     public AchievementUser(MyDate date, Achievement achievement) {
         this.date = date;
@@ -25,40 +25,40 @@ public class AchievementUser {
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public AchievementUser() {
     }
 
-    // GETTERS y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve la fecha del logro
-     *  @return fecha del logro
+     * Get achievement date
+     * @return achievement date
      */
     public MyDate getDate() {
         return date;
     }
 
     /**
-     * Guarda la fecha del logro
-     * @param date fecha del logro
+     * Set achievement date
+     * @param date achievement date
      */
     public void setDate(MyDate date) {
         this.date = date;
     }
 
     /**
-     * Devuelve el logro
-     * @return logro
+     * Get achievement
+     * @return achievement
      */
     public Achievement getAchievement() {
         return achievement;
     }
 
     /**
-     * Guarda el logro
-     * @param achievement logro
+     * Set achievement
+     * @param achievement achievement
      */
     public void setAchievement(Achievement achievement) {
         this.achievement = achievement;

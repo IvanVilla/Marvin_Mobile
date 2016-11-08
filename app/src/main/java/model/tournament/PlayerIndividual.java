@@ -6,16 +6,16 @@ package model.tournament;
 import model.user.User;
 
 /**
- * Almacena un jugador individual
- * @author Klaussius
+ * Stores an individual player, inherits from TournamentPlayer
+ * @author Iván Villa
  */
 public class PlayerIndividual extends TournamentPlayer{
     private User player;
 
     /**
-     * Constructor con parámetros
-     * @param player jugador individual
-     * @param rank ranking final del jugador
+     * Constructor with parameters
+     * @param player individual player
+     * @param rank final ranking
      */
     public PlayerIndividual(User player, int rank) {
         super(rank);
@@ -23,24 +23,24 @@ public class PlayerIndividual extends TournamentPlayer{
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public PlayerIndividual() {
     }
 
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve el jugador individual
-     * @return jugador individual
+     * Get player
+     * @return player
      */
     public User getPlayer() {
         return player;
     }
 
     /**
-     * Guarda el jugador individual
-     * @param player jugador individual
+     * Set player
+     * @param player player
      */
     public void setPlayer(User player) {
         this.player = player;

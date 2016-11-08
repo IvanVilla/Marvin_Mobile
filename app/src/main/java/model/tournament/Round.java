@@ -6,8 +6,8 @@ package model.tournament;
 import java.util.ArrayList;
 
 /**
- * Almacena las rondas de un torneo
- * @author Klaussius
+ * Store the rounds
+ * @author Iván Villa
  */
 public class Round {
     private int roundNumber;
@@ -15,10 +15,10 @@ public class Round {
     private String roundType;
 
     /**
-     * Constructor con parámetros
-     * @param roundNumber número de ronda
-     * @param matches partidas de cada ronda
-     * @param roundType tipo de ronda
+     * Constructor with parameters
+     * @param roundNumber round number
+     * @param matches matches
+     * @param roundType type
      */
     public Round(int roundNumber, ArrayList<Match> matches, String roundType) {
         this.roundNumber = roundNumber;
@@ -27,56 +27,56 @@ public class Round {
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public Round() {
     }
     
-    // GETTERS y SETTERS
+    // GETTERS AND SETTERS
     
     /**
-     * Devuelve el número de ronda
-     * @return número de ronda
+     * Get round number
+     * @return round number
      */
     public int getRoundNumber() {
         return roundNumber;
     }
 
     /**
-     * Guarda el número de ronda
-     * @param roundNumber
+     * Set round number
+     * @param roundNumber round number
      */
     public void setRoundNumber(int roundNumber) {
         this.roundNumber = roundNumber;
     }
 
     /**
-     * Devuelve las partidas de una ronda
-     * @return partidas de una ronda
+     * Get round matches
+     * @return round matches
      */
     public ArrayList<Match> getMatches() {
         return matches;
     }
 
     /**
-     * Guarda las partidas de una ronda
-     * @param matches partidas de una ronda
+     * Set round matches
+     * @param matches round matches
      */
     public void setMatches(ArrayList<Match> matches) {
         this.matches = matches;
     }
 
     /**
-     * Devuelve el tipo de ronda
-     * @return tipo de ronda
+     * Get round type
+     * @return round type
      */
     public String getRoundType() {
         return roundType;
     }
 
     /**
-     * Guarda el tipo de ronda
-     * @param roundType tipo de ronda
+     * Set round type
+     * @param roundType round type
      */
     public void setRoundType(String roundType) {
         this.roundType = roundType;

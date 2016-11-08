@@ -1,4 +1,6 @@
-package serverData;
+package simulateServer;
+
+import android.util.Log;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -15,28 +17,34 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import model.tournament.Tournament;
+import model.user.User;
+import dataFromServer.Connection;
 
 /**
- * Created by Klaussius on 06/11/2016.
+ * This class is only for the prototype purpouse, on further versions the app will retrieve only the
+ * data of the app user
+ * @autor Iván Villa
  */
 
-public class QueryTournaments extends Connection{
-    public List<Tournament> queryResult = new ArrayList<>();
-    private final static String URL_QUERY = "http://10.0.2.2/api/tournamentsQuery.php";
+public class QueryUserProfile extends Connection {
+    private List<User> queryResult = new ArrayList<>();
+    private final static String PHP_QUERY_FILE = "usersQueryOld.php";
+    private String queryURL="";
 
     /**
      * Post the request, and get the data to our model's objects
      */
     public void findAll() {
+        queryURL=API_URL+PHP_QUERY_FILE;
         try {
+            Log.i("Connect with server","Retrieving data...");
             // URL
-            URL url = new URL(URL_QUERY);
+            URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("user","LOGIN_USER"); // Get all the values
-            //params.put("param2", "getAllUser");
-            //params.put("param3", "Prototip");
+            params.put("",""); // Get all the values
+            //params.put("fields[0]", "idTournament");
+            //params.put("fields[1]", "name");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
 
             // GET READER FROM CONN (SUPER)
@@ -50,6 +58,7 @@ public class QueryTournaments extends Connection{
 
         } catch (Exception ex) {
             ex.printStackTrace();
+            Log.e("Error","Retrieving data");
         } finally {
             close();
         }
@@ -102,11 +111,35 @@ public class QueryTournaments extends Connection{
      */
     private void makeFromJson(JsonArray jarray){
         for (int i=0; i<jarray.size(); i++){
-            Tournament tournament = new Tournament();
+            User user = new User();
             JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-            tournament.setId(jsonobject.get("idTournament").getAsInt());
-            tournament.setName(jsonobject.get("name").getAsString());
-            this.queryResult.add(tournament);
+            user.setPublicName(jsonobject.get("publicName").getAsString());
+            user.setPassword(jsonobject.get("password").getAsString());
+            user.seteMail(jsonobject.get("eMail").getAsString());
+            this.queryResult.add(user);
         }
+    }
+
+    /**
+     * Result of the query
+     * @return result of the query
+     */
+    public List<User> getQueryResult() {
+        return queryResult;
+    }
+
+    /**
+     * Result of the query for one username
+     * @param nombre
+     * @return user
+     */
+    public User getUser(String nombre){
+        findAll();
+        for (User user: queryResult){
+            if (user.getPublicName().equals(nombre)){
+                return user;
+            }
+        }
+        return null;
     }
 }

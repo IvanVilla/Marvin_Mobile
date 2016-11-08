@@ -6,22 +6,22 @@ package model.benefit;
 import model.utils.MyDate;
 
 /**
- * Almacena los artículos de merchandising de premio. Hereda de Prize.
- * @author Klaussius
+ * Store merchandising for prizes. Inherits from Prize.
+ * @author Iván Villa
  */
 public class PrizeMerchant extends Prize{
     private MyDate receptionDate;
     boolean claimed;
 
     /**
-     * Constructor con parámetros
-     * @param receptionDate fecha de recepción
-     * @param claimed indica si ha sido reclamado
-     * @param id id del premio
-     * @param name nombre del premio
-     * @param description descripción del premio
-     * @param image imagen del premio
-     * @param expirationDate fecha de caducidad del premio
+     * Constructor with parameters
+     * @param receptionDate reception date
+     * @param claimed if it was claimed
+     * @param id id
+     * @param name name
+     * @param description description
+     * @param image image
+     * @param expirationDate expiration date
      */
     public PrizeMerchant(MyDate receptionDate, boolean claimed, int id, int name, String description, String image, MyDate expirationDate) {
         super(id, name, description, image, expirationDate);
@@ -30,40 +30,40 @@ public class PrizeMerchant extends Prize{
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor simple
      */
     public PrizeMerchant() {
     }
 
-    // GETTERS Y SETTERS
+    // GETTERS AND SETTERS
 
     /**
-     * Devuelve la fecha de recepción del producto
-     * @return
+     * Get reception date
+     * @return reception date
      */
     public MyDate getReceptionDate() {
         return receptionDate;
     }
 
     /**
-     * Guarda la fecha de recepción del producto
-     * @param receptionDate
+     * Set reception date
+     * @param receptionDate reception date
      */
     public void setReceptionDate(MyDate receptionDate) {
         this.receptionDate = receptionDate;
     }
 
     /**
-     * Indica si un premio se ha reclamado o no
-     * @return true (se ha reclamado) false (no se ha reclamado)
+     * Get if a prize was claimed
+     * @return true (claimed) false (not claimed)
      */
     public boolean isClaimed() {
         return claimed;
     }
 
     /**
-     * Guarda si un premio se ha reclamado o no
-     * @param claimed true (se ha reclamado) false (no se ha reclamado)
+     * Set if a prize was claimed
+     * @param claimed true (yes) false (no)
      */
     public void setClaimed(boolean claimed) {
         this.claimed = claimed;

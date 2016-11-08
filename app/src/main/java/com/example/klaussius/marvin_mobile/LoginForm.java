@@ -1,10 +1,13 @@
 package com.example.klaussius.marvin_mobile;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,19 +15,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import zFakeThings.LoginInfo;
+import simulateServer.LogInRealData;
 
 /**
  * Activity with a login form
- * @author Klaussius
+ * @author Iván Villa
  */
 public class LoginForm extends AppCompatActivity {
 
     Button btLogin;
     Button btSignIn;
+    Button btExit;
     EditText etName;
     EditText etPassword;
 
+    /**
+     * On create
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +43,19 @@ public class LoginForm extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
     }
 
+    /**
+     * On create: build our controls
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_menu, menu);
-        // Campos de texto
+        // Text Fields
         etName = (EditText)findViewById(R.id.etName);
         etPassword = (EditText)findViewById(R.id.etPassword);
-        // LoginForm button y listener
+        // LoginForm button and listener
         btLogin = (Button)findViewById(R.id.btLogin);
         btLogin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -50,12 +63,20 @@ public class LoginForm extends AppCompatActivity {
                 login();
             }
         });
-        // Sign in button y listener
+        // Sign in button and listener
         btSignIn = (Button)findViewById(R.id.btSignIn);
         btSignIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 signIn();
+            }
+        });
+        // Exit Button
+        btExit = (Button)findViewById(R.id.btExit);
+        btExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                endApp();
             }
         });
         return true;
@@ -75,7 +96,7 @@ public class LoginForm extends AppCompatActivity {
     }
 
     /**
-     * Limpia el formulario
+     * Clean the form
      */
     public void clearForm(){
         etName.setText("");
@@ -83,17 +104,18 @@ public class LoginForm extends AppCompatActivity {
     }
 
     /**
-     * Acción de pulsar el botón de LoginForm
+     * Go to login action
      */
     public void login(){
-        // Objeto LoginInfo
-        LoginInfo myLogin = new LoginInfo();
+        // Comprobamos el login
+        LogInRealData myLogin = new LogInRealData();
         // Leemos lo escrito por el usuario
         String userName = etName.getText().toString();
         String userPassword = etPassword.getText().toString();
         // Comprobamos
         String mensaje;
         if (myLogin.login(userName,userPassword)){
+            SaveUserName(userName);
             Intent mainMenu = new Intent(this, MainMenu.class);
             startActivity(mainMenu);
         } else {
@@ -104,11 +126,30 @@ public class LoginForm extends AppCompatActivity {
     }
 
     /**
-     * Acción de pulsar el botón de SignInForm
+     * SignIn action
      */
     public void signIn(){
         Intent signInForm = new Intent(this, SignInForm.class);
         clearForm();
         startActivity(signInForm);
+    }
+
+    /**
+     * Exit action
+     */
+    public void endApp()
+    {
+        this.finish();
+    }
+
+    /**
+     * Store the username we are using on sharedpreferences
+     */
+    public void SaveUserName(String username){
+        Log.i("SharedPreferences","Saving Username");
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("marvinName",username);
+        editor.commit();
     }
 }

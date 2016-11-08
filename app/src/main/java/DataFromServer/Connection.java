@@ -1,4 +1,4 @@
-package serverData;
+package dataFromServer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,12 +10,13 @@ import java.net.URL;
 
 /**
  * Makes the connection
- * Created by Klaussius on 06/11/2016.
+ * @Author Iván Villa
  */
 
 public class Connection {
 
     private HttpURLConnection con;
+    protected final static String API_URL="http://10.0.2.2/api/";
 
     public Reader connect(URL url, Proxy proxy, byte[]postDataBytes) throws IOException {
         if ( proxy == null ){proxy = Proxy.NO_PROXY;}           // direct con
@@ -33,6 +34,6 @@ public class Connection {
      * Close the connection
      */
     public void close(){
-        con.disconnect();
+        if (con!=null) {con.disconnect();}
     }
 }
