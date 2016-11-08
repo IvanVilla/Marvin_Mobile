@@ -7,7 +7,7 @@ import model.utils.MyDate;
 
 /**
  * Store prizes
- * @author Klaussius
+ * @author Iván Villa
  */
 public class Prize {
     private int id;

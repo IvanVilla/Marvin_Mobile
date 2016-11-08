@@ -7,7 +7,7 @@ import model.utils.MyDate;
 
 /**
  * Store merchandising for prizes. Inherits from Prize.
- * @author Klaussius
+ * @author Iván Villa
  */
 public class PrizeMerchant extends Prize{
     private MyDate receptionDate;

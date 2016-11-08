@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Store a team
- * @author Klaussius
+ * @author Iván Villa
  */
 public class Team {
     private int id;

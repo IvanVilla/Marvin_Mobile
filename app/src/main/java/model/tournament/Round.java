@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Store the rounds
- * @author Klaussius
+ * @author Iván Villa
  */
 public class Round {
     private int roundNumber;

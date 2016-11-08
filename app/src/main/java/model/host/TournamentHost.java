@@ -7,7 +7,7 @@ import model.utils.GPS;
 
 /**
  * Store the host for the tournaments
- * @author Klaussius
+ * @author Iván Villa
  */
 public class TournamentHost {
     private int id;

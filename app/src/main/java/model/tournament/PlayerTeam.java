@@ -7,7 +7,7 @@ import model.user.Team;
 
 /**
  * Store a team as player. Inherits from TournamentPlayer
- * @author Klaussius
+ * @author Iván Villa
  */
 public class PlayerTeam extends TournamentPlayer{
     private Team player;

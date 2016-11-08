@@ -7,6 +7,7 @@ import android.widget.Button;
 
 /**
  * Activity for not avaiable options
+ * @author Iván Villa
  */
 public class Working extends AppCompatActivity {
 

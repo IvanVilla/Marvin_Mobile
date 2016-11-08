@@ -10,12 +10,13 @@ import java.net.URL;
 
 /**
  * Makes the connection
- * @Author Klaussius
+ * @Author Iván Villa
  */
 
 public class Connection {
 
     private HttpURLConnection con;
+    protected final static String API_URL="http://10.0.2.2/api/";
 
     public Reader connect(URL url, Proxy proxy, byte[]postDataBytes) throws IOException {
         if ( proxy == null ){proxy = Proxy.NO_PROXY;}           // direct con

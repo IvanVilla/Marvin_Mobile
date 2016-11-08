@@ -7,7 +7,7 @@ import model.user.User;
 
 /**
  * Log in with a real account
- * @autor Klaussius
+ * @autor Iván Villa
  */
 
 public class LogInRealData {

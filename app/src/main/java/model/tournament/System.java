@@ -5,7 +5,7 @@ package model.tournament;
 
 /**
  * Store tournament system
- * @author Klaussius
+ * @author Iván Villa
  */
 public class System {
     private int id;

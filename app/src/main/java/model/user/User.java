@@ -8,7 +8,7 @@ import model.utils.MyDate;
 
 /**
  * Store data for one user
- * @author Klaussius
+ * @author Iván Villa
  */
 public class User {
     private int id;

@@ -5,7 +5,7 @@ package model.game;
 
 /**
  * Game data
- * @author Klaussius
+ * @author Iván Villa
  */
 public class Game {
     private int id;

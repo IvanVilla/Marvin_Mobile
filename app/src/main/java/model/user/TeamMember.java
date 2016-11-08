@@ -5,7 +5,7 @@ package model.user;
 
 /**
  * Almacena los miembros de un equipo con su rol
- * @author Klaussius
+ * @author Iván Villa
  */
 public class TeamMember {
     private User user;

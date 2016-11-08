@@ -21,21 +21,23 @@ import model.host.TournamentHost;
 
 /**
  * Connect and retrieve the hosts
- * @author Klaussius
+ * @author Iván Villa
  */
 public class QueryHosts extends Connection{
 
     private List<TournamentHost> queryResult = new ArrayList<>();
-    private final static String URL_QUERY = "http://10.0.2.2/api/hostsQuery.php";
+    private final static String PHP_QUERY_FILE = "hostsQuery.php";
+    private String queryURL="";
 
     /**
      * Post the request, and get the data to our model's objects
      */
     public void findAll() {
+        queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
             // URL
-            URL url = new URL(URL_QUERY);
+            URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
             params.put("",""); // Get all the values

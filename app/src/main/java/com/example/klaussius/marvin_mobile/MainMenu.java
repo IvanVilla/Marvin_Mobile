@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 /**
  * Main menu activity
- * @author Klaussius
+ * @author Iván Villa
  */
 public class MainMenu extends AppCompatActivity {
 

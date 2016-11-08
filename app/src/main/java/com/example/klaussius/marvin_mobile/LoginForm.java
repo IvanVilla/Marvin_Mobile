@@ -19,7 +19,7 @@ import simulateServer.LogInRealData;
 
 /**
  * Activity with a login form
- * @author Klaussius
+ * @author Iván Villa
  */
 public class LoginForm extends AppCompatActivity {
 

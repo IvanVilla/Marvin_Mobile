@@ -15,7 +15,7 @@ import model.host.TournamentHost;
 
 /**
  * Activity that get the hosts
- * @author Klaussius
+ * @author Iván Villa
  */
 public class ListHosts extends AppCompatActivity {
 

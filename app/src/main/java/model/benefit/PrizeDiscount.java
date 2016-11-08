@@ -7,7 +7,7 @@ import model.utils.MyDate;
 
 /**
  * Store discount. Inherits from Prize.
- * @author Klaussius
+ * @author Iván Villa
  */
 public class PrizeDiscount extends Prize{
     int discount;

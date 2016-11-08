@@ -23,21 +23,23 @@ import dataFromServer.Connection;
 /**
  * This class is only for the prototype purpouse, on further versions the app will retrieve only the
  * data of the app user
- * @autor Klaussius
+ * @autor Iván Villa
  */
 
 public class QueryUserProfile extends Connection {
     private List<User> queryResult = new ArrayList<>();
-    private final static String URL_QUERY = "http://10.0.2.2/api/usersQueryOld.php";
+    private final static String PHP_QUERY_FILE = "usersQueryOld.php";
+    private String queryURL="";
 
     /**
      * Post the request, and get the data to our model's objects
      */
     public void findAll() {
+        queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
             // URL
-            URL url = new URL(URL_QUERY);
+            URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
             params.put("",""); // Get all the values

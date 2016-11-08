@@ -5,7 +5,7 @@ package model.tournament;
 
 /**
  * Store point system
- * @author Klaussius
+ * @author Iván Villa
  */
 class PointSystem {
     private int goldPoints;

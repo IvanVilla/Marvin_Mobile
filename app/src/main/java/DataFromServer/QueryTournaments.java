@@ -21,20 +21,22 @@ import model.tournament.Tournament;
 
 /**
  * Connect and retrieve the tournaments
- * @author Klaussius
+ * @author Iván Villa
  */
 public class QueryTournaments extends Connection{
     private List<Tournament> queryResult = new ArrayList<>();
-    private final static String URL_QUERY = "http://10.0.2.2/api/tournamentsQueryOld.php";
+    private final static String PHP_QUERY_FILE = "tournamentsQueryOld.php";
+    private String queryURL="";
 
     /**
      * Post the request, and get the data to our model's objects
      */
     public void findAll() {
+        queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
             // URL
-            URL url = new URL(URL_QUERY);
+            URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
             params.put("user",""); // Get all the values

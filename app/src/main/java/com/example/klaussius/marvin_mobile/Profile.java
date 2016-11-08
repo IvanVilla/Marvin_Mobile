@@ -13,6 +13,10 @@ import android.widget.TextView;
 import model.user.User;
 import simulateServer.QueryUserProfile;
 
+/**
+ * The profile of the user
+ * @author Iván Villa
+ */
 public class Profile extends AppCompatActivity {
 
     Button btEdit;

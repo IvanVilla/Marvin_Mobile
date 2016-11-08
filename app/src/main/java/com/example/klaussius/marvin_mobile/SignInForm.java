@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 /**
  * Form to sign in as new user
- * @author Klaussius
+ * @author Iván Villa
  */
 public class SignInForm extends AppCompatActivity {
     Button btClear;

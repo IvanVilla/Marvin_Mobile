@@ -5,7 +5,7 @@ package model.tournament;
 
 /**
  * Store the player of one tournament
- * @author Klaussius
+ * @author Iván Villa
  */
 public class MatchPlayer {
     private TournamentPlayer player;

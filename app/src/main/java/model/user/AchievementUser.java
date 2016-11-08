@@ -8,7 +8,7 @@ import model.utils.MyDate;
 
 /**
  * Store user achievements
- * @author Klaussius
+ * @author Iván Villa
  */
 public class AchievementUser {
     private MyDate date;

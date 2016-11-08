@@ -5,7 +5,7 @@ package model.utils;
 
 /**
  * Store a place
- * @author Klaussius
+ * @author Iván Villa
  */
 public class GPS {
     private float latitude;

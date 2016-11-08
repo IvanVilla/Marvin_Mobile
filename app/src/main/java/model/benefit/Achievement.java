@@ -7,7 +7,7 @@ import model.utils.MyDate;
 
 /**
  * Almacena los logros
- * @author Klaussius
+ * @author Iván Villa
  */
 public class Achievement {
     private int id;

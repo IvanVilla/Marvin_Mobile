@@ -7,7 +7,7 @@ import model.utils.MyDate;
 
 /**
  * Store sanctions of one user
- * @author Klaussius
+ * @author Iván Villa
  */
 public class Sanction {
     private int id;

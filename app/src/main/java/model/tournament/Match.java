@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Store one match data
- * @author Klaussius
+ * @author Iván Villa
  */
 public class Match {
     private ArrayList <MatchPlayer> matchPlayer;
