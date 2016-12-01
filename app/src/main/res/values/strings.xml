@@ -45,5 +45,10 @@
     <string name="logout">Log Out</string>
     <string name="userName">User Name</string>
     <string name="edit">Edit</string>
-    <string name="exit">Exit</string>>
+    <string name="exit">Exit</string>
+    <string name="phone">Phone</string>
+    <string name="tournamentsPlayed">Tournaments Played</string>
+    <string name="earnedPoints">Earned Points</string>
+    <string name="earnedAchievements">Earned Achievements</string>
+    <string name="userTag">User Tag</string>
 </resources>

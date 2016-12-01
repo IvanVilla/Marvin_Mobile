@@ -28,7 +28,7 @@ import dataFromServer.Connection;
 
 public class QueryUsersPassword extends Connection {
     private List<User> queryResult = new ArrayList<>();
-    private final static String PHP_QUERY_FILE = "usersQueryOld.php";
+    private final static String PHP_QUERY_FILE = "usersQuery.php";
     private String queryURL="";
 
     /**

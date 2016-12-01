@@ -14,7 +14,10 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:text="@string/notImplementedYet"
@@ -45,7 +48,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btTakeMeBack"
             android:layout_marginTop="15dp"
-            android:backgroundTint="@android:color/holo_green_light" />
+            android:backgroundTint="@android:color/holo_green_light"
+            android:elevation="0dp" />
 
     </LinearLayout>
 </RelativeLayout>

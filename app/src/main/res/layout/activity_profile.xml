@@ -13,7 +13,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/liPrincipal"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
@@ -22,59 +23,188 @@
             android:text="@string/profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView8"
+            android:id="@+id/tvPublicName"
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/black" />
 
         <TextView
-            android:text="@string/userName"
+            android:text="@string/userTag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvUsernameInfo"
-            android:layout_marginTop="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvUsername"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            android:layout_marginTop="5dp" />
-
-        <TextView
-            android:text="@string/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvPasswordInfo"
-            android:layout_marginTop="10dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvUserPassword"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            android:layout_marginTop="5dp" />
-
-        <TextView
-            android:text="@string/eMail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvEmailInfo"
-            android:layout_marginTop="10dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvEMail"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            android:layout_marginTop="5dp" />
+            android:id="@+id/tvNickNameInfo"
+            android:gravity="center" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LiName"
             android:layout_marginTop="15dp">
+
+            <TextView
+                android:text="@string/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvNameInfo"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LiPhone">
+
+            <TextView
+                android:text="@string/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvPhoneInfo"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvPhone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LiEmail">
+
+            <TextView
+                android:text="@string/eMail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvEmailInfo"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvEMail"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LiTournamentsPlayed">
+
+            <TextView
+                android:text="@string/tournamentsPlayed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTournamentsPlayedInfo"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTournamentPlayedInfo"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LiTournamentPlayed">
+
+            <TextView
+                android:text="@string/earnedPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvEarnedPointsInfo"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvEarnedPoints"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LiEarnedPoints">
+
+            <TextView
+                android:text="@string/earnedAchievements"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvEarnedAchievementsInfo"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvEarnedAchievements"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:id="@+id/liButtons">
 
             <Button
                 android:text="@string/edit"
@@ -91,7 +221,17 @@
                 android:id="@+id/btExit"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_red_light" />
+
         </LinearLayout>
+
+        <Button
+            android:text="@string/mainMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btMainMenu"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:backgroundTint="@android:color/holo_green_light" />
 
     </LinearLayout>
 

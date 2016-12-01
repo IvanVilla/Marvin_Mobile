@@ -116,8 +116,8 @@ public class LoginForm extends AppCompatActivity {
         String mensaje;
         if (myLogin.login(userName,userPassword)){
             SaveUserName(userName);
-            Intent mainMenu = new Intent(this, MainMenu.class);
-            startActivity(mainMenu);
+            Intent profile = new Intent(this, Profile.class);
+            startActivity(profile);
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),"Datos incorrectos.", Toast.LENGTH_SHORT);
             toast.show();

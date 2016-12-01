@@ -19,11 +19,8 @@ import simulateServer.QueryUserProfile;
  */
 public class Profile extends AppCompatActivity {
 
-    Button btEdit;
-    Button btExit;
-    TextView tvUsername;
-    TextView tvUserPassword;
-    TextView tvEmail;
+    Button btEdit,btExit, btMainMenu;
+    TextView tvPublicName, tvEmail;
 
     //Retrieve server data
     QueryUserProfile myData;
@@ -43,12 +40,10 @@ public class Profile extends AppCompatActivity {
         myData = new QueryUserProfile();
         myUser=myData.getUser(loadUserName());
         //TextViews
-        tvUsername = (TextView)findViewById(R.id.tvUsername);
-        tvUserPassword = (TextView)findViewById(R.id.tvUserPassword);
+        tvPublicName = (TextView)findViewById(R.id.tvPublicName);
         tvEmail = (TextView)findViewById(R.id.tvEMail);
         //Fill the fields
-        tvUsername.setText(myUser.getPublicName());
-        tvUserPassword.setText(myUser.getPassword());
+        tvPublicName.setText(myUser.getPublicName());
         tvEmail.setText(myUser.geteMail());
         //Button to edit
         btEdit = (Button)findViewById(R.id.btEdit);
@@ -64,6 +59,14 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 exit();
+            }
+        });
+        //Button for main menú
+        btMainMenu = (Button)findViewById(R.id.btMainMenu);
+        btMainMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainMenu();
             }
         });
     }
@@ -82,6 +85,14 @@ public class Profile extends AppCompatActivity {
      */
     private void edit(){
         Intent myIntent = new Intent(this,Working.class);
+        startActivity(myIntent);
+    }
+
+    /**
+     * Open the main menú
+     */
+    private void mainMenu(){
+        Intent myIntent = new Intent(this,MainMenu.class);
         startActivity(myIntent);
     }
 
