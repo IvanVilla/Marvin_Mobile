@@ -1,4 +1,4 @@
-package simulateServer;
+package dataFromServer;
 
 import android.util.Log;
 
@@ -18,23 +18,28 @@ import java.util.List;
 import java.util.Map;
 
 import model.user.User;
-import dataFromServer.Connection;
 
 /**
- * This class is only for the prototype purpouse, on further versions the authentication will be on
- * the server side.
+ * Authentication on server side
  * @autor Iván Villa
  */
 
-public class QueryUsersPassword extends Connection {
-    private List<User> queryResult = new ArrayList<>();
+public class QueryUserPassword extends Connection {
+    private int queryResult;
+    private String name;
+    private String password;
     private final static String PHP_QUERY_FILE = "usersQuery.php";
     private String queryURL="";
+
+    public QueryUserPassword (String name, String password){
+        this.name=name;
+        this.password=password;
+    }
 
     /**
      * Post the request, and get the data to our model's objects
      */
-    public void findAll() {
+    public void retrieveAnswer() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -42,9 +47,10 @@ public class QueryUsersPassword extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("",""); // Get all the values
-            //params.put("fields[0]", "idTournament");
-            //params.put("fields[1]", "name");
+            params.put("requestName","userLogin"); // Get all the values
+            params.put("userPublicName",this.name);
+            params.put("userPassword",this.password);
+
             byte[] postDataBytes = putParams(params); // Aux Method to make post
 
             // GET READER FROM CONN (SUPER)
@@ -58,7 +64,7 @@ public class QueryUsersPassword extends Connection {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.e("Error","Retrieving data");
+            Log.i("Error","Retrieving data");
         } finally {
             close();
         }
@@ -110,20 +116,15 @@ public class QueryUsersPassword extends Connection {
      * @param jarray
      */
     private void makeFromJson(JsonArray jarray){
-        for (int i=0; i<jarray.size(); i++){
-            User user = new User();
-            JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-            user.setName(jsonobject.get("publicName").getAsString());
-            user.setPassword(jsonobject.get("password").getAsString());
-            this.queryResult.add(user);
-        }
+        JsonObject jsonObject=jarray.get(0).getAsJsonObject();
+        queryResult=jsonObject.get("loginResult").getAsInt();
     }
 
     /**
      * Result of the query
      * @return result of the query
      */
-    public List<User> getQueryResult() {
+    public int getQueryResult() {
         return queryResult;
     }
 }

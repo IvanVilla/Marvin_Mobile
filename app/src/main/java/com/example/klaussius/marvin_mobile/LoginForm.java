@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import simulateServer.LogInRealData;
+import actions.LogIn;
 
 /**
  * Activity with a login form
@@ -108,13 +108,12 @@ public class LoginForm extends AppCompatActivity {
      */
     public void login(){
         // Comprobamos el login
-        LogInRealData myLogin = new LogInRealData();
         // Leemos lo escrito por el usuario
         String userName = etName.getText().toString();
         String userPassword = etPassword.getText().toString();
         // Comprobamos
-        String mensaje;
-        if (myLogin.login(userName,userPassword)){
+        LogIn myLogin = new LogIn(userName,userPassword);
+        if (myLogin.login()){
             SaveUserName(userName);
             Intent profile = new Intent(this, Profile.class);
             startActivity(profile);

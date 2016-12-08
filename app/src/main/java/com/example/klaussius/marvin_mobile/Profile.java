@@ -38,7 +38,11 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         //Get data from server
         myData = new QueryUserProfile();
-        myUser=myData.getUser(loadUserName());
+        //myUser=myData.getUser(loadUserName());
+        myUser=new User();
+        myUser.setName("Paco");
+        myUser.setPublicName("Pepe");
+        myUser.seteMail("paco@pepe.com");
         //TextViews
         tvPublicName = (TextView)findViewById(R.id.tvPublicName);
         tvEmail = (TextView)findViewById(R.id.tvEMail);
