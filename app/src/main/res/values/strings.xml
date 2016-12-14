@@ -63,4 +63,11 @@
     <string name="incorrectLogin">Incorrect user/password</string>
     <string name="nickname">Public Name</string>
     <string name="no">no</string>
+    <string name="nameRequired">Name is required!</string>
+    <string name="publicNameRequired">Public name is required!</string>
+    <string name="passwordRequired">Password is required!</string>
+    <string name="eMailRequired">e-mail is required!</string>
+    <string name="phoneNumberRequired">Phone number is required!</string>
+    <string name="nameExists">The user with that name exists.</string>
+    <string name="passwordNotMatch">The passwords do not match.</string>
 </resources>

@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarStyle="insideOverlay">
 
         <LinearLayout
             android:orientation="vertical"
@@ -115,7 +116,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/lButtons"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
 
                 <Button
                     android:text="@string/accept"

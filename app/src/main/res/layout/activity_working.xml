@@ -11,45 +11,52 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.klaussius.marvin_mobile.Working">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="match_parent"
+        android:scrollbarStyle="insideOverlay">
 
-        <TextView
-            android:text="@string/notImplementedYet"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvNotImplemented"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@android:color/black" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/goblins"
-            android:id="@+id/ivGoblin" />
+            <TextView
+                android:text="@string/notImplementedYet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvNotImplemented"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/black" />
 
-        <TextView
-            android:text="@string/future"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvFuture"
-            android:layout_marginTop="10dp" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/goblins"
+                android:id="@+id/ivGoblin" />
 
-        <Button
-            android:text="@string/takeMeBack"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btTakeMeBack"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="@android:color/holo_green_light"
-            android:elevation="0dp" />
+            <TextView
+                android:text="@string/future"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvFuture"
+                android:layout_marginTop="10dp" />
 
-    </LinearLayout>
+            <Button
+                android:text="@string/takeMeBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btTakeMeBack"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:elevation="0dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>

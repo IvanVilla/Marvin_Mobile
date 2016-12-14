@@ -60,4 +60,11 @@
     <string name="zero">0</string>
     <string name="incorrectLogin">Usuario/Contraseña incorrecto</string>
     <string name="areYouSure">¿Estás seguro?</string>
+    <string name="passwordNotMatch">Las contraseñas no coinciden</string>
+    <string name="passwordRequired">¡Es necesaria la contraseña!</string>
+    <string name="phoneNumberRequired">Es necesario el número de teléfono</string>
+    <string name="publicNameRequired">¡Es necesario el nombre público!</string>
+    <string name="nameRequired">¡El nombre es necesario!</string>
+    <string name="nameExists">Ya existe un usuario con ese nombre</string>
+    <string name="eMailRequired">¡El e-mail es necesario!</string>
 </resources>

@@ -28,14 +28,35 @@ public class SignInForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
-        // Inicializo los campos de texto
+        // Inicializates the text fields
         etPublicName = (EditText)findViewById(R.id.etPublicName);
         etName = (EditText)findViewById(R.id.etName);
         etPassword = (EditText)findViewById(R.id.etPassword);
         etPasswordAgain = (EditText)findViewById(R.id.etPasswordAgain);
         etEmail = (EditText)findViewById(R.id.etEmail);
         etPhone = (EditText)findViewById(R.id.etPhone);
-        // Inicializo botón de limpieza y añado listener
+        // Adding some control
+        if(etPublicName.getText().toString().length()==0){
+            etPublicName.setError(getString(R.string.publicNameRequired));
+        }
+        if(etName.getText().toString().length()==0){
+            etName.setError(getString(R.string.nameRequired));
+        }
+        if(etPassword.getText().toString().length()==0){
+            etPassword.setError(getString(R.string.passwordRequired));
+        }
+        if(etPasswordAgain.getText().toString().length()==0){
+            etPasswordAgain.setError(getString(R.string.passwordRequired));
+        }
+        if(etEmail.getText().toString().length()==0){
+            etEmail.setError(getString(R.string.eMailRequired));
+        }
+        if(etPhone.getText().toString().length()==0){
+            etPhone.setError(getString(R.string.phoneNumberRequired));
+        }
+        // Focus to the first element
+        etPublicName.requestFocus();
+        // Clear button
         btClear = (Button)findViewById(R.id.btClear);
         btClear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +64,7 @@ public class SignInForm extends AppCompatActivity {
                 clear();
             }
         });
-        // Inicializo botón de aceptar y añado listener
+        // Accept button
         btSignIn = (Button)findViewById(R.id.btSignIn);
         btSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +72,7 @@ public class SignInForm extends AppCompatActivity {
                 signIn();
             }
         });
-        // Inicializo botón de cancelar y añado listener
+        // Cancel button
         btCancel = (Button)findViewById(R.id.btCancel);
         btCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,20 +94,20 @@ public class SignInForm extends AppCompatActivity {
     }
 
     /**
-     * Acceps the form
+     * Accepts the form
      */
     public void signIn(){
         QueryExistsUser queryExistsUser = new QueryExistsUser(etName.getText().toString());
         queryExistsUser.exitsUser();
         if (queryExistsUser.getExists()){
             // If the user name exits already, we dont do the insert
-            Toast toast = Toast.makeText(getApplicationContext(),"Sorry, the user with that name exists.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.nameExists), Toast.LENGTH_SHORT);
             toast.show();
             etPublicName.setText("");
         } else if (!etPassword.getText().toString().equals(etPasswordAgain.getText().toString())){
             Log.i("Passwords matchs",etPassword.getText().toString()+"="+etPasswordAgain.getText().toString());
             // If the password fields dont match between them, we dont do the insert
-            Toast toast = Toast.makeText(getApplicationContext(),"Sorry, the passwords dont match.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.passwordNotMatch), Toast.LENGTH_SHORT);
             toast.show();
         } else {
             // We do the insert
