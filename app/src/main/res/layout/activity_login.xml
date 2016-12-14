@@ -81,7 +81,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp">
 
                 <Button
@@ -107,9 +107,17 @@
                     android:id="@+id/btExit"
                     android:layout_weight="1"
                     android:backgroundTint="@android:color/holo_red_light" />
+
             </LinearLayout>
+
+            <Button
+                android:text="Test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btTestFeature" />
 
         </LinearLayout>
 
     </LinearLayout>
+
 </android.support.design.widget.CoordinatorLayout>

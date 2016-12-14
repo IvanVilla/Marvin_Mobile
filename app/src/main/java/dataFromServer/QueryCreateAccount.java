@@ -15,27 +15,26 @@ import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import model.user.User;
+
 /**
- * Authentication on server side
- * @autor Iván Villa
+ * Created by Klaussius on 14/12/2016.
  */
 
-public class QueryUserPassword extends Connection {
-    private int queryResult;
-    private String name;
-    private String password;
+public class QueryCreateAccount extends Connection{
     private final static String PHP_QUERY_FILE = "usersQuery.php";
     private String queryURL;
+    private User user;
+    private int insertionId;
 
-    public QueryUserPassword (String name, String password){
-        this.name=name;
-        this.password=password;
+    public QueryCreateAccount(User user){
+        this.user=user;
     }
 
     /**
-     * Post the request, and get the data to our model's objects
+     * Post the request to insert the user
      */
-    public void retrieveAnswer() {
+    public void createAccount() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -43,24 +42,19 @@ public class QueryUserPassword extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName","userLogin"); // Get all the values
-            params.put("userPublicName",this.name);
-            params.put("userPassword",this.password);
-
+            params.put("requestName","insertItem");
+            params.put("fields","[\"name\",\"publicName\",\"password\",\"phone\",\"eMail\"]");
+            params.put("values","[\""+user.getName()+"\",\""+user.getPublicName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
-
-            // GET READER FROM CONN (SUPER)
+            //Send the data
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
-
-            // PARSER
-            JsonArray jarray = getArrayFromJson(in, null); // "Only Json Objects
-
-            // MAKE OBJECTS
+            // Taking and analyzing the answer
+            JsonArray jarray = getArrayFromJson(in, null); // Only Json Objects
             makeFromJson(jarray);
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.i("Error","Retrieving data");
+            Log.i("Error","Sending data");
         } finally {
             close();
         }
@@ -108,19 +102,18 @@ public class QueryUserPassword extends Connection {
     }
 
     /**
-     * Make the objects Tournament from Array
-     * @param jarray
+     * Make the object User from Array
      */
     private void makeFromJson(JsonArray jarray){
         JsonObject jsonObject=jarray.get(0).getAsJsonObject();
-        queryResult=jsonObject.get("loginResult").getAsInt();
+        this.insertionId = jsonObject.get("insertionId").getAsInt();
     }
 
     /**
-     * Result of the query
-     * @return result of the query
+     * Get the insertion id
+     * @return insertion id
      */
-    public int getQueryResult() {
-        return queryResult;
+    public int getInsertionId() {
+        return insertionId;
     }
 }

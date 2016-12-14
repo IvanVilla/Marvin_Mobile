@@ -51,4 +51,15 @@
     <string name="earnedPoints">Earned Points</string>
     <string name="earnedAchievements">Earned Achievements</string>
     <string name="userTag">User Tag</string>
+    <string name="deleteUser">Delete my user</string>
+    <string name="userAccount">User Account</string>
+    <string name="areYouSure">Are you sure?</string>
+    <string name="consecuencesDelete">All data will be lost. This action can not be undone.</string>
+    <string name="yesDeleteMyAccount">Yes, delete my account</string>
+    <string name="noKeepMyAccount">No, keep my account</string>
+    <string name="youHave">"You have "</string>
+    <string name="zero">"0"</string>
+    <string name="unclaimedPrizes">" unclaimed prizes."</string>
+    <string name="unclaimedPrizesSingular">" unclaimed prize."</string>
+    <string name="incorrectLogin">Incorrect user/password</string>
 </resources>

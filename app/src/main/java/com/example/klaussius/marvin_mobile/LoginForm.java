@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import actions.LogIn;
+import utils.LogIn;
 
 /**
  * Activity with a login form
@@ -23,9 +23,7 @@ import actions.LogIn;
  */
 public class LoginForm extends AppCompatActivity {
 
-    Button btLogin;
-    Button btSignIn;
-    Button btExit;
+    Button btLogin,btSignIn,btExit,btTestFeature;
     EditText etName;
     EditText etPassword;
 
@@ -52,6 +50,7 @@ public class LoginForm extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_menu, menu);
+
         // Text Fields
         etName = (EditText)findViewById(R.id.etName);
         etPassword = (EditText)findViewById(R.id.etPassword);
@@ -79,7 +78,22 @@ public class LoginForm extends AppCompatActivity {
                 endApp();
             }
         });
+        //Todo Test Button
+        btTestFeature = (Button)findViewById(R.id.btTestFeature);
+        btTestFeature.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testFeature();
+            }
+        });
+
         return true;
+    }
+
+    //Todo test test test
+    public void testFeature() {
+        Toast toast = Toast.makeText(getApplicationContext(),"You touch my tralalá", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     @Override
@@ -114,11 +128,11 @@ public class LoginForm extends AppCompatActivity {
         // Comprobamos
         LogIn myLogin = new LogIn(userName,userPassword);
         if (myLogin.login()){
-            SaveUserName(userName);
+            saveUserName(userName);
             Intent profile = new Intent(this, Profile.class);
             startActivity(profile);
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(),"Datos incorrectos.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(),R.string.incorrectLogin, Toast.LENGTH_SHORT);
             toast.show();
             etPassword.setText("");
         }
@@ -138,14 +152,15 @@ public class LoginForm extends AppCompatActivity {
      */
     public void endApp()
     {
+        saveUserName("");
         this.finish();
     }
 
     /**
      * Store the username we are using on sharedpreferences
      */
-    public void SaveUserName(String username){
-        Log.i("SharedPreferences","Saving Username");
+    public void saveUserName(String username){
+        Log.i("Shared name",username);
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("marvinName",username);

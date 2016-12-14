@@ -15,21 +15,23 @@ import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import model.user.User;
+
 /**
- * Authentication on server side
+ * Retrieve the user's data
  * @autor Iván Villa
  */
 
-public class QueryUserPassword extends Connection {
-    private int queryResult;
+public class QueryUserProfile extends Connection {
+    private User queryResult;
+
     private String name;
-    private String password;
     private final static String PHP_QUERY_FILE = "usersQuery.php";
     private String queryURL;
 
-    public QueryUserPassword (String name, String password){
+    public QueryUserProfile (String name){
         this.name=name;
-        this.password=password;
+        retrieveAnswer();
     }
 
     /**
@@ -43,9 +45,10 @@ public class QueryUserPassword extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName","userLogin"); // Get all the values
-            params.put("userPublicName",this.name);
-            params.put("userPassword",this.password);
+            params.put("requestName","customSearch");
+            params.put("fields","[\"idUser\",\"name\",\"publicName\", \"phone\",\"eMail\"]");
+            params.put("filterFields","[publicName]");
+            params.put("filterArguments","[\""+this.name+"\"]");
 
             byte[] postDataBytes = putParams(params); // Aux Method to make post
 
@@ -53,7 +56,7 @@ public class QueryUserPassword extends Connection {
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
 
             // PARSER
-            JsonArray jarray = getArrayFromJson(in, null); // "Only Json Objects
+            JsonArray jarray = getArrayFromJson(in, null); // Only Json Objects
 
             // MAKE OBJECTS
             makeFromJson(jarray);
@@ -108,19 +111,24 @@ public class QueryUserPassword extends Connection {
     }
 
     /**
-     * Make the objects Tournament from Array
-     * @param jarray
+     * Make the object User from Array
      */
     private void makeFromJson(JsonArray jarray){
         JsonObject jsonObject=jarray.get(0).getAsJsonObject();
-        queryResult=jsonObject.get("loginResult").getAsInt();
+        User user = new User();
+        user.setId(jsonObject.get("idUser").getAsInt());
+        user.setName(jsonObject.get("name").getAsString());
+        user.setPublicName(jsonObject.get("publicName").getAsString());
+        user.setPhone(jsonObject.get("phone").getAsString());
+        user.seteMail(jsonObject.get("eMail").getAsString());
+        queryResult=user;
     }
 
     /**
      * Result of the query
      * @return result of the query
      */
-    public int getQueryResult() {
+    public User getQueryResult() {
         return queryResult;
     }
 }

@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_working"
+    android:id="@+id/activity_delete_confirmation"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.klaussius.marvin_mobile.Working">
+    tools:context="com.example.klaussius.marvin_mobile.ProfileDeleteConfirmation">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
         <TextView
-            android:text="@string/notImplementedYet"
+            android:text="@string/userAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvNotImplemented"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@android:color/black" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/goblins"
-            android:id="@+id/ivGoblin" />
+            android:id="@+id/tvUserAccount"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_dark" />
 
         <TextView
-            android:text="@string/future"
+            android:text="@string/areYouSure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvFuture"
-            android:layout_marginTop="10dp" />
+            android:id="@+id/tvAreYouSure"
+            android:layout_marginTop="15dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="@string/consecuencesDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvInfo"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp" />
 
         <Button
-            android:text="@string/takeMeBack"
+            android:text="@string/yesDeleteMyAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btYesDelete"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:layout_marginTop="15dp" />
+
+        <Button
+            android:text="@string/noKeepMyAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btTakeMeBack"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="@android:color/holo_green_light"
-            android:elevation="0dp" />
+            android:backgroundTint="@android:color/holo_green_light" />
 
     </LinearLayout>
 </RelativeLayout>

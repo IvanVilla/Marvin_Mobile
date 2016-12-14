@@ -8,10 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import dataFromServer.QueryUserProfile;
 import model.user.User;
-import simulateServer.QueryUserProfile;
+import utils.CheckPrizes;
 
 /**
  * The profile of the user
@@ -19,14 +21,14 @@ import simulateServer.QueryUserProfile;
  */
 public class Profile extends AppCompatActivity {
 
-    Button btEdit,btExit, btMainMenu;
-    TextView tvPublicName, tvEmail;
-
-    //Retrieve server data
-    QueryUserProfile myData;
+    Button btEdit,btExit, btMainMenu, btDeleteMyUser;
+    TextView tvName, tvPublicName, tvEmail, tvPhone, tvPrizeNumber, tvUnclaimedPrizes;
+    ImageView ivPrizeBox;
 
     //My User
     User myUser;
+    //Prizes number
+    int prizesNumber;
 
     /**
      * OnCreate initializes our parameters
@@ -36,19 +38,36 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         //Get data from server
-        myData = new QueryUserProfile();
-        //myUser=myData.getUser(loadUserName());
-        myUser=new User();
-        myUser.setName("Paco");
-        myUser.setPublicName("Pepe");
-        myUser.seteMail("paco@pepe.com");
-        //TextViews
+        Log.i("Shared name",loadUserName());
+        myUser=new QueryUserProfile(loadUserName()).getQueryResult();
+
+        //TextView user prizes
+        tvPrizeNumber = (TextView)findViewById(R.id.tvPrizeNumber);
+        tvUnclaimedPrizes = (TextView)findViewById(R.id.tvUnclaimedPrizes);
+
+        //ImageView prizeBox
+        prizesNumber = new CheckPrizes().check();
+        ivPrizeBox = (ImageView)findViewById(R.id.ivPrizeBox);
+        if(prizesNumber>0){
+            ivPrizeBox.setImageResource(R.drawable.userhasprizes);
+            tvPrizeNumber.setText(prizesNumber+"");
+            if (prizesNumber==1){
+                tvUnclaimedPrizes.setText(R.string.unclaimedPrizesSingular);
+            }
+        }
+
+        //TextViews for name and email
+        tvName = (TextView)findViewById(R.id.tvName);
         tvPublicName = (TextView)findViewById(R.id.tvPublicName);
         tvEmail = (TextView)findViewById(R.id.tvEMail);
+        tvPhone = (TextView)findViewById(R.id.tvPhone);
         //Fill the fields
+        tvName.setText(myUser.getName());
         tvPublicName.setText(myUser.getPublicName());
         tvEmail.setText(myUser.geteMail());
+        tvPhone.setText(myUser.getPhone());
         //Button to edit
         btEdit = (Button)findViewById(R.id.btEdit);
         btEdit.setOnClickListener(new View.OnClickListener() {
@@ -73,14 +92,23 @@ public class Profile extends AppCompatActivity {
                 mainMenu();
             }
         });
+        //Button for user delection
+        btDeleteMyUser = (Button)findViewById(R.id.btDeleteMyUser);
+        btDeleteMyUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteMyUser();
+            }
+        });
     }
+
 
     /**
      * Load the username from SharedPreferences
      */
     public String loadUserName(){
-        Log.i("SharedPreferences","Loading Username");
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        Log.i("Shared name",prefs.getString("marvinName",""));
         return prefs.getString("marvinName","");
     }
 
@@ -97,6 +125,14 @@ public class Profile extends AppCompatActivity {
      */
     private void mainMenu(){
         Intent myIntent = new Intent(this,MainMenu.class);
+        startActivity(myIntent);
+    }
+
+    /**
+     * Open the delete user menu
+     */
+    private void deleteMyUser(){
+        Intent myIntent = new Intent(this,ProfileDeleteConfirmation.class);
         startActivity(myIntent);
     }
 

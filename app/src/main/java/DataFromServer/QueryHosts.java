@@ -27,7 +27,7 @@ public class QueryHosts extends Connection{
 
     private List<TournamentHost> queryResult = new ArrayList<>();
     private final static String PHP_QUERY_FILE = "hostsQuery.php";
-    private String queryURL="";
+    private String queryURL;
 
     /**
      * Post the request, and get the data to our model's objects

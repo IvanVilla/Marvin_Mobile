@@ -48,4 +48,15 @@
     <string name="prompt_password">Contraseña (opcional)</string>
     <string name="eMail">E-Mail</string>
     <string name="btRankings">Clasificaciones</string>
+    <string name="deleteUser">Borrar mi usuario</string>
+    <string name="userAccount">Cuenta de usuario</string>
+    <string name="consecuencesDelete">Todos los datos se perderán. Esta acción no puede deshacerse.</string>
+    <string name="noKeepMyAccount">No. Conservar mi cuenta</string>
+    <string name="yesDeleteMyAccount">Sí. Borrar mi cuenta.</string>
+    <string name="youHave">"Tienes "</string>
+    <string name="unclaimedPrizes">" premios sin reclamar."</string>
+    <string name="unclaimedPrizesSingular">" premio sin reclamar."</string>
+    <string name="no">no</string>
+    <string name="zero">\"0\"</string>
+    <string name="incorrectLogin">Usuario/Contraseña incorrecto</string>
 </resources>

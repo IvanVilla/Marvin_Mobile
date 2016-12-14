@@ -26,7 +26,7 @@ import model.tournament.Tournament;
 public class QueryTournaments extends Connection{
     private List<Tournament> queryResult = new ArrayList<>();
     private final static String PHP_QUERY_FILE = "tournamentsQueryOld.php";
-    private String queryURL="";
+    private String queryURL;
 
     /**
      * Post the request, and get the data to our model's objects

@@ -1,4 +1,4 @@
-package simulateServer;
+package dataFromServer;
 
 import android.util.Log;
 
@@ -12,29 +12,34 @@ import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import model.user.User;
-import dataFromServer.Connection;
 
 /**
- * This class is only for the prototype purpouse, on further versions the app will retrieve only the
- * data of the app user
- * @autor Iván Villa
+ * Given a publicName, we delete the user on the server side
+ * Created by Klaussius on 14/12/2016.
  */
 
-public class QueryUserProfile extends Connection {
-    private List<User> queryResult = new ArrayList<>();
+public class QueryDeleteAccount extends Connection {
     private final static String PHP_QUERY_FILE = "usersQuery.php";
-    private String queryURL="";
+    private String queryURL;
+    private int idUser;
+    private int deleteRowsNum;
+
+    public QueryDeleteAccount(String publicName)
+    {
+        // We get the user id
+        QueryUserProfile queryUserProfile = new QueryUserProfile(publicName);
+        User user = queryUserProfile.getQueryResult();
+        idUser = user.getId();
+    }
 
     /**
-     * Post the request, and get the data to our model's objects
+     * Post the request to insert the user
      */
-    public void findAll() {
+    public void deleteAccount() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -42,23 +47,18 @@ public class QueryUserProfile extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("",""); // Get all the values
-            //params.put("fields[0]", "idTournament");
-            //params.put("fields[1]", "name");
+            params.put("requestName","deleteItem");
+            params.put("itemId","\""+idUser+"\"");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
-
-            // GET READER FROM CONN (SUPER)
+            //Send the data
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
-
-            // PARSER
-            JsonArray jarray = getArrayFromJson(in, null); // "Only Json Objects
-
-            // MAKE OBJECTS
+            // Taking and analyzing the answer
+            JsonArray jarray = getArrayFromJson(in, null); // Only Json Objects
             makeFromJson(jarray);
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.e("Error","Retrieving data");
+            Log.i("Error","Deleting user");
         } finally {
             close();
         }
@@ -106,40 +106,24 @@ public class QueryUserProfile extends Connection {
     }
 
     /**
-     * Make the objects Tournament from Array
-     * @param jarray
+     * Make the object User from Array
      */
     private void makeFromJson(JsonArray jarray){
-        for (int i=0; i<jarray.size(); i++){
-            User user = new User();
-            JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-            user.setPublicName(jsonobject.get("publicName").getAsString());
-            user.setPassword(jsonobject.get("password").getAsString());
-            user.seteMail(jsonobject.get("eMail").getAsString());
-            this.queryResult.add(user);
-        }
+        JsonObject jsonObject=jarray.get(0).getAsJsonObject();
+        this.deleteRowsNum = jsonObject.get("deleteRowsNum").getAsInt();
     }
 
     /**
-     * Result of the query
-     * @return result of the query
+     * Get the number of rows deleted
+     * @return number of rows deleted
      */
-    public List<User> getQueryResult() {
-        return queryResult;
+    public int getDeleteRowsNum() {
+        return deleteRowsNum;
     }
 
     /**
-     * Result of the query for one username
-     * @param nombre
-     * @return user
+     * Get the user id
+     * @return user id
      */
-    public User getUser(String nombre){
-        findAll();
-        for (User user: queryResult){
-            if (user.getPublicName().equals(nombre)){
-                return user;
-            }
-        }
-        return null;
-    }
+    public int getIdUser() { return idUser; }
 }

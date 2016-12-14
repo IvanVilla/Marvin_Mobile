@@ -25,7 +25,8 @@
         <activity android:name=".ListHosts" />
         <activity android:name=".ListTournaments" />
         <activity android:name=".Working" />
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".Profile" />
+        <activity android:name=".ProfileDeleteConfirmation" />
     </application>
 
 </manifest>
