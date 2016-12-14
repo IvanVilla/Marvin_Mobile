@@ -11,251 +11,256 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.klaussius.marvin_mobile.Profile">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/liPrincipal"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:text="@string/profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvName"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@android:color/black" />
-
-        <TextView
-            android:text="@string/userTag"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvPublicName"
-            android:gravity="center" />
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/LiPhone">
-
-            <TextView
-                android:text="@string/phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvPhoneInfo"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvPhone"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:textSize="14sp"
-                android:layout_gravity="end"
-                android:textAlignment="textEnd"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/LiEmail">
-
-            <TextView
-                android:text="@string/eMail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvEmailInfo"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvEMail"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:textSize="14sp"
-                android:layout_gravity="end"
-                android:textAlignment="textEnd"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/LiTournamentsPlayed">
-
-            <TextView
-                android:text="@string/tournamentsPlayed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvTournamentsPlayedInfo"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvTournamentPlayedInfo"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:textSize="14sp"
-                android:layout_gravity="end"
-                android:textAlignment="textEnd"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/LiTournamentPlayed">
-
-            <TextView
-                android:text="@string/earnedPoints"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvEarnedPointsInfo"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvEarnedPoints"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:textSize="14sp"
-                android:layout_gravity="end"
-                android:textAlignment="textEnd"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/LiEarnedPoints">
-
-            <TextView
-                android:text="@string/earnedAchievements"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvEarnedAchievementsInfo"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvEarnedAchievements"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:textSize="14sp"
-                android:layout_gravity="end"
-                android:textAlignment="textEnd"
-                android:textColor="@android:color/black" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:id="@+id/LiPrizes">
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/userhasnoprizes"
-                android:id="@+id/ivPrizeBox"
-                android:layout_weight="1" />
-
-            <TextView
-                android:text="@string/youHave"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/tvYouHave"
-                android:layout_centerVertical="true"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/tvPrizeNumber"
-                android:layout_centerVertical="true"
-                android:text="@string/zero" />
-
-            <TextView
-                android:text="@string/unclaimedPrizes"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/tvUnclaimedPrizes"
-                android:layout_centerVertical="true"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:id="@+id/LiButtons">
-
-            <Button
-                android:text="@string/edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btEdit"
-                android:layout_weight="1"
-                android:backgroundTint="@android:color/holo_orange_light" />
-
-            <Button
-                android:text="@string/exit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btExit"
-                android:layout_weight="1"
-                android:backgroundTint="@android:color/holo_red_light" />
-
-        </LinearLayout>
-
-        <Button
-            android:text="@string/mainMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btMainMenu"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:backgroundTint="@android:color/holo_green_light" />
-
-        <Button
-            android:text="@string/deleteUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/liPrincipal"
+            android:id="@+id/liPrincipal"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/btDeleteMyUser"
-            android:layout_marginTop="25dp" />
+            android:layout_alignParentStart="true">
 
-    </LinearLayout>
+            <TextView
+                android:text="@string/profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvName"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:text="@string/userTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvPublicName"
+                android:gravity="center" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LiPhone">
+
+                <TextView
+                    android:text="@string/phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvPhoneInfo"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvPhone"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:layout_gravity="end"
+                    android:textAlignment="textEnd"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LiEmail">
+
+                <TextView
+                    android:text="@string/eMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvEmailInfo"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvEMail"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:layout_gravity="end"
+                    android:textAlignment="textEnd"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LiTournamentsPlayed">
+
+                <TextView
+                    android:text="@string/tournamentsPlayed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTournamentsPlayedInfo"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTournamentPlayedInfo"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:layout_gravity="end"
+                    android:textAlignment="textEnd"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LiTournamentPlayed">
+
+                <TextView
+                    android:text="@string/earnedPoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvEarnedPointsInfo"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvEarnedPoints"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:layout_gravity="end"
+                    android:textAlignment="textEnd"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LiEarnedPoints">
+
+                <TextView
+                    android:text="@string/earnedAchievements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvEarnedAchievementsInfo"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvEarnedAchievements"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:layout_gravity="end"
+                    android:textAlignment="textEnd"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/LiPrizes">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/userhasnoprizes"
+                    android:id="@+id/ivPrizeBox"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:text="@string/youHave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tvYouHave"
+                    android:layout_centerVertical="true"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tvPrizeNumber"
+                    android:layout_centerVertical="true"
+                    android:text="@string/zero" />
+
+                <TextView
+                    android:text="@string/unclaimedPrizes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tvUnclaimedPrizes"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/LiButtons">
+
+                <Button
+                    android:text="@string/edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btEdit"
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/holo_orange_light" />
+
+                <Button
+                    android:text="@string/exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btExit"
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/holo_red_light" />
+
+            </LinearLayout>
+
+            <Button
+                android:text="@string/mainMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btMainMenu"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:backgroundTint="@android:color/holo_green_light" />
+
+            <Button
+                android:text="@string/deleteUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/liPrincipal"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/btDeleteMyUser"
+                android:layout_marginTop="25dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

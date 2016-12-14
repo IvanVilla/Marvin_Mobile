@@ -1,4 +1,4 @@
-package dataFromServer;
+package data;
 
 import android.util.Log;
 
@@ -12,27 +12,34 @@ import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
-import model.host.TournamentHost;
+import model.user.User;
 
 /**
- * Connect and retrieve the hosts
- * @author Iván Villa
+ * Given a publicName, we delete the user on the server side
+ * Created by Klaussius on 14/12/2016.
  */
-public class QueryHosts extends Connection{
 
-    private List<TournamentHost> queryResult = new ArrayList<>();
-    private final static String PHP_QUERY_FILE = "hostsQuery.php";
+public class QueryDeleteAccount extends Connection {
+    private final static String PHP_QUERY_FILE = "usersQuery.php";
     private String queryURL;
+    private int idUser;
+    private int deleteRowsNum;
+
+    public QueryDeleteAccount(String publicName)
+    {
+        // We get the user id
+        QueryUserProfile queryUserProfile = new QueryUserProfile(publicName);
+        User user = queryUserProfile.getQueryResult();
+        idUser = user.getId();
+    }
 
     /**
-     * Post the request, and get the data to our model's objects
+     * Post the request to insert the user
      */
-    public void findAll() {
+    public void deleteAccount() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -40,23 +47,18 @@ public class QueryHosts extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("",""); // Get all the values
-            //params.put("param2", "getAllUser");
-            //params.put("param3", "Prototip");
+            params.put("requestName","deleteItem");
+            params.put("itemId","\""+idUser+"\"");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
-
-            // GET READER FROM CONN (SUPER)
+            //Send the data
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
-
-            // PARSER
-            JsonArray jarray = getArrayFromJson(in, null); // "Only Json Objects
-
-            // MAKE OBJECTS
+            // Taking and analyzing the answer
+            JsonArray jarray = getArrayFromJson(in, null); // Only Json Objects
             makeFromJson(jarray);
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.e("Error","Retrieving data");
+            Log.i("Error","Deleting user");
         } finally {
             close();
         }
@@ -104,20 +106,24 @@ public class QueryHosts extends Connection{
     }
 
     /**
-     * Make the objects TournamentHosts from Array
-     * @param jarray
+     * Make the object User from Array
      */
     private void makeFromJson(JsonArray jarray){
-        for (int i=0; i<jarray.size(); i++){
-            TournamentHost tHost = new TournamentHost();
-            JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-            tHost.setId(jsonobject.get("idTournamentHost").getAsInt());
-            tHost.setName(jsonobject.get("name").getAsString());
-            this.queryResult.add(tHost);
-        }
+        JsonObject jsonObject=jarray.get(0).getAsJsonObject();
+        this.deleteRowsNum = jsonObject.get("deleteRowsNum").getAsInt();
     }
 
-    public List<TournamentHost> getQueryResult() {
-        return queryResult;
+    /**
+     * Get the number of rows deleted
+     * @return number of rows deleted
+     */
+    public int getDeleteRowsNum() {
+        return deleteRowsNum;
     }
+
+    /**
+     * Get the user id
+     * @return user id
+     */
+    public int getIdUser() { return idUser; }
 }

@@ -28,7 +28,6 @@
     <string name="eMail">e-Mail</string>
     <string name="signIn">Sign In!</string>
     <string name="clear">Clear</string>
-    <string name="nickname">Nickname</string>
     <string name="marvin">MARVIN</string>
     <string name="tournamentManager">tournament manager</string>
     <string name="accept">Accept</string>
@@ -58,8 +57,10 @@
     <string name="yesDeleteMyAccount">Yes, delete my account</string>
     <string name="noKeepMyAccount">No, keep my account</string>
     <string name="youHave">"You have "</string>
-    <string name="zero">"0"</string>
+    <string name="zero">0</string>
     <string name="unclaimedPrizes">" unclaimed prizes."</string>
     <string name="unclaimedPrizesSingular">" unclaimed prize."</string>
     <string name="incorrectLogin">Incorrect user/password</string>
+    <string name="nickname">Public Name</string>
+    <string name="no">no</string>
 </resources>

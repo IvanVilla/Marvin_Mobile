@@ -1,4 +1,4 @@
-package dataFromServer;
+package data;
 
 import android.util.Log;
 
@@ -15,31 +15,27 @@ import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import model.user.User;
-
 /**
- * Given a publicName, we delete the user on the server side
- * Created by Klaussius on 14/12/2016.
+ * Authentication on server side
+ * @autor Iván Villa
  */
 
-public class QueryDeleteAccount extends Connection {
+public class QueryUserPassword extends Connection {
+    private int queryResult;
+    private String name;
+    private String password;
     private final static String PHP_QUERY_FILE = "usersQuery.php";
     private String queryURL;
-    private int idUser;
-    private int deleteRowsNum;
 
-    public QueryDeleteAccount(String publicName)
-    {
-        // We get the user id
-        QueryUserProfile queryUserProfile = new QueryUserProfile(publicName);
-        User user = queryUserProfile.getQueryResult();
-        idUser = user.getId();
+    public QueryUserPassword (String name, String password){
+        this.name=name;
+        this.password=password;
     }
 
     /**
-     * Post the request to insert the user
+     * Post the request, and get the data to our model's objects
      */
-    public void deleteAccount() {
+    public void retrieveAnswer() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -47,18 +43,24 @@ public class QueryDeleteAccount extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName","deleteItem");
-            params.put("itemId","\""+idUser+"\"");
+            params.put("requestName","userLogin"); // Get all the values
+            params.put("userPublicName",this.name);
+            params.put("userPassword",this.password);
+
             byte[] postDataBytes = putParams(params); // Aux Method to make post
-            //Send the data
+
+            // GET READER FROM CONN (SUPER)
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
-            // Taking and analyzing the answer
-            JsonArray jarray = getArrayFromJson(in, null); // Only Json Objects
+
+            // PARSER
+            JsonArray jarray = getArrayFromJson(in, null); // "Only Json Objects
+
+            // MAKE OBJECTS
             makeFromJson(jarray);
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.i("Error","Deleting user");
+            Log.i("Error","Retrieving data");
         } finally {
             close();
         }
@@ -106,24 +108,19 @@ public class QueryDeleteAccount extends Connection {
     }
 
     /**
-     * Make the object User from Array
+     * Make the objects Tournament from Array
+     * @param jarray
      */
     private void makeFromJson(JsonArray jarray){
         JsonObject jsonObject=jarray.get(0).getAsJsonObject();
-        this.deleteRowsNum = jsonObject.get("deleteRowsNum").getAsInt();
+        queryResult=jsonObject.get("loginResult").getAsInt();
     }
 
     /**
-     * Get the number of rows deleted
-     * @return number of rows deleted
+     * Result of the query
+     * @return result of the query
      */
-    public int getDeleteRowsNum() {
-        return deleteRowsNum;
+    public int getQueryResult() {
+        return queryResult;
     }
-
-    /**
-     * Get the user id
-     * @return user id
-     */
-    public int getIdUser() { return idUser; }
 }

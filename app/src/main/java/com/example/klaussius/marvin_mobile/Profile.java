@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import dataFromServer.QueryUserProfile;
+import data.QueryUserProfile;
 import model.user.User;
 import utils.CheckPrizes;
 

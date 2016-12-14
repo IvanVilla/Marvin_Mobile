@@ -3,7 +3,7 @@ package utils;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import dataFromServer.QueryUserPassword;
+import data.QueryUserPassword;
 
 /**
  * Log in with a real account

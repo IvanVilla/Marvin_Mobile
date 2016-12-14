@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-import dataFromServer.QueryHosts;
+import data.QueryHosts;
 import model.host.TournamentHost;
 
 /**

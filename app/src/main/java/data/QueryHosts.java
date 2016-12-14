@@ -1,4 +1,4 @@
-package dataFromServer;
+package data;
 
 import android.util.Log;
 
@@ -12,30 +12,27 @@ import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
+import model.host.TournamentHost;
+
 /**
- * Authentication on server side
- * @autor Iván Villa
+ * Connect and retrieve the hosts
+ * @author Iván Villa
  */
+public class QueryHosts extends Connection{
 
-public class QueryUserPassword extends Connection {
-    private int queryResult;
-    private String name;
-    private String password;
-    private final static String PHP_QUERY_FILE = "usersQuery.php";
+    private List<TournamentHost> queryResult = new ArrayList<>();
+    private final static String PHP_QUERY_FILE = "hostsQuery.php";
     private String queryURL;
-
-    public QueryUserPassword (String name, String password){
-        this.name=name;
-        this.password=password;
-    }
 
     /**
      * Post the request, and get the data to our model's objects
      */
-    public void retrieveAnswer() {
+    public void findAll() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -43,10 +40,9 @@ public class QueryUserPassword extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName","userLogin"); // Get all the values
-            params.put("userPublicName",this.name);
-            params.put("userPassword",this.password);
-
+            params.put("",""); // Get all the values
+            //params.put("param2", "getAllUser");
+            //params.put("param3", "Prototip");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
 
             // GET READER FROM CONN (SUPER)
@@ -60,7 +56,7 @@ public class QueryUserPassword extends Connection {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.i("Error","Retrieving data");
+            Log.e("Error","Retrieving data");
         } finally {
             close();
         }
@@ -108,19 +104,20 @@ public class QueryUserPassword extends Connection {
     }
 
     /**
-     * Make the objects Tournament from Array
+     * Make the objects TournamentHosts from Array
      * @param jarray
      */
     private void makeFromJson(JsonArray jarray){
-        JsonObject jsonObject=jarray.get(0).getAsJsonObject();
-        queryResult=jsonObject.get("loginResult").getAsInt();
+        for (int i=0; i<jarray.size(); i++){
+            TournamentHost tHost = new TournamentHost();
+            JsonObject jsonobject = jarray.get(i).getAsJsonObject();
+            tHost.setId(jsonobject.get("idTournamentHost").getAsInt());
+            tHost.setName(jsonobject.get("name").getAsString());
+            this.queryResult.add(tHost);
+        }
     }
 
-    /**
-     * Result of the query
-     * @return result of the query
-     */
-    public int getQueryResult() {
+    public List<TournamentHost> getQueryResult() {
         return queryResult;
     }
 }

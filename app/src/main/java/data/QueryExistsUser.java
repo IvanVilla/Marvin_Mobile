@@ -1,4 +1,4 @@
-package dataFromServer;
+package data;
 
 import android.util.Log;
 
@@ -12,26 +12,27 @@ import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
-import model.tournament.Tournament;
-
 /**
- * Connect and retrieve the tournaments
- * @author Iván Villa
+ * Created by Klaussius on 14/12/2016.
  */
-public class QueryTournaments extends Connection{
-    private List<Tournament> queryResult = new ArrayList<>();
-    private final static String PHP_QUERY_FILE = "tournamentsQueryOld.php";
+
+public class QueryExistsUser extends Connection{
+    private final static String PHP_QUERY_FILE = "usersQuery.php";
     private String queryURL;
+    private String name;
+    private boolean exists;
+
+    public QueryExistsUser(String name){
+        this.name=name;
+    }
 
     /**
-     * Post the request, and get the data to our model's objects
+     * Post the request to insert the user
      */
-    public void findAll() {
+    public void exitsUser() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -39,23 +40,20 @@ public class QueryTournaments extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("user",""); // Get all the values
-            //params.put("fields[0]", "idTournament");
-            //params.put("fields[1]", "name");
+            params.put("requestName","valueExists");
+            params.put("field","publicName");
+            params.put("value",name);
+
             byte[] postDataBytes = putParams(params); // Aux Method to make post
-
-            // GET READER FROM CONN (SUPER)
+            //Send the data
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
-
-            // PARSER
-            JsonArray jarray = getArrayFromJson(in, null); // "Only Json Objects
-
-            // MAKE OBJECTS
+            // Taking and analyzing the answer
+            JsonArray jarray = getArrayFromJson(in, null); // Only Json Objects
             makeFromJson(jarray);
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.e("Error","Retrieving data");
+            Log.i("Error","Sending data");
         } finally {
             close();
         }
@@ -103,25 +101,18 @@ public class QueryTournaments extends Connection{
     }
 
     /**
-     * Make the objects Tournament from Array
-     * @param jarray
+     * Make the object User from Array
      */
     private void makeFromJson(JsonArray jarray){
-        for (int i=0; i<jarray.size(); i++){
-            Tournament tournament = new Tournament();
-            JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-            tournament.setId(jsonobject.get("idTOURNAMENT").getAsInt());
-            tournament.setName(jsonobject.get("name").getAsString());
-            tournament.setPublicDes(jsonobject.get("publicDes").getAsString());
-            this.queryResult.add(tournament);
-        }
+        JsonObject jsonObject=jarray.get(0).getAsJsonObject();
+        this.exists = jsonObject.get("result").getAsBoolean();
     }
 
     /**
-     * The result of the query
-     * @return result of the query
+     * Get the insertion id
+     * @return insertion id
      */
-    public List<Tournament> getQueryResult() {
-        return queryResult;
+    public boolean getExists() {
+        return exists;
     }
 }

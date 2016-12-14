@@ -40,7 +40,7 @@
     <string name="tournamentManager">Gestor de Torneos</string>
     <string name="tournaments">Torneos</string>
     <string name="tournamentsPlayed">Torneos Jugados</string>
-    <string name="typePasswordAgain">Introduzca su nombre de usuario</string>
+    <string name="typePasswordAgain">Introduzca de nuevo su contraseña</string>
     <string name="userName">Nombre de usuario</string>
     <string name="userTag">Nombre de usuario</string>
     <string name="nickname">Nombre de usuario</string>
@@ -57,6 +57,7 @@
     <string name="unclaimedPrizes">" premios sin reclamar."</string>
     <string name="unclaimedPrizesSingular">" premio sin reclamar."</string>
     <string name="no">no</string>
-    <string name="zero">\"0\"</string>
+    <string name="zero">0</string>
     <string name="incorrectLogin">Usuario/Contraseña incorrecto</string>
+    <string name="areYouSure">¿Estás seguro?</string>
 </resources>

@@ -1,4 +1,4 @@
-package dataFromServer;
+package data;
 
 import android.util.Log;
 
@@ -12,29 +12,26 @@ import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
-import model.user.User;
+import model.tournament.Tournament;
 
 /**
- * Created by Klaussius on 14/12/2016.
+ * Connect and retrieve the tournaments
+ * @author Iván Villa
  */
-
-public class QueryCreateAccount extends Connection{
-    private final static String PHP_QUERY_FILE = "usersQuery.php";
+public class QueryTournaments extends Connection{
+    private List<Tournament> queryResult = new ArrayList<>();
+    private final static String PHP_QUERY_FILE = "tournamentsQueryOld.php";
     private String queryURL;
-    private User user;
-    private int insertionId;
-
-    public QueryCreateAccount(User user){
-        this.user=user;
-    }
 
     /**
-     * Post the request to insert the user
+     * Post the request, and get the data to our model's objects
      */
-    public void createAccount() {
+    public void findAll() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -42,19 +39,23 @@ public class QueryCreateAccount extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName","insertItem");
-            params.put("fields","[\"name\",\"publicName\",\"password\",\"phone\",\"eMail\"]");
-            params.put("values","[\""+user.getName()+"\",\""+user.getPublicName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
+            params.put("user",""); // Get all the values
+            //params.put("fields[0]", "idTournament");
+            //params.put("fields[1]", "name");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
-            //Send the data
+
+            // GET READER FROM CONN (SUPER)
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
-            // Taking and analyzing the answer
-            JsonArray jarray = getArrayFromJson(in, null); // Only Json Objects
+
+            // PARSER
+            JsonArray jarray = getArrayFromJson(in, null); // "Only Json Objects
+
+            // MAKE OBJECTS
             makeFromJson(jarray);
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.i("Error","Sending data");
+            Log.e("Error","Retrieving data");
         } finally {
             close();
         }
@@ -102,18 +103,25 @@ public class QueryCreateAccount extends Connection{
     }
 
     /**
-     * Make the object User from Array
+     * Make the objects Tournament from Array
+     * @param jarray
      */
     private void makeFromJson(JsonArray jarray){
-        JsonObject jsonObject=jarray.get(0).getAsJsonObject();
-        this.insertionId = jsonObject.get("insertionId").getAsInt();
+        for (int i=0; i<jarray.size(); i++){
+            Tournament tournament = new Tournament();
+            JsonObject jsonobject = jarray.get(i).getAsJsonObject();
+            tournament.setId(jsonobject.get("idTOURNAMENT").getAsInt());
+            tournament.setName(jsonobject.get("name").getAsString());
+            tournament.setPublicDes(jsonobject.get("publicDes").getAsString());
+            this.queryResult.add(tournament);
+        }
     }
 
     /**
-     * Get the insertion id
-     * @return insertion id
+     * The result of the query
+     * @return result of the query
      */
-    public int getInsertionId() {
-        return insertionId;
+    public List<Tournament> getQueryResult() {
+        return queryResult;
     }
 }

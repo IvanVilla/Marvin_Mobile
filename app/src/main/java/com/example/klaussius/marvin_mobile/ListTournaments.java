@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-import dataFromServer.QueryTournaments;
+import data.QueryTournaments;
 import model.tournament.Tournament;
 
 /**

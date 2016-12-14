@@ -1,25 +1,24 @@
 package com.example.klaussius.marvin_mobile;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import data.QueryCreateAccount;
+import data.QueryExistsUser;
+import model.user.User;
 
 /**
  * Form to sign in as new user
  * @author Iván Villa
  */
 public class SignInForm extends AppCompatActivity {
-    Button btClear;
-    Button btSignIn;
-    Button btCancel;
-    EditText etNickName;
-    EditText etName;
-    EditText etPassword;
-    EditText etPasswordAgain;
-    EditText etEmail;
+    Button btClear, btSignIn, btCancel;
+    EditText etPublicName, etName, etPassword, etPasswordAgain, etEmail, etPhone;
 
     /**
      * Inicialices the parameters and controls
@@ -30,11 +29,12 @@ public class SignInForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
         // Inicializo los campos de texto
-        etNickName = (EditText)findViewById(R.id.etNickName);
+        etPublicName = (EditText)findViewById(R.id.etPublicName);
         etName = (EditText)findViewById(R.id.etName);
         etPassword = (EditText)findViewById(R.id.etPassword);
         etPasswordAgain = (EditText)findViewById(R.id.etPasswordAgain);
         etEmail = (EditText)findViewById(R.id.etEmail);
+        etPhone = (EditText)findViewById(R.id.etPhone);
         // Inicializo botón de limpieza y añado listener
         btClear = (Button)findViewById(R.id.btClear);
         btClear.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,7 @@ public class SignInForm extends AppCompatActivity {
      * Clean the form
      */
     public void clear(){
-        etNickName.setText("");
+        etPublicName.setText("");
         etName.setText("");
         etPassword.setText("");
         etPasswordAgain.setText("");
@@ -76,8 +76,32 @@ public class SignInForm extends AppCompatActivity {
      * Acceps the form
      */
     public void signIn(){
-        Intent myIntent = new Intent(this,Working.class);
-        startActivity(myIntent);
+        QueryExistsUser queryExistsUser = new QueryExistsUser(etName.getText().toString());
+        queryExistsUser.exitsUser();
+        if (queryExistsUser.getExists()){
+            // If the user name exits already, we dont do the insert
+            Toast toast = Toast.makeText(getApplicationContext(),"Sorry, the user with that name exists.", Toast.LENGTH_SHORT);
+            toast.show();
+            etPublicName.setText("");
+        } else if (!etPassword.getText().toString().equals(etPasswordAgain.getText().toString())){
+            Log.i("Passwords matchs",etPassword.getText().toString()+"="+etPasswordAgain.getText().toString());
+            // If the password fields dont match between them, we dont do the insert
+            Toast toast = Toast.makeText(getApplicationContext(),"Sorry, the passwords dont match.", Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            // We do the insert
+            Log.i("Insert","All is fine, we do the insert!");
+            User user = new User();
+            user.setName(etName.getText().toString());
+            user.setPublicName(etPublicName.getText().toString());
+            user.setPassword(etPassword.getText().toString());
+            user.seteMail(etEmail.getText().toString());
+            user.setPhone(etPhone.getText().toString());
+            QueryCreateAccount queryCreateAccount = new QueryCreateAccount(user);
+            queryCreateAccount.createAccount();
+            // We close the activity
+            this.finish();
+        }
     }
 
     /**

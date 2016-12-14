@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import dataFromServer.QueryDeleteAccount;
+import data.QueryDeleteAccount;
 
 /**
  * This class is for confirmation the delete of one account
