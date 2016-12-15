@@ -25,7 +25,8 @@ import model.tournament.Tournament;
  */
 public class QueryTournaments extends Connection{
     private List<Tournament> queryResult = new ArrayList<>();
-    private final static String PHP_QUERY_FILE = "tournamentsQueryOld.php";
+    private final static String PHP_QUERY_FILE = "tournamentsQuery.php";
+    private final static String REQUEST_NAME="";
     private String queryURL;
 
     /**
@@ -39,7 +40,7 @@ public class QueryTournaments extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("user",""); // Get all the values
+            params.put("user",REQUEST_NAME); // Get all the values
             //params.put("fields[0]", "idTournament");
             //params.put("fields[1]", "name");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
@@ -55,7 +56,7 @@ public class QueryTournaments extends Connection{
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.e("Error","Retrieving data");
+            Log.e("Tournaments","Error");
         } finally {
             close();
         }

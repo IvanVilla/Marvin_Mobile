@@ -27,6 +27,7 @@
         <activity android:name=".Working" />
         <activity android:name=".Profile" />
         <activity android:name=".ProfileDeleteConfirmation" />
+        <activity android:name=".ProfileEdit"></activity>
     </application>
 
 </manifest>

@@ -54,7 +54,7 @@ public class QueryCreateAccount extends Connection{
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.i("Error","Sending data");
+            Log.i("Create account","Error");
         } finally {
             close();
         }

@@ -27,6 +27,7 @@ public class QueryUserProfile extends Connection {
 
     private String name;
     private final static String PHP_QUERY_FILE = "usersQuery.php";
+    private final static String REQUEST_NAME="customSearch";
     private String queryURL;
 
     public QueryUserProfile (String name){
@@ -45,7 +46,7 @@ public class QueryUserProfile extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName","customSearch");
+            params.put("requestName",REQUEST_NAME);
             params.put("fields","[\"idUser\",\"name\",\"publicName\", \"phone\",\"eMail\"]");
             params.put("filterFields","[publicName]");
             params.put("filterArguments","[\""+this.name+"\"]");
@@ -63,7 +64,7 @@ public class QueryUserProfile extends Connection {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.i("Error","Retrieving data");
+            Log.i("User Profile","Error");
         } finally {
             close();
         }

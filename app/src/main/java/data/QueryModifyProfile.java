@@ -12,28 +12,30 @@ import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
-import model.host.TournamentHost;
+import model.user.User;
 
 /**
- * Connect and retrieve the hosts
- * @author Iván Villa
+ * Modify data from one profile
+ * Created by Klaussius on 15/12/2016.
  */
-public class QueryHosts extends Connection{
-
-    private List<TournamentHost> queryResult = new ArrayList<>();
-    private final static String PHP_QUERY_FILE = "hostsQuery.php";
-    private final static String REQUEST_NAME="";
+public class QueryModifyProfile extends Connection{
+    private final static String PHP_QUERY_FILE = "usersQuery.php";
+    private final static String REQUEST_NAME="modifyItem";
     private String queryURL;
+    private User user;
+    private int modifiedRowsNum;
+
+    public QueryModifyProfile(User user){
+        this.user=user;
+    }
 
     /**
-     * Post the request, and get the data to our model's objects
+     * Post the request to insert the user
      */
-    public void findAll() {
+    public void updateProfile() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -41,23 +43,26 @@ public class QueryHosts extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("",REQUEST_NAME); // Get all the values
-            //params.put("param2", "getAllUser");
-            //params.put("param3", "Prototip");
+            params.put("requestName",REQUEST_NAME);
+            params.put("itemId",user.getId());
+
+            if (user.getPassword()!=""){
+                params.put("fields","[\"name\",\"password\",\"phone\",\"eMail\"]");
+                params.put("values","[\""+user.getName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
+            } else {
+                params.put("fields","[\"name\",\"phone\",\"eMail\"]");
+                params.put("values","[\""+user.getName()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
+            }
             byte[] postDataBytes = putParams(params); // Aux Method to make post
-
-            // GET READER FROM CONN (SUPER)
+            //Send the data
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
-
-            // PARSER
-            JsonArray jarray = getArrayFromJson(in, null); // "Only Json Objects
-
-            // MAKE OBJECTS
+            // Taking and analyzing the answer
+            JsonArray jarray = getArrayFromJson(in, null); // Only Json Objects
             makeFromJson(jarray);
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.e("Hosts","Error");
+            Log.i("Modify Profile","Error");
         } finally {
             close();
         }
@@ -81,6 +86,7 @@ public class QueryHosts extends Connection{
                 postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
             }
             postDataBytes = postData.toString().getBytes("UTF-8");
+            Log.i("Post",postData.toString());
         } catch (UnsupportedEncodingException ex) {
         }
         return postDataBytes;
@@ -105,20 +111,18 @@ public class QueryHosts extends Connection{
     }
 
     /**
-     * Make the objects TournamentHosts from Array
-     * @param jarray
+     * Make the object User from Array
      */
     private void makeFromJson(JsonArray jarray){
-        for (int i=0; i<jarray.size(); i++){
-            TournamentHost tHost = new TournamentHost();
-            JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-            tHost.setId(jsonobject.get("idTournamentHost").getAsInt());
-            tHost.setName(jsonobject.get("name").getAsString());
-            this.queryResult.add(tHost);
-        }
+        JsonObject jsonObject=jarray.get(0).getAsJsonObject();
+        this.modifiedRowsNum = jsonObject.get("modifiedRowsNum").getAsInt();
     }
 
-    public List<TournamentHost> getQueryResult() {
-        return queryResult;
+    /**
+     * Get the insertion id
+     * @return insertion id
+     */
+    public int getModifiedRowsNum() {
+        return modifiedRowsNum;
     }
 }

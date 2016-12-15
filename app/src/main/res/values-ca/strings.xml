@@ -67,4 +67,5 @@
     <string name="userTag">Malnom</string>
     <string name="yesDeleteMyAccount">Sí. Esborrar el meu compte</string>
     <string name="youHave">\"Tens \"</string>
+    <string name="passwordNotRequired">La contrasenya serà la mateixa</string>
 </resources>

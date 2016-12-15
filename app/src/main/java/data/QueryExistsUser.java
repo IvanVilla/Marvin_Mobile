@@ -21,6 +21,7 @@ import java.util.Map;
 
 public class QueryExistsUser extends Connection{
     private final static String PHP_QUERY_FILE = "usersQuery.php";
+    private final static String REQUEST_NAME="valueExists";
     private String queryURL;
     private String name;
     private boolean exists;
@@ -40,7 +41,7 @@ public class QueryExistsUser extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName","valueExists");
+            params.put("requestName",REQUEST_NAME);
             params.put("field","publicName");
             params.put("value",name);
 
@@ -53,7 +54,7 @@ public class QueryExistsUser extends Connection{
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.i("Error","Sending data");
+            Log.i("Exists user","Error");
         } finally {
             close();
         }

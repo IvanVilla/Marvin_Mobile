@@ -131,6 +131,7 @@ public class LoginForm extends AppCompatActivity {
             saveUserName(userName);
             Intent profile = new Intent(this, Profile.class);
             startActivity(profile);
+            this.finish();
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),R.string.incorrectLogin, Toast.LENGTH_SHORT);
             toast.show();
@@ -145,6 +146,7 @@ public class LoginForm extends AppCompatActivity {
         Intent signInForm = new Intent(this, SignInForm.class);
         clearForm();
         startActivity(signInForm);
+        this.finish();
     }
 
     /**

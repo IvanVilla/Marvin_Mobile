@@ -25,6 +25,7 @@ public class QueryUserPassword extends Connection {
     private String name;
     private String password;
     private final static String PHP_QUERY_FILE = "usersQuery.php";
+    private final static String REQUEST_NAME="userLogin";
     private String queryURL;
 
     public QueryUserPassword (String name, String password){
@@ -43,7 +44,7 @@ public class QueryUserPassword extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName","userLogin"); // Get all the values
+            params.put("requestName",REQUEST_NAME); // Get all the values
             params.put("userPublicName",this.name);
             params.put("userPassword",this.password);
 
@@ -60,7 +61,7 @@ public class QueryUserPassword extends Connection {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.i("Error","Retrieving data");
+            Log.i("User/Password","Error");
         } finally {
             close();
         }

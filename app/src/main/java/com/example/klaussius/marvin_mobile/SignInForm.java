@@ -99,16 +99,24 @@ public class SignInForm extends AppCompatActivity {
     public void signIn(){
         QueryExistsUser queryExistsUser = new QueryExistsUser(etName.getText().toString());
         queryExistsUser.exitsUser();
+        // Conditions review before of doing the the insert
         if (queryExistsUser.getExists()){
-            // If the user name exits already, we dont do the insert
-            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.nameExists), Toast.LENGTH_SHORT);
-            toast.show();
+            toastMessage(getString(R.string.nameExists));
             etPublicName.setText("");
-        } else if (!etPassword.getText().toString().equals(etPasswordAgain.getText().toString())){
-            Log.i("Passwords matchs",etPassword.getText().toString()+"="+etPasswordAgain.getText().toString());
-            // If the password fields dont match between them, we dont do the insert
-            Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.passwordNotMatch), Toast.LENGTH_SHORT);
-            toast.show();
+        } else if (!etPassword.getText().toString().equals(etPasswordAgain.getText().toString())) {
+            toastMessage(getString(R.string.passwordNotMatch));
+        }else if (etPublicName.getText().toString().length()==0) {
+            toastMessage(getString(R.string.publicNameRequired));
+        }else if (etName.getText().toString().length()==0) {
+            toastMessage(getString(R.string.nameRequired));
+        }else if (etPassword.getText().toString().length()==0) {
+            toastMessage(getString(R.string.passwordRequired));
+        }else if (etPasswordAgain.getText().toString().length()==0) {
+            toastMessage(getString(R.string.passwordRequired));
+        }else if (etEmail.getText().toString().length()==0) {
+            getString(R.string.eMailRequired);
+        }else if (etPhone.getText().toString().length()==0) {
+            getString(R.string.phoneNumberRequired);
         } else {
             // We do the insert
             Log.i("Insert","All is fine, we do the insert!");
@@ -123,6 +131,15 @@ public class SignInForm extends AppCompatActivity {
             // We close the activity
             this.finish();
         }
+    }
+
+    /**
+     * Send a toast message
+     * @param message the message
+     */
+    public void toastMessage(String message){
+        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     /**

@@ -70,4 +70,5 @@
     <string name="phoneNumberRequired">Phone number is required!</string>
     <string name="nameExists">The user with that name exists.</string>
     <string name="passwordNotMatch">The passwords do not match.</string>
+    <string name="passwordWillBeSame">The password will be the same</string>
 </resources>

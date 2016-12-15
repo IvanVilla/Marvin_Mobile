@@ -97,6 +97,7 @@ public class MainMenu extends AppCompatActivity {
     public void launchTournaments(){
         Intent myIntent = new Intent(this,ListTournaments.class);
         startActivity(myIntent);
+        this.finish();
     }
 
     /**
@@ -105,6 +106,7 @@ public class MainMenu extends AppCompatActivity {
     public void launchHosts(){
         Intent myIntent = new Intent(this,ListHosts.class);
         startActivity(myIntent);
+        this.finish();
     }
 
     /**
@@ -113,6 +115,7 @@ public class MainMenu extends AppCompatActivity {
     public void launchRankings(){
         Intent myIntent = new Intent(this,Working.class);
         startActivity(myIntent);
+        this.finish();
     }
 
     /**
@@ -121,6 +124,7 @@ public class MainMenu extends AppCompatActivity {
     public void launchMessages(){
         Intent myIntent = new Intent(this,Working.class);
         startActivity(myIntent);
+        this.finish();
     }
 
     /**
@@ -129,6 +133,7 @@ public class MainMenu extends AppCompatActivity {
     public void launchProfile(){
         Intent myIntent = new Intent(this,Profile.class);
         startActivity(myIntent);
+        this.finish();
     }
 
     /**
@@ -140,6 +145,7 @@ public class MainMenu extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("marvinName","");
         editor.commit();
-        this.finish();
+        Intent myIntent = new Intent(this,SignInForm.class);
+        startActivity(myIntent);
     }
 }

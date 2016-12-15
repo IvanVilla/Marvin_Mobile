@@ -67,4 +67,5 @@
     <string name="nameRequired">¡El nombre es necesario!</string>
     <string name="nameExists">Ya existe un usuario con ese nombre</string>
     <string name="eMailRequired">¡El e-mail es necesario!</string>
+    <string name="passwordNotRequired">La contraseña no cambiará</string>
 </resources>

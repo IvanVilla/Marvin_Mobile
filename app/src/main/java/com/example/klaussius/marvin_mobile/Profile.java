@@ -26,7 +26,7 @@ public class Profile extends AppCompatActivity {
     ImageView ivPrizeBox;
 
     //My User
-    User myUser;
+    User user;
     //Prizes number
     int prizesNumber;
 
@@ -40,9 +40,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         //Get data from server
-        Log.i("Shared name",loadUserName());
-        myUser=new QueryUserProfile(loadUserName()).getQueryResult();
-
+        user =new QueryUserProfile(loadUserName()).getQueryResult();
         //TextView user prizes
         tvPrizeNumber = (TextView)findViewById(R.id.tvPrizeNumber);
         tvUnclaimedPrizes = (TextView)findViewById(R.id.tvUnclaimedPrizes);
@@ -64,10 +62,10 @@ public class Profile extends AppCompatActivity {
         tvEmail = (TextView)findViewById(R.id.tvEMail);
         tvPhone = (TextView)findViewById(R.id.tvPhone);
         //Fill the fields
-        tvName.setText(myUser.getName());
-        tvPublicName.setText(myUser.getPublicName());
-        tvEmail.setText(myUser.geteMail());
-        tvPhone.setText(myUser.getPhone());
+        tvName.setText(user.getName());
+        tvPublicName.setText(user.getPublicName());
+        tvEmail.setText(user.geteMail());
+        tvPhone.setText(user.getPhone());
         //Button to edit
         btEdit = (Button)findViewById(R.id.btEdit);
         btEdit.setOnClickListener(new View.OnClickListener() {
@@ -116,8 +114,9 @@ public class Profile extends AppCompatActivity {
      * Begins the edit activity
      */
     private void edit(){
-        Intent myIntent = new Intent(this,Working.class);
+        Intent myIntent = new Intent(this,ProfileEdit.class);
         startActivity(myIntent);
+        this.finish();
     }
 
     /**
@@ -126,6 +125,7 @@ public class Profile extends AppCompatActivity {
     private void mainMenu(){
         Intent myIntent = new Intent(this,MainMenu.class);
         startActivity(myIntent);
+        this.finish();
     }
 
     /**
@@ -134,12 +134,18 @@ public class Profile extends AppCompatActivity {
     private void deleteMyUser(){
         Intent myIntent = new Intent(this,ProfileDeleteConfirmation.class);
         startActivity(myIntent);
+        this.finish();
     }
 
     /**
      * Finish current activity
      */
     private void exit(){
+        Log.i("SharedPreferences","Cleaning Username");
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("marvinName","");
+        editor.commit();
         this.finish();
     }
 }
