@@ -16,6 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import model.host.TournamentHost;
+import model.utils.GPS;
 
 /**
  * Connect and retrieve the hosts
@@ -44,8 +45,8 @@ public class QueryHosts extends Connection{
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
             params.put(REQUEST_NAME,CUSTOM_SEARCH); // Get all the values
-            params.put(FIELDS,"name");
-            params.put(FILTER_FIELDS,"idTournamentHost");
+            params.put(FIELDS,"[\"name\",\"phone\",\"adress\",\"eMail\",\"latitude\",\"longitude\"]");
+            params.put(FILTER_FIELDS,"\"idTournamentHost\"");
             params.put(FILTER_ARGUMENTS,this.idTournamentHost);
             //params.put("param2", "getAllUser");
             //params.put("param3", "Prototip");
@@ -115,8 +116,16 @@ public class QueryHosts extends Connection{
      */
     private void makeFromJson(JsonArray jarray){
         JsonObject jsonobject = jarray.get(0).getAsJsonObject();
-        this.queryResult.setId(jsonobject.get("idTournamentHost").getAsInt());
         this.queryResult.setName(jsonobject.get("name").getAsString());
+        this.queryResult.setPhone(jsonobject.get("phone").getAsString());
+        this.queryResult.setAdress(jsonobject.get("adress").getAsString());
+        this.queryResult.seteMail(jsonobject.get("eMail").getAsString());
+        // GPS of the host
+        GPS gps = new GPS();
+        gps.setLatitude(jsonobject.get("latitude").getAsFloat());
+        gps.setLongitude(jsonobject.get("longitude").getAsFloat());
+        queryResult.setGps(gps);
+        Log.i("Host",this.queryResult.getName()+" "+this.queryResult.getPhone()+" "+this.queryResult.getAdress()+" "+this.queryResult.geteMail()+" "+this.queryResult.getGps().getLatitude()+" "+this.queryResult.getGps().getLongitude());
     }
 
     /**

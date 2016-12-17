@@ -68,4 +68,10 @@
     <string name="nameExists">Ya existe un usuario con ese nombre</string>
     <string name="eMailRequired">¡El e-mail es necesario!</string>
     <string name="passwordNotRequired">La contraseña no cambiará</string>
+    <string name="passwordWillBeSame">La contraseña no cambiará</string>
+    <string name="takePart">¡Apuntarse!</string>
+    <string name="maxPlayers">Plazas máximas:</string>
+    <string name="leaveTournament">Borrarse</string>
+    <string name="date">Fecha:</string>
+    <string name="minPlayers">Mínimo número de jugadores</string>
 </resources>

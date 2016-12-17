@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -64,15 +65,28 @@ public class ListTournaments extends AppCompatActivity {
         }
     }
 
-    private void mostrarDatos(List<Tournament> datos){
+    private void mostrarDatos(final List<Tournament> datos){
         // Paso los datos a un ListView
         String textos[]=new String[myData.getQueryResult().size()];
         for (int i = 0; i<textos.length; i++){
             Tournament tournament = myData.getQueryResult().get(i);
-            textos[i]=tournament.getName()+"\n"+tournament.getPublicDes()+"\n"+tournament.getHost().getName();
+            textos[i]=tournament.getName();
         }
         ArrayAdapter<String> itemsAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,textos);
         lvContent.setAdapter(itemsAdapter);
+        lvContent.setClickable(true);
+        lvContent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Tournament tournament = datos.get(i);
+                Intent intent = new Intent(ListTournaments.this,MenuTournament.class);
+                intent.putExtra("title",tournament.getName());
+                intent.putExtra("description",tournament.getPublicDes());
+                intent.putExtra("maxPlayers",tournament.getTournamentSystem().getMaxPlayers());
+                intent.putExtra("minPlayers",tournament.getTournamentSystem().getMinPlayers());
+                startActivity(intent);
+            }
+        });
     }
 
     private void takeMeBack(){

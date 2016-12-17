@@ -68,4 +68,10 @@
     <string name="yesDeleteMyAccount">Sí. Esborrar el meu compte</string>
     <string name="youHave">\"Tens \"</string>
     <string name="passwordNotRequired">La contrasenya serà la mateixa</string>
+    <string name="passwordWillBeSame">La contrasenya serà la mateixa</string>
+    <string name="takePart">Apuntar-se</string>
+    <string name="maxPlayers">Places màximes:</string>
+    <string name="leaveTournament">Esborrar-se</string>
+    <string name="date">Data:</string>
+    <string name="minPlayers">Mínim nombre de jugadors:</string>
 </resources>

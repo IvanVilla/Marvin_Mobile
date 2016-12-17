@@ -84,7 +84,6 @@ public class MainMenu extends AppCompatActivity {
     public void launchTournaments(){
         Intent myIntent = new Intent(this,ListTournaments.class);
         startActivity(myIntent);
-        this.finish();
     }
 
     /**
@@ -92,7 +91,6 @@ public class MainMenu extends AppCompatActivity {
      */
     public void launchRankings(){
         startActivity(new Intent(this,Working.class));
-        this.finish();
     }
 
     /**
@@ -100,7 +98,6 @@ public class MainMenu extends AppCompatActivity {
      */
     public void launchMessages(){
         startActivity(new Intent(this,Working.class));
-        this.finish();
     }
 
     /**
@@ -108,7 +105,6 @@ public class MainMenu extends AppCompatActivity {
      */
     public void launchProfile(){
         startActivity(new Intent(this,Profile.class));
-        this.finish();
     }
 
     /**

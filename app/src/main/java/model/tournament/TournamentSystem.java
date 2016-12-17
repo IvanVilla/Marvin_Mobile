@@ -7,7 +7,7 @@ package model.tournament;
  * Store tournament system
  * @author Iván Villa
  */
-public class System {
+public class TournamentSystem {
     private int id;
     private String name;
     private int maxPlayers;
@@ -30,7 +30,7 @@ public class System {
      * @param maxTeamPlayer max players in one team
      * @param pointSystem point system
      */
-    public System(int id, String name, int maxPlayers, int minPlayers, int nRounds, int nPlayoffs, int matchPlayers, int maxTeamPlayer, PointSystem pointSystem) {
+    public TournamentSystem(int id, String name, int maxPlayers, int minPlayers, int nRounds, int nPlayoffs, int matchPlayers, int maxTeamPlayer, PointSystem pointSystem) {
         this.id = id;
         this.name = name;
         this.maxPlayers = maxPlayers;
@@ -45,7 +45,7 @@ public class System {
     /**
      * Constructor simple
      */
-    public System() {
+    public TournamentSystem() {
     }
 
     // GETTERS AND SETTERS

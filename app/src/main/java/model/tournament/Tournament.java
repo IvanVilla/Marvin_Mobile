@@ -26,7 +26,7 @@ public class Tournament {
     private List<User> umpires;
     private List<TournamentPlayer> players;
     private List<Round> rounds;
-    private System system;
+    private TournamentSystem tournamentSystem;
 
     /**
      * Constructor with parameters
@@ -43,9 +43,9 @@ public class Tournament {
      * @param umpires umpires' list
      * @param players players' list
      * @param rounds rounds' list
-     * @param system tournament system
+     * @param tournamentSystem tournament tournamentSystem
      */
-    public Tournament(int id, String name, String publicDes, String privateDes, String image, MyDate date, String status, Game game, TournamentHost host, List<Prize> prizes, List<User> umpires, List<TournamentPlayer> players, List<Round> rounds, System system) {
+    public Tournament(int id, String name, String publicDes, String privateDes, String image, MyDate date, String status, Game game, TournamentHost host, List<Prize> prizes, List<User> umpires, List<TournamentPlayer> players, List<Round> rounds, TournamentSystem tournamentSystem) {
         this.id = id;
         this.name = name;
         this.publicDes = publicDes;
@@ -59,7 +59,7 @@ public class Tournament {
         this.umpires = umpires;
         this.players = players;
         this.rounds = rounds;
-        this.system = system;
+        this.tournamentSystem = tournamentSystem;
     }
 
     /**
@@ -277,18 +277,18 @@ public class Tournament {
     }
 
     /**
-     * Get the system
+     * Get the tournamentSystem
      * @return the systems' list
      */
-    public System getSystem() {
-        return system;
+    public TournamentSystem getTournamentSystem() {
+        return tournamentSystem;
     }
 
     /**
-     * Set the system
-     * @param system the systems' list
+     * Set the tournamentSystem
+     * @param tournamentSystem the systems' list
      */
-    public void setSystem(System system) {
-        this.system = system;
+    public void setTournamentSystem(TournamentSystem tournamentSystem) {
+        this.tournamentSystem = tournamentSystem;
     }
 }

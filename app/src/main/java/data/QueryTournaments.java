@@ -17,7 +17,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import model.host.TournamentHost;
 import model.tournament.Tournament;
+import model.tournament.TournamentSystem;
 
 /**
  * Connect and retrieve the tournaments
@@ -111,8 +113,18 @@ public class QueryTournaments extends Connection{
             tournament.setId(jsonobject.get("idTOURNAMENT").getAsInt());
             tournament.setName(jsonobject.get("name").getAsString());
             tournament.setPublicDes(jsonobject.get("publicDes").getAsString());
-            // We take the host for the tournament
-            tournament.setHost(new QueryHosts(jsonobject.get("host").getAsInt()).getQueryResult());
+            // We take the system for the tournament
+            TournamentSystem tournamentSystem = new TournamentSystem();
+            tournamentSystem.setMaxPlayers(jsonobject.get("maxPlayers").getAsInt());
+            tournamentSystem.setMinPlayers(jsonobject.get("minPlayers").getAsInt());
+            tournament.setTournamentSystem(tournamentSystem);
+            // We take the host for the tournament            ;
+            int host_id = jsonobject.get("TOURNAMENT_HOST_idTournamentHost").getAsInt();
+            QueryHosts queryHosts = new QueryHosts(host_id);
+            queryHosts.findHost();
+            TournamentHost tournamentHost = queryHosts.getQueryResult();
+            tournament.setHost(tournamentHost);
+
             // We add the object Tournament
             this.queryResult.add(tournament);
         }
