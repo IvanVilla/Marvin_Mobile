@@ -82,4 +82,5 @@
     <string name="acceptConditions">Do you accept conditions?</string>
     <string name="continue">Continue</string>
     <string name="eulaTitle">EULA</string>
+    <string name="continuethis">Continue</string>
 </resources>
