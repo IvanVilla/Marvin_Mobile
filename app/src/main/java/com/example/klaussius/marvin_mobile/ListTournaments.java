@@ -1,5 +1,6 @@
 package com.example.klaussius.marvin_mobile;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -67,13 +68,15 @@ public class ListTournaments extends AppCompatActivity {
         // Paso los datos a un ListView
         String textos[]=new String[myData.getQueryResult().size()];
         for (int i = 0; i<textos.length; i++){
-            textos[i] = myData.getQueryResult().get(i).getName()+"\n"+myData.getQueryResult().get(i).getPublicDes();
+            Tournament tournament = myData.getQueryResult().get(i);
+            textos[i]=tournament.getName()+"\n"+tournament.getPublicDes()+"\n"+tournament.getHost().getName();
         }
         ArrayAdapter<String> itemsAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,textos);
         lvContent.setAdapter(itemsAdapter);
     }
 
     private void takeMeBack(){
+        startActivity(new Intent(this,MainMenu.class));
         this.finish();
     }
 }

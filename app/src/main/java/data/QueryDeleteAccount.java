@@ -24,7 +24,6 @@ import model.user.User;
 
 public class QueryDeleteAccount extends Connection {
     private final static String PHP_QUERY_FILE = "usersQuery.php";
-    private final static String REQUEST_NAME="deleteItem";
     private String queryURL;
     private int idUser;
     private int deleteRowsNum;
@@ -48,8 +47,8 @@ public class QueryDeleteAccount extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName",REQUEST_NAME);
-            params.put("itemId","\""+idUser+"\"");
+            params.put(REQUEST_NAME,DELETE_ITEM);
+            params.put(ITEM_ID,"\""+idUser+"\"");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
             //Send the data
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);

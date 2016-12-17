@@ -51,8 +51,7 @@ public class ProfileDeleteConfirmation extends AppCompatActivity {
     public void deleteAccount(){
         QueryDeleteAccount queryDeleteAccount = new QueryDeleteAccount(loadUserName());
         queryDeleteAccount.deleteAccount();
-        Intent myIntent = new Intent(this,LoginForm.class);
-        startActivity(myIntent);
+        startActivity(new Intent(this,LoginForm.class));
         this.finish();
     }
 
@@ -60,6 +59,7 @@ public class ProfileDeleteConfirmation extends AppCompatActivity {
      * This method close the activity without changes
      */
     public void closeThis(){
+        startActivity(new Intent(this,LoginForm.class));
         this.finish();
     }
 

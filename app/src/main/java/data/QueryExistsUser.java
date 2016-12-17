@@ -41,9 +41,9 @@ public class QueryExistsUser extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName",REQUEST_NAME);
-            params.put("field","publicName");
-            params.put("value",name);
+            params.put(REQUEST_NAME,VALUE_EXISTS);
+            params.put(FIELD,"publicName");
+            params.put(VALUE,name);
 
             byte[] postDataBytes = putParams(params); // Aux Method to make post
             //Send the data

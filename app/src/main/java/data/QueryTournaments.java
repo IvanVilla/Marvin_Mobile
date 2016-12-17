@@ -26,7 +26,6 @@ import model.tournament.Tournament;
 public class QueryTournaments extends Connection{
     private List<Tournament> queryResult = new ArrayList<>();
     private final static String PHP_QUERY_FILE = "tournamentsQuery.php";
-    private final static String REQUEST_NAME="";
     private String queryURL;
 
     /**
@@ -40,9 +39,7 @@ public class QueryTournaments extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("user",REQUEST_NAME); // Get all the values
-            //params.put("fields[0]", "idTournament");
-            //params.put("fields[1]", "name");
+            params.put(REQUEST_NAME,ALL_VALUES); // Get all the values
             byte[] postDataBytes = putParams(params); // Aux Method to make post
 
             // GET READER FROM CONN (SUPER)
@@ -109,11 +106,14 @@ public class QueryTournaments extends Connection{
      */
     private void makeFromJson(JsonArray jarray){
         for (int i=0; i<jarray.size(); i++){
-            Tournament tournament = new Tournament();
+            Tournament tournament = new Tournament(); // For the tournament
             JsonObject jsonobject = jarray.get(i).getAsJsonObject();
             tournament.setId(jsonobject.get("idTOURNAMENT").getAsInt());
             tournament.setName(jsonobject.get("name").getAsString());
             tournament.setPublicDes(jsonobject.get("publicDes").getAsString());
+            // We take the host for the tournament
+            tournament.setHost(new QueryHosts(jsonobject.get("host").getAsInt()).getQueryResult());
+            // We add the object Tournament
             this.queryResult.add(tournament);
         }
     }

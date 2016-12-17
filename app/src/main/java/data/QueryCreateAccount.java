@@ -42,9 +42,9 @@ public class QueryCreateAccount extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName","insertItem");
-            params.put("fields","[\"name\",\"publicName\",\"password\",\"phone\",\"eMail\"]");
-            params.put("values","[\""+user.getName()+"\",\""+user.getPublicName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
+            params.put(REQUEST_NAME,INSERT_ITEM);
+            params.put(FIELDS,"[\"name\",\"publicName\",\"password\",\"phone\",\"eMail\"]");
+            params.put(VALUES,"[\""+user.getName()+"\",\""+user.getPublicName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
             //Send the data
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);

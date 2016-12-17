@@ -129,9 +129,7 @@ public class LoginForm extends AppCompatActivity {
         LogIn myLogin = new LogIn(userName,userPassword);
         if (myLogin.login()){
             saveUserName(userName);
-            Intent profile = new Intent(this, Profile.class);
-            startActivity(profile);
-            this.finish();
+            startActivity(new Intent(this, Profile.class));
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),R.string.incorrectLogin, Toast.LENGTH_SHORT);
             toast.show();
@@ -143,10 +141,8 @@ public class LoginForm extends AppCompatActivity {
      * SignIn action
      */
     public void signIn(){
-        Intent signInForm = new Intent(this, SignInForm.class);
         clearForm();
-        startActivity(signInForm);
-        this.finish();
+        startActivity(new Intent(this, SignInForm.class));
     }
 
     /**

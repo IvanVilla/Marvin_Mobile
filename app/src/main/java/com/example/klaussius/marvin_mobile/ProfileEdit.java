@@ -104,6 +104,7 @@ public class ProfileEdit extends AppCompatActivity {
      * If you cancel, the activity finish
      */
     private void cancel(){
+        startActivity(new Intent(this,Profile.class));
         this.finish();
     }
 
@@ -135,8 +136,7 @@ public class ProfileEdit extends AppCompatActivity {
             QueryModifyProfile queryModifyProfile = new QueryModifyProfile(user);
             queryModifyProfile.updateProfile();
             // We close the activity
-            Intent myIntent = new Intent(this,Profile.class);
-            startActivity(myIntent);
+            startActivity(new Intent(this,Profile.class));
             this.finish();
         }
     }

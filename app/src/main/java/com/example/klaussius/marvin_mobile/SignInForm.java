@@ -1,5 +1,6 @@
 package com.example.klaussius.marvin_mobile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -129,6 +130,7 @@ public class SignInForm extends AppCompatActivity {
             QueryCreateAccount queryCreateAccount = new QueryCreateAccount(user);
             queryCreateAccount.createAccount();
             // We close the activity
+            startActivity(new Intent(this,LoginForm.class));
             this.finish();
         }
     }
@@ -145,6 +147,9 @@ public class SignInForm extends AppCompatActivity {
     /**
      * Cancel the form
      */
-    public void cancel() { this.finish(); }
+    public void cancel() {
+        startActivity(new Intent(this,LoginForm.class));
+        this.finish();
+    }
 
 }

@@ -27,7 +27,6 @@ public class QueryUserProfile extends Connection {
 
     private String name;
     private final static String PHP_QUERY_FILE = "usersQuery.php";
-    private final static String REQUEST_NAME="customSearch";
     private String queryURL;
 
     public QueryUserProfile (String name){
@@ -46,10 +45,10 @@ public class QueryUserProfile extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName",REQUEST_NAME);
-            params.put("fields","[\"idUser\",\"name\",\"publicName\", \"phone\",\"eMail\"]");
-            params.put("filterFields","[publicName]");
-            params.put("filterArguments","[\""+this.name+"\"]");
+            params.put(REQUEST_NAME,CUSTOM_SEARCH);
+            params.put(FIELDS,"[\"idUser\",\"name\",\"publicName\", \"phone\",\"eMail\"]");
+            params.put(FILTER_FIELDS,"[publicName]");
+            params.put(FILTER_ARGUMENTS,"[\""+this.name+"\"]");
 
             byte[] postDataBytes = putParams(params); // Aux Method to make post
 

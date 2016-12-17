@@ -12,9 +12,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import model.host.TournamentHost;
@@ -25,15 +23,19 @@ import model.host.TournamentHost;
  */
 public class QueryHosts extends Connection{
 
-    private List<TournamentHost> queryResult = new ArrayList<>();
+    private TournamentHost queryResult = new TournamentHost();
     private final static String PHP_QUERY_FILE = "hostsQuery.php";
-    private final static String REQUEST_NAME="";
     private String queryURL;
+    private int idTournamentHost;
+
+    public QueryHosts(int idTournamentHost){
+        this.idTournamentHost=idTournamentHost;
+    }
 
     /**
      * Post the request, and get the data to our model's objects
      */
-    public void findAll() {
+    public void findHost() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -41,7 +43,10 @@ public class QueryHosts extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("",REQUEST_NAME); // Get all the values
+            params.put(REQUEST_NAME,CUSTOM_SEARCH); // Get all the values
+            params.put(FIELDS,"name");
+            params.put(FILTER_FIELDS,"idTournamentHost");
+            params.put(FILTER_ARGUMENTS,this.idTournamentHost);
             //params.put("param2", "getAllUser");
             //params.put("param3", "Prototip");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
@@ -109,16 +114,16 @@ public class QueryHosts extends Connection{
      * @param jarray
      */
     private void makeFromJson(JsonArray jarray){
-        for (int i=0; i<jarray.size(); i++){
-            TournamentHost tHost = new TournamentHost();
-            JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-            tHost.setId(jsonobject.get("idTournamentHost").getAsInt());
-            tHost.setName(jsonobject.get("name").getAsString());
-            this.queryResult.add(tHost);
-        }
+        JsonObject jsonobject = jarray.get(0).getAsJsonObject();
+        this.queryResult.setId(jsonobject.get("idTournamentHost").getAsInt());
+        this.queryResult.setName(jsonobject.get("name").getAsString());
     }
 
-    public List<TournamentHost> getQueryResult() {
+    /**
+     * Returns the query result
+     * @return the query result
+     */
+    public TournamentHost getQueryResult() {
         return queryResult;
     }
 }

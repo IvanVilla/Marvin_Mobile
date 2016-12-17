@@ -25,7 +25,6 @@ public class QueryUserPassword extends Connection {
     private String name;
     private String password;
     private final static String PHP_QUERY_FILE = "usersQuery.php";
-    private final static String REQUEST_NAME="userLogin";
     private String queryURL;
 
     public QueryUserPassword (String name, String password){
@@ -44,9 +43,9 @@ public class QueryUserPassword extends Connection {
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName",REQUEST_NAME); // Get all the values
-            params.put("userPublicName",this.name);
-            params.put("userPassword",this.password);
+            params.put(REQUEST_NAME,USER_LOGIN); // Get all the values
+            params.put(USER_NAME,this.name);
+            params.put(USER_PASSWORD,this.password);
 
             byte[] postDataBytes = putParams(params); // Aux Method to make post
 

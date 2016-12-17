@@ -49,13 +49,6 @@
             android:backgroundTint="@android:color/holo_green_light" />
 
         <Button
-            android:text="@string/tournamentHosts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btHosts"
-            android:backgroundTint="@android:color/holo_green_light" />
-
-        <Button
             android:text="@string/btRankings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

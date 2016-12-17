@@ -16,12 +16,7 @@ import android.widget.TextView;
  */
 public class MainMenu extends AppCompatActivity {
 
-    Button btTournaments;
-    Button btHosts;
-    Button btRankings;
-    Button btMessages;
-    Button btProfile;
-    Button btLogOut;
+    Button btTournaments, btRankings, btMessages, btProfile, btLogOut;
     TextView hello;
 
     @Override
@@ -37,14 +32,6 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 launchTournaments();
-            }
-        });
-        //Button for Hosts
-        btHosts = (Button)findViewById(R.id.btHosts);
-        btHosts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchHosts();
             }
         });
         //Button for Rankings
@@ -101,20 +88,10 @@ public class MainMenu extends AppCompatActivity {
     }
 
     /**
-     * Launch hosts activity
-     */
-    public void launchHosts(){
-        Intent myIntent = new Intent(this,ListHosts.class);
-        startActivity(myIntent);
-        this.finish();
-    }
-
-    /**
      * Launch rankings activity
      */
     public void launchRankings(){
-        Intent myIntent = new Intent(this,Working.class);
-        startActivity(myIntent);
+        startActivity(new Intent(this,Working.class));
         this.finish();
     }
 
@@ -122,8 +99,7 @@ public class MainMenu extends AppCompatActivity {
      * Launch messages activity
      */
     public void launchMessages(){
-        Intent myIntent = new Intent(this,Working.class);
-        startActivity(myIntent);
+        startActivity(new Intent(this,Working.class));
         this.finish();
     }
 
@@ -131,8 +107,7 @@ public class MainMenu extends AppCompatActivity {
      * Launch profile activity
      */
     public void launchProfile(){
-        Intent myIntent = new Intent(this,Profile.class);
-        startActivity(myIntent);
+        startActivity(new Intent(this,Profile.class));
         this.finish();
     }
 
@@ -145,7 +120,7 @@ public class MainMenu extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("marvinName","");
         editor.commit();
-        Intent myIntent = new Intent(this,SignInForm.class);
-        startActivity(myIntent);
+        startActivity( new Intent(this,SignInForm.class));
+        this.finish();
     }
 }

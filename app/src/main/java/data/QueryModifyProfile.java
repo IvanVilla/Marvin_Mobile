@@ -23,7 +23,6 @@ import model.user.User;
  */
 public class QueryModifyProfile extends Connection{
     private final static String PHP_QUERY_FILE = "usersQuery.php";
-    private final static String REQUEST_NAME="modifyItem";
     private String queryURL;
     private User user;
     private int modifiedRowsNum;
@@ -43,15 +42,15 @@ public class QueryModifyProfile extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put("requestName",REQUEST_NAME);
-            params.put("itemId",user.getId());
+            params.put(REQUEST_NAME,MODIFY_ITEM);
+            params.put(ITEM_ID,user.getId());
 
             if (user.getPassword()!=""){
-                params.put("fields","[\"name\",\"password\",\"phone\",\"eMail\"]");
-                params.put("values","[\""+user.getName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
+                params.put(FIELDS,"[\"name\",\"password\",\"phone\",\"eMail\"]");
+                params.put(VALUES,"[\""+user.getName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
             } else {
-                params.put("fields","[\"name\",\"phone\",\"eMail\"]");
-                params.put("values","[\""+user.getName()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
+                params.put(FIELDS,"[\"name\",\"phone\",\"eMail\"]");
+                params.put(VALUES,"[\""+user.getName()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
             }
             byte[] postDataBytes = putParams(params); // Aux Method to make post
             //Send the data

@@ -114,8 +114,7 @@ public class Profile extends AppCompatActivity {
      * Begins the edit activity
      */
     private void edit(){
-        Intent myIntent = new Intent(this,ProfileEdit.class);
-        startActivity(myIntent);
+        startActivity(new Intent(this,ProfileEdit.class));
         this.finish();
     }
 
@@ -123,8 +122,7 @@ public class Profile extends AppCompatActivity {
      * Open the main menú
      */
     private void mainMenu(){
-        Intent myIntent = new Intent(this,MainMenu.class);
-        startActivity(myIntent);
+        startActivity(new Intent(this,MainMenu.class));
         this.finish();
     }
 
@@ -132,8 +130,7 @@ public class Profile extends AppCompatActivity {
      * Open the delete user menu
      */
     private void deleteMyUser(){
-        Intent myIntent = new Intent(this,ProfileDeleteConfirmation.class);
-        startActivity(myIntent);
+        startActivity(new Intent(this,ProfileDeleteConfirmation.class));
         this.finish();
     }
 
