@@ -68,14 +68,18 @@ public class MenuTournament extends AppCompatActivity {
      * Sign in the tournament
      */
     private void inscription(){
-        toastMessage("The inscription was sucessful");
+        toastMessage("The inscription was sucessful!");
+        btInscription.setVisibility(View.GONE);
+        btDeleteInscription.setVisibility(View.VISIBLE);
     }
 
     /**
      * Dissmis participation in the tournament
      */
     private void deleteInscription(){
-        toastMessage("The inscription was deleted");
+        toastMessage("The inscription was deleted!");
+        btDeleteInscription.setVisibility(View.GONE);
+        btInscription.setVisibility(View.VISIBLE);
     }
 
     /**

@@ -1,12 +1,20 @@
 package data;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.Proxy;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Map;
 
 /**
  * Makes the connection
@@ -65,5 +73,46 @@ public class Connection {
      */
     public void close(){
         if (con!=null) {con.disconnect();}
+    }
+
+    /**
+     * Build the POST message to send to PHP server
+     * @param params parameters of the webservice
+     * @return byte[] with the parameters
+     */
+    protected byte[] putParams(Map<String, Object> params) {
+        byte[] postDataBytes = null;
+        try {
+            StringBuilder postData = new StringBuilder();
+            for (Map.Entry<String, Object> param : params.entrySet()) {
+                if (postData.length() != 0) {
+                    postData.append('&');
+                }
+                postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+                postData.append('=');
+                postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+            }
+            postDataBytes = postData.toString().getBytes("UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+        }
+        return postDataBytes;
+    }
+
+    /**
+     * Process the JSON and retorn an JSON array to build the objects
+     * @param in Reader from the connection
+     * @param node Name of the JSON object, null if it's one array
+     * @return The array of JSON objects
+     */
+    protected JsonArray getArrayFromJson (Reader in, String node){
+        JsonArray jarray = null;
+        JsonElement jelement = new JsonParser().parse(in);
+        if ( node != null){
+            JsonObject jobject = jelement.getAsJsonObject();
+            jarray = jobject.getAsJsonArray(node);
+        } else {
+            jarray = jelement.getAsJsonArray();
+        }
+        return jarray;
     }
 }

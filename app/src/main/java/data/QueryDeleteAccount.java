@@ -65,47 +65,6 @@ public class QueryDeleteAccount extends Connection {
     }
 
     /**
-     * Build the POST message to send to PHP server
-     * @param params parameters of the webservice
-     * @return byte[] with the parameters
-     */
-    private byte[] putParams(Map<String, Object> params) {
-        byte[] postDataBytes = null;
-        try {
-            StringBuilder postData = new StringBuilder();
-            for (Map.Entry<String, Object> param : params.entrySet()) {
-                if (postData.length() != 0) {
-                    postData.append('&');
-                }
-                postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
-                postData.append('=');
-                postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
-            }
-            postDataBytes = postData.toString().getBytes("UTF-8");
-        } catch (UnsupportedEncodingException ex) {
-        }
-        return postDataBytes;
-    }
-
-    /**
-     * Process the JSON and retorn an JSON array to build the objects
-     * @param in Reader from the connection
-     * @param node Name of the JSON object, null if it's one array
-     * @return The array of JSON objects
-     */
-    private JsonArray getArrayFromJson (Reader in, String node){
-        JsonArray jarray = null;
-        JsonElement jelement = new JsonParser().parse(in);
-        if ( node != null){
-            JsonObject jobject = jelement.getAsJsonObject();
-            jarray = jobject.getAsJsonArray(node);
-        } else {
-            jarray = jelement.getAsJsonArray();
-        }
-        return jarray;
-    }
-
-    /**
      * Make the object User from Array
      */
     private void makeFromJson(JsonArray jarray){
