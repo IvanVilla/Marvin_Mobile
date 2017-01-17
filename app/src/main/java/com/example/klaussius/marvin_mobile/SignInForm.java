@@ -9,9 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import data.QueryCreateAccount;
 import data.QueryExistsUser;
-import model.user.User;
 
 /**
  * Form to sign in as new user
@@ -98,8 +96,8 @@ public class SignInForm extends AppCompatActivity {
      * Accepts the form
      */
     public void signIn(){
-        QueryExistsUser queryExistsUser = new QueryExistsUser(etName.getText().toString());
-        queryExistsUser.exitsUser();
+        QueryExistsUser queryExistsUser = new QueryExistsUser(etPublicName.getText().toString());
+        queryExistsUser.existsUser();
         // Conditions review before of doing the the insert
         if (queryExistsUser.getExists()){
             toastMessage(getString(R.string.nameExists));
@@ -120,17 +118,16 @@ public class SignInForm extends AppCompatActivity {
             getString(R.string.phoneNumberRequired);
         } else {
             // We do the insert
-            Log.i("Insert","All is fine, we do the insert!");
-            User user = new User();
-            user.setName(etName.getText().toString());
-            user.setPublicName(etPublicName.getText().toString());
-            user.setPassword(etPassword.getText().toString());
-            user.seteMail(etEmail.getText().toString());
-            user.setPhone(etPhone.getText().toString());
-            QueryCreateAccount queryCreateAccount = new QueryCreateAccount(user);
-            queryCreateAccount.createAccount();
+            Log.i("Insert","All is fine, we go for the EULA form to do the insert!");
+            // We open the EULA activity
+            Intent eulaIntent = new Intent(this, EulaForm.class);
+            eulaIntent.putExtra("name",etName.getText().toString());
+            eulaIntent.putExtra("publicName",etPublicName.getText().toString());
+            eulaIntent.putExtra("password",etPassword.getText().toString());
+            eulaIntent.putExtra("eMail",etEmail.getText().toString());
+            eulaIntent.putExtra("phone",etPhone.getText().toString());
             // We close the activity
-            startActivity(new Intent(this,LoginForm.class));
+            startActivity(eulaIntent);
             this.finish();
         }
     }

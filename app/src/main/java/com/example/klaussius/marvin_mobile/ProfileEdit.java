@@ -113,7 +113,7 @@ public class ProfileEdit extends AppCompatActivity {
      */
     private void updateProfile(){
         QueryExistsUser queryExistsUser = new QueryExistsUser(etName.getText().toString());
-        queryExistsUser.exitsUser();
+        queryExistsUser.existsUser();
         // Conditions review before of doing the the insert
         if (!etPassword.getText().toString().equals(etRepeatPassword.getText().toString())) {
             toastMessage(getString(R.string.passwordNotMatch));

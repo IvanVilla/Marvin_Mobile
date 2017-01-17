@@ -3,81 +3,91 @@
  */
 package model.utils;
 
+import java.util.Calendar;
+
 /**
  * Almacena un día, mes, año
  * @author Iván Villa
  */
 public class MyDate {
-    private int Day;
-    private int Month;
-    private int Year;
+    private int day;
+    private int month;
+    private int year;
 
     /**
-     * Constructor con parámetros
-     * @param Day día
-     * @param Month mes
-     * @param Year año
+     * Constructor with parameters
+     * @param Day day
+     * @param Month month
+     * @param Year year
      */
     public MyDate(int Day, int Month, int Year) {
-        this.Day = Day;
-        this.Month = Month;
-        this.Year = Year;
+        this.day = Day;
+        this.month = Month;
+        this.year = Year;
     }
 
     /**
-     * Constructor sin parámetros
+     * Constructor without parameters: we take actual day
      */
     public MyDate() {
+        Calendar rightNow = Calendar.getInstance();
+        this.day = rightNow.get(Calendar.DAY_OF_MONTH);
+        this.month = rightNow.get(Calendar.MONTH)+1;
+        this.year = rightNow.get(Calendar.YEAR);
     }
     
     //GETTERS y SETTERS
 
     /**
-     *
-     * @return
+     * Returns the day
+     * @return Day
      */
     public int getDay() {
-        return Day;
+        return day;
     }
 
     /**
-     *
+     * Set the day
      * @param Day
      */
     public void setDay(int Day) {
-        this.Day = Day;
+        this.day = Day;
     }
 
     /**
-     *
-     * @return
+     * Returns the month
+     * @return Month
      */
     public int getMonth() {
-        return Month;
+        return month;
     }
 
     /**
-     *
+     * Set the mont
      * @param Month
      */
     public void setMonth(int Month) {
-        this.Month = Month;
+        this.month = Month;
     }
 
     /**
-     *
-     * @return
+     * Returns the year
+     * @return Year
      */
     public int getYear() {
-        return Year;
+        return year;
     }
 
     /**
-     *
-     * @param Year
+     * Set the Year
+     * @param Year Year
      */
     public void setYear(int Year) {
-        this.Year = Year;
+        this.year = Year;
     }
-    
+
+    @Override
+    public String toString() {
+        return year + "-" + month + "-" + day;
+    }
 }

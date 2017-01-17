@@ -74,4 +74,11 @@
     <string name="leaveTournament">Borrarse</string>
     <string name="date">Fecha:</string>
     <string name="minPlayers">Mínimo número de jugadores</string>
+    <string name="eulaTitle">EULA</string>
+    <string name="eula">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="continuethis">Continuar</string>
+    <string name="acceptAds">Desea recibir notificaciones comerciales?</string>
+    <string name="acceptConditions">¿Acepta las condiciones?</string>
+    <string name="acceptEULA">Debe aceptar las condiciones del servicio antes de continuar.</string>
+    <string name="userDoesntExists">Ese nombre de usuario no existe</string>
 </resources>

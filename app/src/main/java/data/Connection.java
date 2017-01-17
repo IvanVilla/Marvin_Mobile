@@ -25,6 +25,7 @@ public class Connection {
 
     private HttpURLConnection con;
     protected final static String API_URL="http://marvin-server.duckdns.org/";
+    protected String queryURL;
     // Request Names
     protected final static String REQUEST_NAME="requestName";
     protected final static String CUSTOM_SEARCH="customSearch";

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import data.QueryExistsUser;
 import utils.LogIn;
 
 /**
@@ -78,7 +79,7 @@ public class LoginForm extends AppCompatActivity {
                 endApp();
             }
         });
-        //Todo Test Button
+        // Testing button
         btTestFeature = (Button)findViewById(R.id.btTestFeature);
         btTestFeature.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,10 +91,12 @@ public class LoginForm extends AppCompatActivity {
         return true;
     }
 
-    //Todo test test test
+    /**
+     * Testing feeature
+     */
     public void testFeature() {
-        Toast toast = Toast.makeText(getApplicationContext(),"You touch my tralalá", Toast.LENGTH_SHORT);
-        toast.show();
+
+        toastMessage("");
     }
 
     @Override
@@ -121,19 +124,23 @@ public class LoginForm extends AppCompatActivity {
      * Go to login action
      */
     public void login(){
-        // Comprobamos el login
-        // Leemos lo escrito por el usuario
         String userName = etName.getText().toString();
         String userPassword = etPassword.getText().toString();
-        // Comprobamos
-        LogIn myLogin = new LogIn(userName,userPassword);
-        if (myLogin.login()){
-            saveUserName(userName);
-            startActivity(new Intent(this, Profile.class));
+        // If there is no user with that name
+        QueryExistsUser queryExistsUser = new QueryExistsUser(userName);
+        queryExistsUser.existsUser();
+        if (queryExistsUser.getExists()){
+            // We try the user/password combination
+            LogIn myLogin = new LogIn(userName,userPassword);
+            if (myLogin.login()){
+                saveUserName(userName);
+                startActivity(new Intent(this, Profile.class));
+            } else {
+                toastMessage(getString(R.string.incorrectLogin));
+                etPassword.setText("");
+            }
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(),R.string.incorrectLogin, Toast.LENGTH_SHORT);
-            toast.show();
-            etPassword.setText("");
+            toastMessage(getString(R.string.userDoesntExists));
         }
     }
 
@@ -152,6 +159,7 @@ public class LoginForm extends AppCompatActivity {
     {
         saveUserName("");
         this.finish();
+        System.exit(0);
     }
 
     /**
@@ -163,5 +171,14 @@ public class LoginForm extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("marvinName",username);
         editor.commit();
+    }
+
+    /**
+     * Send a toast message
+     * @param message the message
+     */
+    public void toastMessage(String message){
+        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

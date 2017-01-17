@@ -82,4 +82,6 @@
     <string name="acceptConditions">Do you accept conditions?</string>
     <string name="eulaTitle">EULA</string>
     <string name="continuethis">Continue</string>
+    <string name="acceptEULA">You must accept the conditions of service before continuing.</string>
+    <string name="userDoesntExists">That user name does not exists.</string>
 </resources>

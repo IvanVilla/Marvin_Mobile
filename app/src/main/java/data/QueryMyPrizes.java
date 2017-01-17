@@ -11,24 +11,26 @@ import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import model.user.User;
+
 /**
- * Created by Klaussius on 14/12/2016.
+ * Retuns user's prizes
+ * Created by Klaussius on 17/01/2017.
  */
 
-public class QueryExistsUser extends Connection{
+public class QueryMyPrizes extends Connection {
     private final static String PHP_QUERY_FILE = "usersQuery.php";
-    private final static String REQUEST_NAME= "requestName";
-    private String name;
-    private boolean exists;
+    private User user;
+    private int insertionId;
 
-    public QueryExistsUser(String name){
-        this.name=name;
+    public QueryMyPrizes(User user){
+        this.user=user;
     }
 
     /**
      * Post the request to insert the user
      */
-    public void existsUser() {
+    public void createAccount() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -36,18 +38,19 @@ public class QueryExistsUser extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put(REQUEST_NAME,VALUE_EXISTS);
-            params.put(FIELD,"publicName");
-            params.put(VALUE,name);
+            params.put(REQUEST_NAME,INSERT_ITEM);
+            params.put(FIELDS,"[\"name\",\"publicName\",\"password\",\"phone\",\"eMail\",\"ads\"]");
+            params.put(VALUES,"[\""+user.getName()+"\",\""+user.getPublicName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\",\""+user.getAds()+"\"]");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
             //Send the data
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
             // Taking and analyzing the answer
             JsonArray jarray = getArrayFromJson(in, null); // Only Json Objects
             makeFromJson(jarray);
+
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.i("Exists user","Error");
+            Log.i("Create account","Error");
         } finally {
             close();
         }
@@ -58,14 +61,14 @@ public class QueryExistsUser extends Connection{
      */
     private void makeFromJson(JsonArray jarray){
         JsonObject jsonObject=jarray.get(0).getAsJsonObject();
-        this.exists = jsonObject.get("result").getAsBoolean();
+        this.insertionId = jsonObject.get("insertionId").getAsInt();
     }
 
     /**
      * Get the insertion id
      * @return insertion id
      */
-    public boolean getExists() {
-        return exists;
+    public int getInsertionId() {
+        return insertionId;
     }
 }

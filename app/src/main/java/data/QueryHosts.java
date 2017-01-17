@@ -3,15 +3,11 @@ package data;
 import android.util.Log;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -26,7 +22,6 @@ public class QueryHosts extends Connection{
 
     private TournamentHost queryResult = new TournamentHost();
     private final static String PHP_QUERY_FILE = "hostsQuery.php";
-    private String queryURL;
     private int idTournamentHost;
 
     public QueryHosts(int idTournamentHost){

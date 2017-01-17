@@ -3,15 +3,11 @@ package data;
 import android.util.Log;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -25,7 +21,6 @@ public class QueryUserPassword extends Connection {
     private String name;
     private String password;
     private final static String PHP_QUERY_FILE = "usersQuery.php";
-    private String queryURL;
 
     public QueryUserPassword (String name, String password){
         this.name=name;

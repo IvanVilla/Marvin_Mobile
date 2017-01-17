@@ -288,7 +288,7 @@ public class User {
      * Get if the user wants to get ads
      * @return true (yes), false (no)
      */
-    public boolean isAds() {
+    public boolean getAds() {
         return ads;
     }
 

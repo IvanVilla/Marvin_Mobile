@@ -3,15 +3,11 @@ package data;
 import android.util.Log;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -28,7 +24,6 @@ import model.tournament.TournamentSystem;
 public class QueryTournaments extends Connection{
     private List<Tournament> queryResult = new ArrayList<>();
     private final static String PHP_QUERY_FILE = "tournamentsQuery.php";
-    private String queryURL;
 
     /**
      * Post the request, and get the data to our model's objects

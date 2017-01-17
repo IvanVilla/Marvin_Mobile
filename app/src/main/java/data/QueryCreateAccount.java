@@ -3,27 +3,23 @@ package data;
 import android.util.Log;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.net.Proxy;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import model.user.User;
 
 /**
+ * This class creates one user account
  * Created by Klaussius on 14/12/2016.
  */
 
 public class QueryCreateAccount extends Connection{
     private final static String PHP_QUERY_FILE = "usersQuery.php";
-    private String queryURL;
     private User user;
     private int insertionId;
 
@@ -43,8 +39,8 @@ public class QueryCreateAccount extends Connection{
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
             params.put(REQUEST_NAME,INSERT_ITEM);
-            params.put(FIELDS,"[\"name\",\"publicName\",\"password\",\"phone\",\"eMail\"]");
-            params.put(VALUES,"[\""+user.getName()+"\",\""+user.getPublicName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\"]");
+            params.put(FIELDS,"[\"name\",\"publicName\",\"password\",\"phone\",\"eMail\",\"ads\"]");
+            params.put(VALUES,"[\""+user.getName()+"\",\""+user.getPublicName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\",\""+user.getAds()+"\"]");
             byte[] postDataBytes = putParams(params); // Aux Method to make post
             //Send the data
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
