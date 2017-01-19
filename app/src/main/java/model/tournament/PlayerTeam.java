@@ -46,5 +46,8 @@ public class PlayerTeam extends TournamentPlayer{
         this.player = player;
     }
     
-    
+    @Override
+    public String toString(){
+        return player.getDescription();
+    }
 }

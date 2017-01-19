@@ -41,6 +41,8 @@ public class TournamentPlayer {
     public void setRank(int rank) {
         this.rank = rank;
     }
-    
-    
+
+    public String toString(){
+        return null;
+    }
 }

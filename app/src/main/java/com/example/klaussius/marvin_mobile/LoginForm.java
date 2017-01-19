@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import data.QueryExistsUser;
-import data.QueryUserInTournament;
 import utils.LogIn;
 
 /**
@@ -90,16 +89,6 @@ public class LoginForm extends AppCompatActivity {
         });
 
         return true;
-    }
-
-    /**
-     * Testing feeature
-     */
-    public void testFeature() {
-        QueryUserInTournament queryUserInTournament = new QueryUserInTournament("Dent",1);
-        queryUserInTournament.executeQuery();
-        String message="Dent is in Tournametn 1?: "+queryUserInTournament.getSigned();
-        toastMessage(message);
     }
 
     @Override
@@ -184,5 +173,14 @@ public class LoginForm extends AppCompatActivity {
     public void toastMessage(String message){
         Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    /**
+     * Testing feeature
+     */
+    public void testFeature() {
+        Intent intent = new Intent(this,TournamentProgress.class);
+        intent.putExtra("round","0");
+        startActivity(intent);
     }
 }

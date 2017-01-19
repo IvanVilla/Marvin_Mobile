@@ -20,11 +20,11 @@ import model.user.User;
 
 public class QueryUserProfile extends Connection {
     private User queryResult;
-    private String name;
+    private String publicName;
     private final static String PHP_QUERY_FILE = "usersQuery.php";
 
-    public QueryUserProfile (String name){
-        this.name=name;
+    public QueryUserProfile (String publicName){
+        this.publicName=publicName;
         executeQuery();
     }
 
@@ -42,7 +42,7 @@ public class QueryUserProfile extends Connection {
             params.put(REQUEST_NAME,CUSTOM_SEARCH);
             params.put(FIELDS,"[\"idUser\",\"name\",\"publicName\", \"phone\",\"eMail\"]");
             params.put(FILTER_FIELDS,"[publicName]");
-            params.put(FILTER_ARGUMENTS,"[\""+this.name+"\"]");
+            params.put(FILTER_ARGUMENTS,"[\""+this.publicName+"\"]");
 
             byte[] postDataBytes = putParams(params); // Aux Method to make post
 

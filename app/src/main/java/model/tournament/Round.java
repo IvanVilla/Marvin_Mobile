@@ -30,6 +30,7 @@ public class Round {
      * Constructor simple
      */
     public Round() {
+        matches = new ArrayList<>();
     }
     
     // GETTERS AND SETTERS

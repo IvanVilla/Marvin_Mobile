@@ -45,5 +45,9 @@ public class PlayerIndividual extends TournamentPlayer{
     public void setPlayer(User player) {
         this.player = player;
     }
-    
+
+    @Override
+    public String toString(){
+        return player.getName();
+    }
 }

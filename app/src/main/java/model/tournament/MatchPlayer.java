@@ -59,6 +59,13 @@ public class MatchPlayer {
      */
     public void setPoints(int points) {
         this.points = points;
-    }    
-    
+    }
+
+    /**
+     * To String
+     * @return
+     */
+    public String toString(){
+        return null;
+    }
 }
