@@ -25,13 +25,13 @@ public class QueryUserProfile extends Connection {
 
     public QueryUserProfile (String name){
         this.name=name;
-        retrieveAnswer();
+        executeQuery();
     }
 
     /**
      * Post the request, and get the data to our model's objects
      */
-    public void retrieveAnswer() {
+    public void executeQuery() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");

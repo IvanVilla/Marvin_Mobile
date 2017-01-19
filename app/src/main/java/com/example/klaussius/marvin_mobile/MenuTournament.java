@@ -1,11 +1,16 @@
 package com.example.klaussius.marvin_mobile;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import data.QueryUserInTournament;
 
 /**
  * This class show us a tournament with all the data
@@ -14,6 +19,7 @@ public class MenuTournament extends AppCompatActivity {
 
     TextView tvTournamentTitle,tvPublicDes,tvDate,tvMaxPlayers,tvMinPlayers;
     Button btInscription,btDeleteInscription,btClose;
+    int tournamentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +57,25 @@ public class MenuTournament extends AppCompatActivity {
         });
 
         // Get the data from the intent
+        tournamentId=Integer.parseInt(getIntent().getStringExtra("idTournament"));
         tvTournamentTitle.setText(getIntent().getStringExtra("title"));
         tvPublicDes.setText(getIntent().getStringExtra("description"));
+        tvDate.setText(getIntent().getStringExtra("date"));
         tvMaxPlayers.setText(getIntent().getStringExtra("maxPlayers"));
         tvMinPlayers.setText(getIntent().getStringExtra("minPlayers"));
+
+        Log.i("Data for Tournament",tournamentId+","+tvTournamentTitle.getText().toString()+","+tvPublicDes.getText().toString()+","+tvMaxPlayers.getText().toString()+","+tvMinPlayers.getText().toString());
+
+        QueryUserInTournament queryUserInTournament = new QueryUserInTournament(loadUserName(),tournamentId);
+        queryUserInTournament.executeQuery();
+
+        if (queryUserInTournament.getSigned()==true){
+            btInscription.setVisibility(View.GONE);
+            btDeleteInscription.setVisibility(View.VISIBLE);
+        } else {
+            btInscription.setVisibility(View.VISIBLE);
+            btDeleteInscription.setVisibility(View.GONE);
+        }
     }
 
     /**
@@ -89,5 +110,14 @@ public class MenuTournament extends AppCompatActivity {
     public void toastMessage(String message){
         Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    /**
+     * Load the username from SharedPreferences
+     */
+    public String loadUserName(){
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        Log.i("Shared name",prefs.getString("marvinName",""));
+        return prefs.getString("marvinName","");
     }
 }

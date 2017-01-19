@@ -35,6 +35,36 @@ public class MyDate {
         this.month = rightNow.get(Calendar.MONTH)+1;
         this.year = rightNow.get(Calendar.YEAR);
     }
+
+    /**
+     * Constructor with datetime format string
+     * @param dateTime
+     */
+    public MyDate(String dateTime){
+        this.year=Integer.parseInt(dateTime.split(" ")[0].split("-")[2]);
+        this.month=Integer.parseInt(dateTime.split(" ")[0].split("-")[1]);
+        this.year=Integer.parseInt(dateTime.split(" ")[0].split("-")[0]);
+    }
+
+    /**
+     * If a date is in the future
+     * @return true if yes, false if not
+     */
+    public boolean isFuture(){
+        MyDate today = new MyDate();
+        if (this.year>today.getYear()){
+            return true;
+        } else if (this.year==today.getYear()){
+            if (this.month>today.getMonth()){
+                return true;
+            } else if (this.month==today.getMonth()){
+                if (this.day>today.getDay()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     
     //GETTERS y SETTERS
 

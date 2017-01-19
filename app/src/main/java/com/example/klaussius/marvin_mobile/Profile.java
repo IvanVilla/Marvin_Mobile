@@ -11,9 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import data.QueryUserPrizes;
 import data.QueryUserProfile;
 import model.user.User;
-import utils.CheckPrizes;
 
 /**
  * The profile of the user
@@ -46,7 +46,11 @@ public class Profile extends AppCompatActivity {
         tvUnclaimedPrizes = (TextView)findViewById(R.id.tvUnclaimedPrizes);
 
         //ImageView prizeBox
-        prizesNumber = new CheckPrizes().check();
+        //Retrieving our prizes
+        QueryUserPrizes queryUserPrizes = new QueryUserPrizes(loadUserName());
+        queryUserPrizes.executeQuery();
+        prizesNumber = queryUserPrizes.getQueryResult().size();
+        // Filling our fields
         ivPrizeBox = (ImageView)findViewById(R.id.ivPrizeBox);
         if(prizesNumber>0){
             ivPrizeBox.setImageResource(R.drawable.userhasprizes);

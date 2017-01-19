@@ -17,7 +17,6 @@ import java.util.Map;
 
 public class QueryExistsUser extends Connection{
     private final static String PHP_QUERY_FILE = "usersQuery.php";
-    private final static String REQUEST_NAME= "requestName";
     private String name;
     private boolean exists;
 
@@ -28,7 +27,7 @@ public class QueryExistsUser extends Connection{
     /**
      * Post the request to insert the user
      */
-    public void existsUser() {
+    public void executeQuery() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");

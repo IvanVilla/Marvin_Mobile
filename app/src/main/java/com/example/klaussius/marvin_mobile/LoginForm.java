@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import data.QueryExistsUser;
+import data.QueryUserInTournament;
 import utils.LogIn;
 
 /**
@@ -95,8 +96,10 @@ public class LoginForm extends AppCompatActivity {
      * Testing feeature
      */
     public void testFeature() {
-
-        toastMessage("");
+        QueryUserInTournament queryUserInTournament = new QueryUserInTournament("Dent",1);
+        queryUserInTournament.executeQuery();
+        String message="Dent is in Tournametn 1?: "+queryUserInTournament.getSigned();
+        toastMessage(message);
     }
 
     @Override
@@ -128,7 +131,7 @@ public class LoginForm extends AppCompatActivity {
         String userPassword = etPassword.getText().toString();
         // If there is no user with that name
         QueryExistsUser queryExistsUser = new QueryExistsUser(userName);
-        queryExistsUser.existsUser();
+        queryExistsUser.executeQuery();
         if (queryExistsUser.getExists()){
             // We try the user/password combination
             LogIn myLogin = new LogIn(userName,userPassword);
@@ -159,7 +162,8 @@ public class LoginForm extends AppCompatActivity {
     {
         saveUserName("");
         this.finish();
-        System.exit(0);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
     }
 
     /**

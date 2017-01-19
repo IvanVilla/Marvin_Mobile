@@ -23,7 +23,7 @@ public class PrizeMerchant extends Prize{
      * @param image image
      * @param expirationDate expiration date
      */
-    public PrizeMerchant(MyDate receptionDate, boolean claimed, int id, int name, String description, String image, MyDate expirationDate) {
+    public PrizeMerchant(MyDate receptionDate, boolean claimed, int id, String name, String description, String image, MyDate expirationDate) {
         super(id, name, description, image, expirationDate);
         this.receptionDate = receptionDate;
         this.claimed = claimed;

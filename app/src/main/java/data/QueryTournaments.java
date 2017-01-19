@@ -16,6 +16,7 @@ import java.util.Map;
 import model.host.TournamentHost;
 import model.tournament.Tournament;
 import model.tournament.TournamentSystem;
+import model.utils.MyDate;
 
 /**
  * Connect and retrieve the tournaments
@@ -28,7 +29,7 @@ public class QueryTournaments extends Connection{
     /**
      * Post the request, and get the data to our model's objects
      */
-    public void findAll() {
+    public void executeQuery() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");
@@ -67,6 +68,7 @@ public class QueryTournaments extends Connection{
             tournament.setId(jsonobject.get("idTOURNAMENT").getAsInt());
             tournament.setName(jsonobject.get("name").getAsString());
             tournament.setPublicDes(jsonobject.get("publicDes").getAsString());
+            tournament.setDate(new MyDate(jsonobject.get("date").getAsString()));
             // We take the system for the tournament
             TournamentSystem tournamentSystem = new TournamentSystem();
             tournamentSystem.setMaxPlayers(jsonobject.get("maxPlayers").getAsInt());
@@ -75,7 +77,7 @@ public class QueryTournaments extends Connection{
             // We take the host for the tournament            ;
             int host_id = jsonobject.get("TOURNAMENT_HOST_idTournamentHost").getAsInt();
             QueryHosts queryHosts = new QueryHosts(host_id);
-            queryHosts.findHost();
+            queryHosts.executeQuery();
             TournamentHost tournamentHost = queryHosts.getQueryResult();
             tournament.setHost(tournamentHost);
 
@@ -90,5 +92,19 @@ public class QueryTournaments extends Connection{
      */
     public List<Tournament> getQueryResult() {
         return queryResult;
+    }
+
+    /**
+     * Returns the future tournaments
+     * @return future tournaments
+     */
+    public List<Tournament> getFutureTournaments(){
+        List<Tournament> futureTournaments = new ArrayList<>();
+        for (Tournament item : this.queryResult){
+            if (item.getDate().isFuture()){
+                futureTournaments.add(item);
+            }
+        }
+        return futureTournaments;
     }
 }

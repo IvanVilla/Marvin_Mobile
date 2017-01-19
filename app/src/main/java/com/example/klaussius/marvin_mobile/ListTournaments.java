@@ -35,7 +35,7 @@ public class ListTournaments extends AppCompatActivity {
         // Showing the content
         setContentView(R.layout.activity_list_tournaments);
         //Button to take back
-        TakeMeBack = (Button)findViewById(R.id.btTakeMeBack);
+        TakeMeBack = (Button) findViewById(R.id.btTakeMeBack);
         TakeMeBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,28 +43,15 @@ public class ListTournaments extends AppCompatActivity {
             }
         });
         //Content
-        lvContent = (ListView)findViewById(R.id.lvContent);
+        lvContent = (ListView) findViewById(R.id.lvContent);
         //Retrieve data
         new leerDatos().execute();
     }
 
     /**
-     * Async class to read server data
+     * Show the tournament list
+     * @param datos
      */
-    private class leerDatos extends AsyncTask<String,Void,String> {
-        @Override
-        protected String doInBackground(String... strings) {
-            myData = new QueryTournaments();
-            myData.findAll();
-            return "done";
-        }
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            mostrarDatos(myData.getQueryResult());
-        }
-    }
-
     private void mostrarDatos(final List<Tournament> datos){
         // Paso los datos a un ListView
         String textos[]=new String[myData.getQueryResult().size()];
@@ -80,13 +67,32 @@ public class ListTournaments extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Tournament tournament = datos.get(i);
                 Intent intent = new Intent(ListTournaments.this,MenuTournament.class);
+                intent.putExtra("idTournament",tournament.getId()+"");
                 intent.putExtra("title",tournament.getName());
+                intent.putExtra("date",tournament.getDate().toString());
                 intent.putExtra("description",tournament.getPublicDes());
                 intent.putExtra("maxPlayers",tournament.getTournamentSystem().getMaxPlayers());
                 intent.putExtra("minPlayers",tournament.getTournamentSystem().getMinPlayers());
                 startActivity(intent);
             }
         });
+    }
+
+    /**
+     * Async class to read server data
+     */
+    private class leerDatos extends AsyncTask<String,Void,String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            myData = new QueryTournaments();
+            myData.executeQuery();
+            return "done";
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            mostrarDatos(myData.getQueryResult());
+        }
     }
 
     private void takeMeBack(){

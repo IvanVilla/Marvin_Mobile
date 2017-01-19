@@ -11,7 +11,7 @@ import model.utils.MyDate;
  */
 public class Prize {
     private int id;
-    private int name;
+    private String name;
     private String description;
     private String image;
     private MyDate expirationDate;
@@ -24,7 +24,7 @@ public class Prize {
      * @param image image
      * @param expirationDate expiration date
      */
-    public Prize(int id, int name, String description, String image, MyDate expirationDate) {
+    public Prize(int id, String name, String description, String image, MyDate expirationDate) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -61,7 +61,7 @@ public class Prize {
      * Get name
      * @return name
      */
-    public int getName() {
+    public String getName() {
         return name;
     }
 
@@ -69,7 +69,7 @@ public class Prize {
      * Set name
      * @param name name
      */
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 

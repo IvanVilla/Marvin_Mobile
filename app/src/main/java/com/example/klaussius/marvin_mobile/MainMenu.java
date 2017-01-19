@@ -116,7 +116,7 @@ public class MainMenu extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("marvinName","");
         editor.commit();
-        startActivity( new Intent(this,SignInForm.class));
+        startActivity( new Intent(this,LoginForm.class));
         this.finish();
     }
 }

@@ -16,6 +16,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
+import model.user.User;
+
 /**
  * Makes the connection
  * @Author Iván Villa
@@ -115,5 +117,16 @@ public class Connection {
             jarray = jelement.getAsJsonArray();
         }
         return jarray;
+    }
+
+    /**
+     * Returns the user's id from publicName
+     * @param  publicName public name
+     * @return user's id
+     */
+    protected int getUserId(String publicName){
+        QueryUserProfile queryUserProfile = new QueryUserProfile(publicName);
+        User user = queryUserProfile.getQueryResult();
+        return user.getId();
     }
 }

@@ -72,12 +72,12 @@ public class EulaForm extends AppCompatActivity {
             user.setPhone(phone);
             user.setAds(cbAcceptPublicity.isChecked());
             QueryCreateAccount queryCreateAccount = new QueryCreateAccount(user);
-            queryCreateAccount.createAccount();
+            queryCreateAccount.executeQuery();
             Log.i("Insert",user.getName()+", "+user.getPublicName()+", "+user.getPassword()+", "+user.getPhone()+", "+user.getAds());
             // We close the activity
             startActivity(new Intent(this,LoginForm.class));
             QueryCreateAccount createAccount = new QueryCreateAccount(user);
-            createAccount.createAccount();
+            createAccount.executeQuery();
             this.finish();
         } else {
             toastMessage(getString(R.string.acceptEULA));

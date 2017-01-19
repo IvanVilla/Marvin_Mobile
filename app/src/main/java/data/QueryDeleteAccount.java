@@ -11,8 +11,6 @@ import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import model.user.User;
-
 /**
  * Given a publicName, we delete the user on the server side
  * Created by Klaussius on 14/12/2016.
@@ -25,16 +23,13 @@ public class QueryDeleteAccount extends Connection {
 
     public QueryDeleteAccount(String publicName)
     {
-        // We get the user id
-        QueryUserProfile queryUserProfile = new QueryUserProfile(publicName);
-        User user = queryUserProfile.getQueryResult();
-        idUser = user.getId();
+        this.idUser = getUserId(publicName);
     }
 
     /**
      * Post the request to insert the user
      */
-    public void deleteAccount() {
+    public void executeQuery() {
         queryURL=API_URL+PHP_QUERY_FILE;
         try {
             Log.i("Connect with server","Retrieving data...");

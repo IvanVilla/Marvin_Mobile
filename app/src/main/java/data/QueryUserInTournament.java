@@ -11,20 +11,20 @@ import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import model.user.User;
-
 /**
- * This class creates one user account
- * Created by Klaussius on 14/12/2016.
+ * To know if our user is in a tournament
+ * Created by Klaussius on 17/01/2017.
  */
 
-public class QueryCreateAccount extends Connection{
-    private final static String PHP_QUERY_FILE = "usersQuery.php";
-    private User user;
-    private int insertionId;
+public class QueryUserInTournament extends Connection{
+    private final static String PHP_QUERY_FILE = "tournamentsQuery.php";
+    private int idUser;
+    private int idTournament;
+    private boolean signed;
 
-    public QueryCreateAccount(User user){
-        this.user=user;
+    public QueryUserInTournament(String publicName, int idTournament){
+        this.idUser = getUserId(publicName);
+        this.idTournament = idTournament;
     }
 
     /**
@@ -38,19 +38,18 @@ public class QueryCreateAccount extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put(REQUEST_NAME,INSERT_ITEM);
-            params.put(FIELDS,"[\"name\",\"publicName\",\"password\",\"phone\",\"eMail\",\"ads\"]");
-            params.put(VALUES,"[\""+user.getName()+"\",\""+user.getPublicName()+"\",\""+user.getPassword()+"\",\""+user.getPhone()+"\",\""+user.geteMail()+"\",\""+user.getAds()+"\"]");
+            params.put(REQUEST_NAME,"tournamentHasUser");
+            params.put("tournamentId",idTournament);
+            params.put("userId",idUser);
             byte[] postDataBytes = putParams(params); // Aux Method to make post
             //Send the data
             Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
             // Taking and analyzing the answer
             JsonArray jarray = getArrayFromJson(in, null); // Only Json Objects
             makeFromJson(jarray);
-
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.i("Create account","Error");
+            Log.i("User in Tournament","Error");
         } finally {
             close();
         }
@@ -61,14 +60,14 @@ public class QueryCreateAccount extends Connection{
      */
     private void makeFromJson(JsonArray jarray){
         JsonObject jsonObject=jarray.get(0).getAsJsonObject();
-        this.insertionId = jsonObject.get("insertionId").getAsInt();
+        this.signed = jsonObject.get("tournamentHasUser").getAsBoolean();
     }
 
     /**
      * Get the insertion id
      * @return insertion id
      */
-    public int getInsertionId() {
-        return insertionId;
+    public boolean getSigned() {
+        return signed;
     }
 }

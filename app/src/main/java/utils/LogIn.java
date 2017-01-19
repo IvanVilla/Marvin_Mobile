@@ -22,7 +22,7 @@ public class LogIn {
      */
     public LogIn(String name, String password) {
         myData = new QueryUserPassword(name,password);
-        myData.retrieveAnswer();
+        myData.executeQuery();
     }
 
     /**

@@ -113,7 +113,7 @@ public class ProfileEdit extends AppCompatActivity {
      */
     private void updateProfile(){
         QueryExistsUser queryExistsUser = new QueryExistsUser(etName.getText().toString());
-        queryExistsUser.existsUser();
+        queryExistsUser.executeQuery();
         // Conditions review before of doing the the insert
         if (!etPassword.getText().toString().equals(etRepeatPassword.getText().toString())) {
             toastMessage(getString(R.string.passwordNotMatch));
@@ -134,7 +134,7 @@ public class ProfileEdit extends AppCompatActivity {
             user.seteMail(etEmail.getText().toString());
             user.setPhone(etPhone.getText().toString());
             QueryModifyProfile queryModifyProfile = new QueryModifyProfile(user);
-            queryModifyProfile.updateProfile();
+            queryModifyProfile.executeQuery();
             // We close the activity
             startActivity(new Intent(this,Profile.class));
             this.finish();

@@ -97,7 +97,7 @@ public class SignInForm extends AppCompatActivity {
      */
     public void signIn(){
         QueryExistsUser queryExistsUser = new QueryExistsUser(etPublicName.getText().toString());
-        queryExistsUser.existsUser();
+        queryExistsUser.executeQuery();
         // Conditions review before of doing the the insert
         if (queryExistsUser.getExists()){
             toastMessage(getString(R.string.nameExists));
