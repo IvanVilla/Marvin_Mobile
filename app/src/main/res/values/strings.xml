@@ -84,4 +84,6 @@
     <string name="continuethis">Continue</string>
     <string name="acceptEULA">You must accept the conditions of service before continuing.</string>
     <string name="userDoesntExists">That user name does not exists.</string>
+    <string name="finishRound">Finish Round</string>
+    <string name="VS">VS</string>
 </resources>

@@ -13,6 +13,7 @@ public class Round {
     private int roundNumber;
     private ArrayList <Match> matches;
     private String roundType;
+    private boolean finished;
 
     /**
      * Constructor with parameters
@@ -20,10 +21,11 @@ public class Round {
      * @param matches matches
      * @param roundType type
      */
-    public Round(int roundNumber, ArrayList<Match> matches, String roundType) {
+    public Round(int roundNumber, ArrayList<Match> matches, String roundType, boolean finished) {
         this.roundNumber = roundNumber;
         this.matches = matches;
         this.roundType = roundType;
+        this.finished = finished;
     }
 
     /**
@@ -31,6 +33,7 @@ public class Round {
      */
     public Round() {
         matches = new ArrayList<>();
+        this.finished = false;
     }
     
     // GETTERS AND SETTERS
@@ -81,6 +84,21 @@ public class Round {
      */
     public void setRoundType(String roundType) {
         this.roundType = roundType;
-    }    
-    
+    }
+
+    /**
+     * We know if it's finished
+     * @return if it's finished
+     */
+    public boolean isFinished() {
+        return finished;
+    }
+
+    /**
+     * We set state for the round
+     * @param finished (true: finished, false: not)
+     */
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
 }

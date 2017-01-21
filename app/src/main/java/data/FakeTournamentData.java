@@ -33,7 +33,7 @@ public class FakeTournamentData {
      */
     private void createData(){
         for (int i=0; i<6; i++){
-            players.add(createMatchPlayer("Id: "+i));
+            players.add(createMatchPlayer("Id: "+(i+1)));
         }
         // Round 1
         Round round1 = new Round();

@@ -19,6 +19,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lvMatches" />
+
+            <Button
+                android:text="@string/finishRound"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btFinishRound"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:layout_marginTop="25dp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

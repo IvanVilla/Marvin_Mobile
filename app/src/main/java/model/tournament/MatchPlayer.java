@@ -25,6 +25,23 @@ public class MatchPlayer {
      * Constructor simple
      */
     public MatchPlayer() {
+        this.points=0;
+    }
+
+    /**
+     * Add a point
+     */
+    public void sumPoint(){
+        this.points++;
+    }
+
+    /**
+     * Substract a point, only if we have more than zero points
+     */
+    public void subPoint(){
+        if (points>0){
+            this.points--;
+        }
     }
     
     // GETTERS AND SETTERS
