@@ -24,7 +24,7 @@ import utils.LogIn;
  */
 public class LoginForm extends AppCompatActivity {
 
-    Button btLogin,btSignIn,btExit,btTestFeature;
+    Button btLogin,btSignIn,btTestFeature;
     EditText etName;
     EditText etPassword;
 
@@ -40,6 +40,15 @@ public class LoginForm extends AppCompatActivity {
         setSupportActionBar(toolbar);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        // If we have one logged user, we go to profile directly
+        if(loadUserName()!="null"){
+            // If there is user with that name
+            QueryExistsUser queryExistsUser = new QueryExistsUser(loadUserName());
+            queryExistsUser.executeQuery();
+            if (queryExistsUser.getExists()){
+                startActivity(new Intent(this, Profile.class));
+            }
+        }
     }
 
     /**
@@ -71,14 +80,6 @@ public class LoginForm extends AppCompatActivity {
                 signIn();
             }
         });
-        // Exit Button
-        btExit = (Button)findViewById(R.id.btExit);
-        btExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                endApp();
-            }
-        });
         // Testing button
         btTestFeature = (Button)findViewById(R.id.btTestFeature);
         btTestFeature.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +88,6 @@ public class LoginForm extends AppCompatActivity {
                 testFeature();
             }
         });
-
         return true;
     }
 
@@ -118,7 +118,7 @@ public class LoginForm extends AppCompatActivity {
     public void login(){
         String userName = etName.getText().toString();
         String userPassword = etPassword.getText().toString();
-        // If there is no user with that name
+        // If there is user with that name
         QueryExistsUser queryExistsUser = new QueryExistsUser(userName);
         queryExistsUser.executeQuery();
         if (queryExistsUser.getExists()){
@@ -145,17 +145,6 @@ public class LoginForm extends AppCompatActivity {
     }
 
     /**
-     * Exit action
-     */
-    public void endApp()
-    {
-        saveUserName("");
-        this.finish();
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
-    }
-
-    /**
      * Store the username we are using on sharedpreferences
      */
     public void saveUserName(String username){
@@ -176,11 +165,17 @@ public class LoginForm extends AppCompatActivity {
     }
 
     /**
+     * Load the username from SharedPreferences
+     */
+    public String loadUserName(){
+        Log.i("SharedPreferences","Loading Username");
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        return prefs.getString("marvinName","");
+    }
+
+    /**
      * Testing feeature
      */
     public void testFeature() {
-        Intent intent = new Intent(this,TournamentProgress.class);
-        intent.putExtra("round","0");
-        startActivity(intent);
     }
 }

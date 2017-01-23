@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import data.FakeTournamentData;
 import model.tournament.Match;
 import model.tournament.Tournament;
+import utils.Match2p;
 
 public class TournamentProgress extends AppCompatActivity {
     Tournament tournament;
@@ -22,9 +23,15 @@ public class TournamentProgress extends AppCompatActivity {
         // My listview
         lvMatches = (ListView)findViewById(R.id.lvMatches);
         roundNumber = Integer.parseInt(getIntent().getStringExtra("round"));
+        // I retrieve the fake data
         tournament = new FakeTournamentData().getTournament();
         ArrayList<Match> matches = tournament.getRounds().get(roundNumber).getMatches();
-        MatchAdapter matchAdapter = new MatchAdapter(this, matches);
+        // I make the arraylist for the adapter
+        ArrayList<Match2p> match2ps = new ArrayList<>();
+        MatchAdapter matchAdapter =  new MatchAdapter(this,match2ps);
         lvMatches.setAdapter(matchAdapter);
+        for (Match match:matches){
+            matchAdapter.add(new Match2p(match));
+        }
     }
 }

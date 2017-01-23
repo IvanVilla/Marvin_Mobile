@@ -106,6 +106,8 @@ public class SignInForm extends AppCompatActivity {
             toastMessage(getString(R.string.passwordNotMatch));
         }else if (etPublicName.getText().toString().length()==0) {
             toastMessage(getString(R.string.publicNameRequired));
+        }else if (etPublicName.getText().toString().toLowerCase()=="null"){
+            toastMessage(getString(R.string.publicNameNotNull));
         }else if (etName.getText().toString().length()==0) {
             toastMessage(getString(R.string.nameRequired));
         }else if (etPassword.getText().toString().length()==0) {

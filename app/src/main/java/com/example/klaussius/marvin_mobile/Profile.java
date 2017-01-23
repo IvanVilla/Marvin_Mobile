@@ -145,7 +145,7 @@ public class Profile extends AppCompatActivity {
         Log.i("SharedPreferences","Cleaning Username");
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("marvinName","");
+        editor.putString("marvinName","null");
         editor.commit();
         this.finish();
     }

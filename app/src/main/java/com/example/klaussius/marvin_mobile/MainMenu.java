@@ -16,7 +16,7 @@ import android.widget.TextView;
  */
 public class MainMenu extends AppCompatActivity {
 
-    Button btTournaments, btRankings, btMessages, btProfile, btLogOut;
+    Button btFutureTournaments, btRankings, btMessages, btProfile, btLogOut, btInProgressTournaments;
     TextView hello;
 
     @Override
@@ -27,8 +27,8 @@ public class MainMenu extends AppCompatActivity {
         hello = (TextView)findViewById(R.id.tvHello);
         hello.setText("Hello "+loadUserName()+"!");
         //Button for Tournaments
-        btTournaments = (Button)findViewById(R.id.btTournaments);
-        btTournaments.setOnClickListener(new View.OnClickListener() {
+        btFutureTournaments = (Button)findViewById(R.id.btFutureTournaments);
+        btFutureTournaments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchTournaments();
@@ -66,16 +66,14 @@ public class MainMenu extends AppCompatActivity {
                 logout();
             }
         });
-
-    }
-
-    /**
-     * Load the username from SharedPreferences
-     */
-    public String loadUserName(){
-        Log.i("SharedPreferences","Loading Username");
-        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        return prefs.getString("marvinName","");
+        //Button for tournaments in progress
+        btInProgressTournaments = (Button)findViewById(R.id.btInProgressTournaments);
+        btInProgressTournaments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inProgressTournaments();
+            }
+        });
     }
 
     /**
@@ -108,15 +106,34 @@ public class MainMenu extends AppCompatActivity {
     }
 
     /**
+     * Open in progress tournaments
+     */
+    public void inProgressTournaments(){
+        int round = 0;
+        Intent intent = new Intent(this,TournamentProgress.class);
+        intent.putExtra("round",round+"");
+        startActivity(intent);
+    }
+
+    /**
      * Finish the activity, clean the SharedPreferences Username
      */
     public void logout(){
         Log.i("SharedPreferences","Cleaning Username");
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("marvinName","");
+        editor.putString("marvinName","null");
         editor.commit();
         startActivity( new Intent(this,LoginForm.class));
         this.finish();
+    }
+
+    /**
+     * Load the username from SharedPreferences
+     */
+    public String loadUserName(){
+        Log.i("SharedPreferences","Loading Username");
+        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        return prefs.getString("marvinName","");
     }
 }

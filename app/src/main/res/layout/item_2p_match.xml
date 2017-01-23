@@ -9,86 +9,56 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <Button
-            android:text="+"
+        <TextView
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btSum1"
-            android:backgroundTint="@android:color/holo_green_light"
-            android:textSize="14sp" />
-
-        <Button
-            android:text="-"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btSub1"
-            android:backgroundTint="@android:color/holo_red_light" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/tvNamePlayer1"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textStyle="normal|bold"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/tvPointsPlayer1"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="24sp" />
-        </LinearLayout>
+            android:id="@+id/tvNamePlayer1"
+            android:layout_weight="1"
+            android:textStyle="normal|bold"
+            android:textAlignment="center" />
 
         <TextView
-            android:text="@string/VS"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/tvVS"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPointsPlayer1"
             android:layout_weight="1"
-            android:gravity="center" />
+            android:textAlignment="center" />
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/tvNamePlayer2"
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btSum1"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textStyle="normal|bold"
-                android:textSize="24sp" />
+                android:backgroundTint="@android:color/holo_green_light" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/tvPointsPlayer2"
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btSub1"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="24sp" />
-
+                android:backgroundTint="@android:color/holo_red_light" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:text="@string/VS"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/tvVS"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textStyle="normal|bold" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -96,19 +66,41 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <Button
-            android:text="+"
+        <TextView
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btSum2"
-            android:backgroundTint="@android:color/holo_green_light" />
+            android:id="@+id/tvNamePlayer2"
+            android:textAlignment="center"
+            android:textStyle="normal|bold" />
 
-        <Button
-            android:text="-"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btSub2"
-            android:backgroundTint="@android:color/holo_red_light" />
+            android:id="@+id/tvPointsPlayer2"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="+"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btSum2"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_green_light" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btSub2"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_red_light" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
