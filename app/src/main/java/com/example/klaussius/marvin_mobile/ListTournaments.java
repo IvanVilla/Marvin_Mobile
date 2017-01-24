@@ -13,6 +13,7 @@ import android.widget.ListView;
 import java.util.List;
 
 import data.QueryTournaments;
+import data.QueryTournamentsByStatus;
 import model.tournament.Tournament;
 
 /**
@@ -21,7 +22,7 @@ import model.tournament.Tournament;
  */
 public class ListTournaments extends AppCompatActivity {
 
-    public QueryTournaments myData;
+    public QueryTournamentsByStatus myData;
     public Button TakeMeBack;
     public ListView lvContent;
 
@@ -84,7 +85,7 @@ public class ListTournaments extends AppCompatActivity {
     private class leerDatos extends AsyncTask<String,Void,String> {
         @Override
         protected String doInBackground(String... strings) {
-            myData = new QueryTournaments();
+            myData = new QueryTournamentsByStatus("published");
             myData.executeQuery();
             return "done";
         }

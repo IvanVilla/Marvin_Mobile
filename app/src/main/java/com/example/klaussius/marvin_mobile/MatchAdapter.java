@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import utils.Match2p;
+import tools.Match2p;
 
 /**
  * For Tournament in Progress, we create a custom adapter to use it.

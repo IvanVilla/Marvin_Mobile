@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import data.QueryTournamentInscription;
 import data.QueryUserInTournament;
 
 /**
@@ -89,7 +90,8 @@ public class MenuTournament extends AppCompatActivity {
      * Sign in the tournament
      */
     private void inscription(){
-        toastMessage("The inscription was sucessful!");
+        QueryTournamentInscription queryTournamentInscription = new QueryTournamentInscription(loadUserName(),tournamentId,true);
+        queryTournamentInscription.executeQuery();
         btInscription.setVisibility(View.GONE);
         btDeleteInscription.setVisibility(View.VISIBLE);
     }
@@ -98,7 +100,7 @@ public class MenuTournament extends AppCompatActivity {
      * Dissmis participation in the tournament
      */
     private void deleteInscription(){
-        toastMessage("The inscription was deleted!");
+        QueryTournamentInscription queryTournamentInscription = new QueryTournamentInscription(loadUserName(),tournamentId,false);
         btDeleteInscription.setVisibility(View.GONE);
         btInscription.setVisibility(View.VISIBLE);
     }

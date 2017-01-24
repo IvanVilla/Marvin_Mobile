@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import data.FakeTournamentData;
 import model.tournament.Match;
 import model.tournament.Tournament;
-import utils.Match2p;
+import tools.Match2p;
 
 public class TournamentProgress extends AppCompatActivity {
     Tournament tournament;

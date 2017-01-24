@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import data.QueryExistsUser;
-import utils.LogIn;
+import tools.LogIn;
 
 /**
  * Activity with a login form

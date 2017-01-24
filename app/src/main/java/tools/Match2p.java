@@ -1,4 +1,4 @@
-package utils;
+package tools;
 
 import model.tournament.Match;
 import model.tournament.PlayerIndividual;

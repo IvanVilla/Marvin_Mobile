@@ -81,4 +81,10 @@
     <string name="acceptConditions">Accepta les Condicions?</string>
     <string name="acceptEULA">Ha d\'acceptar les condicions del servei els abans de continuar.</string>
     <string name="userDoesntExists">Aquest nom d\'usuari no existeix</string>
+    <string name="VS">VS</string>
+    <string name="endRound">Fi de ronda</string>
+    <string name="finishRound">Fi de ronda</string>
+    <string name="futureTournaments">Tornejos futurs</string>
+    <string name="inProgressTournaments">Tornejos en progrés</string>
+    <string name="publicNameNotNull">El nom públic té una paraula prohibida</string>
 </resources>
