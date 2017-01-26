@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import data.QueryUserPrizes;
@@ -24,6 +25,7 @@ public class Profile extends AppCompatActivity {
     Button btEdit,btExit, btMainMenu, btDeleteMyUser;
     TextView tvName, tvPublicName, tvEmail, tvPhone, tvPrizeNumber, tvUnclaimedPrizes;
     ImageView ivPrizeBox;
+    LinearLayout LiPrizes;
 
     //My User
     User user;
@@ -45,6 +47,9 @@ public class Profile extends AppCompatActivity {
         tvPrizeNumber = (TextView)findViewById(R.id.tvPrizeNumber);
         tvUnclaimedPrizes = (TextView)findViewById(R.id.tvUnclaimedPrizes);
 
+        //LinearLayout Prizes
+        LiPrizes = (LinearLayout)findViewById(R.id.LiPrizes);
+
         //ImageView prizeBox
         //Retrieving our prizes
         QueryUserPrizes queryUserPrizes = new QueryUserPrizes(loadUserName());
@@ -53,6 +58,12 @@ public class Profile extends AppCompatActivity {
         // Filling our fields
         ivPrizeBox = (ImageView)findViewById(R.id.ivPrizeBox);
         if(prizesNumber>0){
+            LiPrizes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    prizes();
+                }
+            });
             ivPrizeBox.setImageResource(R.drawable.userhasprizes);
             tvPrizeNumber.setText(prizesNumber+"");
             if (prizesNumber==1){
@@ -136,6 +147,10 @@ public class Profile extends AppCompatActivity {
     private void deleteMyUser(){
         startActivity(new Intent(this,ProfileDeleteConfirmation.class));
         this.finish();
+    }
+
+    private void prizes(){
+        startActivity(new Intent(this,PrizesList.class));
     }
 
     /**

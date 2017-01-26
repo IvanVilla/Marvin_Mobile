@@ -8,9 +8,7 @@ import com.google.gson.JsonObject;
 import java.io.Reader;
 import java.net.Proxy;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import model.host.TournamentHost;
@@ -19,12 +17,18 @@ import model.tournament.TournamentSystem;
 import model.utils.MyDate;
 
 /**
- * Connect and retrieve the tournaments
- * @author Iván Villa
+ * Get a Tournament with one id
+ * Created by klaus on 26/01/2017.
  */
-public class QueryTournaments extends Connection{
-    private List<Tournament> queryResult = new ArrayList<>();
+
+public class QueryTournamentById extends Connection {
+    private Tournament queryResult;
     private final static String PHP_QUERY_FILE = "tournamentsQuery.php";
+    private int id;
+
+    public QueryTournamentById(int id){
+        this.id=id;
+    }
 
     /**
      * Post the request, and get the data to our model's objects
@@ -37,7 +41,10 @@ public class QueryTournaments extends Connection{
             URL url = new URL(queryURL);
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
-            params.put(REQUEST_NAME,ALL_VALUES); // Get all the values
+            params.put(REQUEST_NAME,CUSTOM_SEARCH); // Custom Search
+            params.put(FIELDS,"[\"idTOURNAMENT\",\"name\",\"publicDes\",\"date\",\"maxPlayers\",\"minPlayers\",\"TOURNAMENT_HOST_idTournamentHost\"]");
+            params.put(FILTER_FIELDS,"idTOURNAMENT");
+            params.put(FILTER_ARGUMENTS,id);
             byte[] postDataBytes = putParams(params); // Aux Method to make post
 
             // GET READER FROM CONN (SUPER)
@@ -82,7 +89,7 @@ public class QueryTournaments extends Connection{
             tournament.setHost(tournamentHost);
 
             // We add the object Tournament
-            this.queryResult.add(tournament);
+            this.queryResult=tournament;
         }
     }
 
@@ -90,21 +97,7 @@ public class QueryTournaments extends Connection{
      * The result of the query
      * @return result of the query
      */
-    public List<Tournament> getQueryResult() {
-        return queryResult;
-    }
-
-    /**
-     * Returns the future tournaments
-     * @return future tournaments
-     */
-    public List<Tournament> getFutureTournaments(){
-        List<Tournament> queryResult = new ArrayList<>();
-        for (Tournament item : this.queryResult){
-            if (item.getDate().isFuture()){
-                queryResult.add(item);
-            }
-        }
+    public Tournament getQueryResult() {
         return queryResult;
     }
 }

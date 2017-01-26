@@ -4,15 +4,16 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
-import data.QueryTournaments;
 import data.QueryTournamentsByStatus;
 import model.tournament.Tournament;
 
@@ -22,7 +23,7 @@ import model.tournament.Tournament;
  */
 public class ListTournaments extends AppCompatActivity {
 
-    public QueryTournamentsByStatus myData;
+    public QueryTournamentsByStatus queryTournamentsByStatus;
     public Button TakeMeBack;
     public ListView lvContent;
 
@@ -55,12 +56,13 @@ public class ListTournaments extends AppCompatActivity {
      */
     private void mostrarDatos(final List<Tournament> datos){
         // Paso los datos a un ListView
-        String textos[]=new String[myData.getQueryResult().size()];
+        String textos[]=new String[queryTournamentsByStatus.getQueryResult().size()];
         for (int i = 0; i<textos.length; i++){
-            Tournament tournament = myData.getQueryResult().get(i);
+            Tournament tournament = queryTournamentsByStatus.getQueryResult().get(i);
             textos[i]=tournament.getName();
+            Log.i("Insertado torneo",textos[i]);
         }
-        ArrayAdapter<String> itemsAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,textos);
+        ArrayAdapter<String>itemsAdapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,textos);
         lvContent.setAdapter(itemsAdapter);
         lvContent.setClickable(true);
         lvContent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -85,19 +87,35 @@ public class ListTournaments extends AppCompatActivity {
     private class leerDatos extends AsyncTask<String,Void,String> {
         @Override
         protected String doInBackground(String... strings) {
-            myData = new QueryTournamentsByStatus("published");
-            myData.executeQuery();
+            queryTournamentsByStatus = new QueryTournamentsByStatus("published");
+            queryTournamentsByStatus.executeQuery();
             return "done";
         }
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            mostrarDatos(myData.getQueryResult());
+            if(queryTournamentsByStatus.getQueryResult().size()>0){
+                mostrarDatos(queryTournamentsByStatus.getQueryResult());
+            } else {
+                toastMessage(getString(R.string.noData));
+            }
         }
     }
 
+    /**
+     * Take us back
+     */
     private void takeMeBack(){
         startActivity(new Intent(this,MainMenu.class));
         this.finish();
+    }
+
+    /**
+     * Show a message
+     * @param message message
+     */
+    public void toastMessage(String message){
+        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

@@ -24,7 +24,7 @@ import tools.LogIn;
  */
 public class LoginForm extends AppCompatActivity {
 
-    Button btLogin,btSignIn,btTestFeature;
+    Button btLogin,btSignIn;
     EditText etName;
     EditText etPassword;
 
@@ -78,14 +78,6 @@ public class LoginForm extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signIn();
-            }
-        });
-        // Testing button
-        btTestFeature = (Button)findViewById(R.id.btTestFeature);
-        btTestFeature.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                testFeature();
             }
         });
         return true;

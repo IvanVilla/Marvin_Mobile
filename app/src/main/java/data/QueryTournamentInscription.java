@@ -68,7 +68,12 @@ public class QueryTournamentInscription extends Connection {
      */
     private void makeFromJson(JsonArray jarray){
         JsonObject jsonObject=jarray.get(0).getAsJsonObject();
-        this.signed = jsonObject.get("tournamentHasUser").getAsBoolean();
+        if (inscription){
+            this.signed = jsonObject.get("insertionSuccess").getAsBoolean();
+        } else {
+            this.signed = jsonObject.get("deletionSuccess").getAsBoolean();
+        }
+
     }
 
     /**

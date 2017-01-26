@@ -1,6 +1,7 @@
 package com.example.klaussius.marvin_mobile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -61,7 +62,10 @@ public class MenuTournament extends AppCompatActivity {
         tournamentId=Integer.parseInt(getIntent().getStringExtra("idTournament"));
         tvTournamentTitle.setText(getIntent().getStringExtra("title"));
         tvPublicDes.setText(getIntent().getStringExtra("description"));
-        tvDate.setText(getIntent().getStringExtra("date"));
+        int yyyy = Integer.parseInt(getIntent().getStringExtra("date").split("-")[0]);
+        int mm = Integer.parseInt(getIntent().getStringExtra("date").split("-")[1]);
+        int dd = Integer.parseInt(getIntent().getStringExtra("date").split("-")[2]+1);
+        tvDate.setText(dd+"-"+mm+"-"+yyyy);
         tvMaxPlayers.setText(getIntent().getStringExtra("maxPlayers"));
         tvMinPlayers.setText(getIntent().getStringExtra("minPlayers"));
 
@@ -90,8 +94,7 @@ public class MenuTournament extends AppCompatActivity {
      * Sign in the tournament
      */
     private void inscription(){
-        QueryTournamentInscription queryTournamentInscription = new QueryTournamentInscription(loadUserName(),tournamentId,true);
-        queryTournamentInscription.executeQuery();
+        new QueryTournamentInscription(loadUserName(),tournamentId,true).executeQuery();
         btInscription.setVisibility(View.GONE);
         btDeleteInscription.setVisibility(View.VISIBLE);
     }
@@ -100,7 +103,7 @@ public class MenuTournament extends AppCompatActivity {
      * Dissmis participation in the tournament
      */
     private void deleteInscription(){
-        QueryTournamentInscription queryTournamentInscription = new QueryTournamentInscription(loadUserName(),tournamentId,false);
+        new QueryTournamentInscription(loadUserName(),tournamentId,false).executeQuery();
         btDeleteInscription.setVisibility(View.GONE);
         btInscription.setVisibility(View.VISIBLE);
     }

@@ -40,7 +40,7 @@ public class QueryUserPrizes extends Connection {
             // PARAMS POST
             Map<String, Object> params = new LinkedHashMap<>();
             params.put(REQUEST_NAME,CUSTOM_SEARCH);
-            params.put(FIELDS,"[\"name\"]");
+            params.put(FIELDS,"[\"name\",\"description\"]");
             params.put(FILTER_FIELDS,"\"USER_idUSER\"");
             params.put(FILTER_ARGUMENTS,"\""+idUser+"\"");
 
@@ -68,9 +68,9 @@ public class QueryUserPrizes extends Connection {
             Prize prize = new Prize(); // For the prize
             JsonObject jsonobject = jarray.get(i).getAsJsonObject();
             prize.setName(jsonobject.get("name").getAsString());
+            prize.setDescription(jsonobject.get("description").getAsString());
             // We add the object prize
             this.queryResult.add(prize);
-
         }
     }
 

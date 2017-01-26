@@ -29,7 +29,8 @@
         <activity android:name=".ProfileEdit" />
         <activity android:name=".MenuTournament" />
         <activity android:name=".EulaForm" />
-        <activity android:name=".TournamentProgress"></activity>
+        <activity android:name=".TournamentProgress" />
+        <activity android:name=".PrizesList"></activity>
     </application>
 
 </manifest>

@@ -90,4 +90,5 @@
     <string name="futureTournaments">Future Tournaments</string>
     <string name="inProgressTournaments">Tournaments in Progress</string>
     <string name="publicNameNotNull">The public name has a prohibited word</string>
+    <string name="noData">There are no data for this</string>
 </resources>

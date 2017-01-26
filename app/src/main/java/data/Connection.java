@@ -1,5 +1,7 @@
 package data;
 
+import android.util.Log;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -96,6 +98,7 @@ public class Connection {
                 postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
             }
             postDataBytes = postData.toString().getBytes("UTF-8");
+            Log.i("Posting...",postData.toString());
         } catch (UnsupportedEncodingException ex) {
         }
         return postDataBytes;

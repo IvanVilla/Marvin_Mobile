@@ -19,98 +19,69 @@ import model.tournament.TournamentSystem;
 import model.utils.MyDate;
 
 /**
- * Created by klaus on 24/01/2017.
+ * Returns the tournaments with a status
+ * Created by klaus on 26/01/2017.
  */
 
 public class QueryTournamentsByStatus extends Connection {
-    private List<Tournament> queryResult = new ArrayList<>();
+    private ArrayList<Tournament> queryResult = new ArrayList<>();
     private final static String PHP_QUERY_FILE = "tournamentsQuery.php";
-    String status;
+    private String status;
 
     public QueryTournamentsByStatus(String status){
-        this.status = status;
+        this.status=status;
     }
 
     /**
      * Post the request, and get the data to our model's objects
      */
     public void executeQuery() {
-            queryURL=API_URL+PHP_QUERY_FILE;
-            try {
-                Log.i("Connect with server","Retrieving data...");
-                // URL
-                URL url = new URL(queryURL);
-                // PARAMS POST
-                Map<String, Object> params = new LinkedHashMap<>();
-                params.put(REQUEST_NAME,"getTournamentsByStatus"); // Get all the values
-                params.put("status",status);
-                byte[] postDataBytes = putParams(params); // Aux Method to make post
+        queryURL=API_URL+PHP_QUERY_FILE;
+        try {
+            Log.i("Connect with server","Retrieving data...");
+            // URL
+            URL url = new URL(queryURL);
+            // PARAMS POST
+            Map<String, Object> params = new LinkedHashMap<>();
+            params.put(REQUEST_NAME,"getTournamentsByStatus"); // Custom Search
+            params.put("status",status);
+            byte[] postDataBytes = putParams(params); // Aux Method to make post
 
-                // GET READER FROM CONN (SUPER)
-                Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
+            // GET READER FROM CONN (SUPER)
+            Reader in = connect(url, Proxy.NO_PROXY, postDataBytes);
 
-                // PARSER
-                JsonArray jarray = getArrayFromJson(in, null); // "Only Json Objects
+            // PARSER
+            JsonArray jarray = getArrayFromJson(in, null); // "Only Json Objects
 
-                // MAKE OBJECTS
-                makeFromJson(jarray);
+            // MAKE OBJECTS
+            makeFromJson(jarray);
 
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                Log.e("Tournaments","Error");
-            } finally {
-                close();
-            }
-        }
-
-        /**
-         * Make the objects Tournament from Array
-         * @param jarray
-         */
-        private void makeFromJson(JsonArray jarray){
-            for (int i=0; i<jarray.size(); i++){
-                Tournament tournament = new Tournament(); // For the tournament
-                JsonObject jsonobject = jarray.get(i).getAsJsonObject();
-                tournament.setId(jsonobject.get("idTOURNAMENT").getAsInt());
-                tournament.setName(jsonobject.get("name").getAsString());
-                tournament.setPublicDes(jsonobject.get("publicDes").getAsString());
-                tournament.setDate(new MyDate(jsonobject.get("date").getAsString()));
-                // We take the system for the tournament
-                TournamentSystem tournamentSystem = new TournamentSystem();
-                tournamentSystem.setMaxPlayers(jsonobject.get("maxPlayers").getAsInt());
-                tournamentSystem.setMinPlayers(jsonobject.get("minPlayers").getAsInt());
-                tournament.setTournamentSystem(tournamentSystem);
-                // We take the host for the tournament            ;
-                int host_id = jsonobject.get("TOURNAMENT_HOST_idTournamentHost").getAsInt();
-                QueryHosts queryHosts = new QueryHosts(host_id);
-                queryHosts.executeQuery();
-                TournamentHost tournamentHost = queryHosts.getQueryResult();
-                tournament.setHost(tournamentHost);
-
-                // We add the object Tournament
-                this.queryResult.add(tournament);
-            }
-        }
-
-        /**
-         * The result of the query
-         * @return result of the query
-         */
-        public List<Tournament> getQueryResult() {
-            return queryResult;
-        }
-
-        /**
-         * Returns the future tournaments
-         * @return future tournaments
-         */
-        public List<Tournament> getFutureTournaments(){
-            List<Tournament> futureTournaments = new ArrayList<>();
-            for (Tournament item : this.queryResult){
-                if (item.getDate().isFuture()){
-                    futureTournaments.add(item);
-                }
-            }
-            return futureTournaments;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Log.e("Tournaments","Error");
+        } finally {
+            close();
         }
     }
+
+    /**
+     * Make the objects Tournament from Array
+     * @param jarray
+     */
+    private void makeFromJson(JsonArray jarray){
+        for (int i=0; i<jarray.size(); i++){
+            JsonObject jsonobject = jarray.get(i).getAsJsonObject();
+            QueryTournamentById queryTournamentById = new QueryTournamentById(jsonobject.get("idTOURNAMENT").getAsInt());
+            queryTournamentById.executeQuery();
+            this.queryResult.add(queryTournamentById.getQueryResult());
+        }
+    }
+
+    /**
+     * The result of the query
+     * @return result of the query
+     */
+    public ArrayList<Tournament> getQueryResult() {
+        return queryResult;
+    }
+}
