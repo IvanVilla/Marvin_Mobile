@@ -30,7 +30,8 @@
         <activity android:name=".MenuTournament" />
         <activity android:name=".EulaForm" />
         <activity android:name=".TournamentProgress" />
-        <activity android:name=".PrizesList"></activity>
+        <activity android:name=".PrizesList" />
+        <activity android:name=".ListTournamentsInProgress"></activity>
     </application>
 
 </manifest>

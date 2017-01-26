@@ -109,10 +109,7 @@ public class MainMenu extends AppCompatActivity {
      * Open in progress tournaments
      */
     public void inProgressTournaments(){
-        int round = 0;
-        Intent intent = new Intent(this,TournamentProgress.class);
-        intent.putExtra("round",round+"");
-        startActivity(intent);
+        startActivity(new Intent(this,ListTournamentsInProgress.class));
     }
 
     /**
